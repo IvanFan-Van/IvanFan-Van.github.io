@@ -1,0 +1,31 @@
+$breakpoints: (
+	"mobile": (
+		320px,
+		767px,
+	),
+	"tablet": (
+		768px,
+		1023px,
+	),
+	"desktop": (
+		1024px,
+		1366px,
+	),
+	"wide": 1367px,
+);
+
+@mixin respond-to($break-name) {
+	$breakpoint: map-get($breakpoints, $break-name);
+	// If the breakpoint is a list, it means that it is the minimum and maximum width of the screen.
+	@if type-of($breakpoint) == "list" {
+		@media (min-width: nth($breakpoint, 1)) and (max-width: nth($breakpoint, 2)) {
+			@content;
+		}
+	}
+	// If the breakpoint is a single value, it means that it is the minimum width of the screen.
+	@else {
+		@media (min-width: $breakpoint) {
+			@content;
+		}
+	}
+}
