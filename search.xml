@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/10/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link"   href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <tags>
+        <tag>ALL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速入门Pylint</title>
+    <url>/2023/11/12/pylint-learning/</url>
+    <content><![CDATA[<h1 id="快速入门-Pylint"><a href="#快速入门-Pylint" class="headerlink" title="快速入门 Pylint"></a>快速入门 Pylint</h1><h2 id="如何下载-Pylint"><a href="#如何下载-Pylint" class="headerlink" title="如何下载 Pylint"></a>如何下载 Pylint</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pylint</span><br></pre></td></tr></table></figure></div>
+
+<p>使用该命令来安装 pylint</p>
+<h2 id="使用-pylint"><a href="#使用-pylint" class="headerlink" title="使用 pylint"></a>使用 pylint</h2><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">pylint &lt;filename&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以运行<code>pyling &lt;filename&gt;</code> 来分析某个 Python 文件, 并生成一个报告. 这个报告会包含 Pylint 发现的任何问题, 以及你的代码的总体评分.</p>
+<p>例如想分析一个名为<code>main.py</code> 的文件, 可以运行:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">pylint main.py</span><br></pre></td></tr></table></figure></div>
+
+<p>报告长这个样子捏:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20231110000600341.png"
+                      alt="image-20231110000600341"
+                ></p>
+<p>跟着这些分析修改代码后, 可以再次运行 <strong>Pylint</strong>. 它会重新生成一个分析报告, 并告诉你的分数以及提升呢. 具体报告如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20231110001113096.png"
+                      alt="image-20231110001113096"
+                ></p>
+<p>如果你在 VSCode 中安装了<strong>Pylint 插件</strong>, 那么<strong>Pylint</strong>就会在你每次保存文件后<strong>自动运行</strong>, 并将问题全部<strong>高亮</strong>出来.</p>
+<h2 id="常见的-Pylint-错误："><a href="#常见的-Pylint-错误：" class="headerlink" title="常见的 Pylint 错误："></a>常见的 Pylint 错误：</h2><ol>
+<li><p><code>invalid-name</code>: 变量、函数、类或模块的名称不符合默认的命名约定。例如，使用小写字母和下划线命名函数，使用驼峰命名法命名类。</p>
+</li>
+<li><p><code>missing-docstring</code>: 函数、类或模块缺少文档字符串。(三对双引号括起来的注释就是 docstring 啦)</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">我是一个docstring, 在三对双引号里</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p><code>unused-variable</code>: 定义了一个变量但没有使用它。</p>
+</li>
+<li><p><code>unused-argument</code>: 函数的参数没有在函数体中使用。</p>
+</li>
+<li><p><code>redefined-outer-name</code>: 在内部作用域中重新定义了一个在外部作用域（全局作用域、类级别等）已定义的名称。</p>
+</li>
+<li><p><code>import-error</code>: 无法导入一个模块或包。</p>
+</li>
+<li><p><code>no-member</code>: 尝试访问一个对象的成员，但是这个成员不存在。</p>
+</li>
+<li><p><code>no-name-in-module</code>: 尝试从一个模块导入一个不存在的名称。</p>
+</li>
+<li><p><code>wrong-import-position</code>: 导入语句的位置不正确。按照 PEP8，所有的导入语句应该在模块的顶部。</p>
+</li>
+<li><p><code>wildcard-import</code>: 使用通配符导入一个模块的所有名称。</p>
+</li>
+</ol>
+<h2 id="配置-Pylint"><a href="#配置-Pylint" class="headerlink" title="配置 Pylint"></a>配置 Pylint</h2><p>你还可以自定义 Pylint 的行为，通过在项目的根目录下创建一个<code>.pylintrc</code>文件，然后在其中添加你的配置.</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">.pylintrc</span><br><span class="line"></span><br><span class="line">[MASTER]</span><br><span class="line"><span class="comment"># Pylint搜索模块的路径。</span></span><br><span class="line">init-hook=<span class="string">&#x27;import sys; sys.path.append(&quot;/path/to/your/module&quot;)&#x27;</span></span><br><span class="line"></span><br><span class="line">[MESSAGES CONTROL]</span><br><span class="line"><span class="comment"># 禁用特定的警告和错误。</span></span><br><span class="line">disable=bare-<span class="keyword">except</span>,invalid-name,missing-docstring, wildcard-<span class="keyword">import</span></span><br><span class="line"></span><br><span class="line">[FORMAT]</span><br><span class="line"><span class="comment"># 设置期望的缩进字符串，例如空格或制表符。</span></span><br><span class="line">indent-string=<span class="string">&#x27;    &#x27;</span></span><br><span class="line"></span><br><span class="line">[BASIC]</span><br><span class="line"><span class="comment"># 设置变量名的正则表达式匹配。</span></span><br><span class="line">variable-rgx=[a-z_][a-z0-9_]&#123;<span class="number">2</span>,<span class="number">30</span>&#125;$</span><br><span class="line"></span><br><span class="line">[DESIGN]</span><br><span class="line"><span class="comment"># 设置最大的函数参数数量。</span></span><br><span class="line"><span class="built_in">max</span>-args=<span class="number">10</span></span><br></pre></td></tr></table></figure></div>
+
+<p>Pylint 还提供了许多其他选项来控制其行为. 你可以在<a class="link"   href="https://pylint.pycqa.org/en/latest/user_guide/configuration/all-options.html" >Pylint 的文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 中找到完整的选项列表</p>
+]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>TOOL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一文读懂Pass-By-Object-Reference和Pass-By-Value的区别</title>
+    <url>/2023/12/10/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Pass-By-Object-Reference%E5%92%8CPass-By-Value%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p>有没有人被 python 里所谓的<code>pass by object reference</code> 所困扰. 明明和 Java 中的值传递( <code>pass by value</code> ) 表现得近乎一致, 但还是被人告知, 这两个不是同一个东西.</p>
+<p>这篇文章就来告诉你, 所谓的 python 中的 <code>pass by object reference</code> 和 Java 里 <code>pass by value</code> 有何不同.</p>
+<p>我们先来看两段代码</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">string = <span class="string">&quot;hello&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(string) <span class="comment"># output: hello</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">immutable_val</span>):</span><br><span class="line">  immutable_val = <span class="string">&quot;world&quot;</span></span><br><span class="line"></span><br><span class="line">test(string)</span><br><span class="line"><span class="built_in">print</span>(string) <span class="comment"># output: hello</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> num)</span> &#123;</span><br><span class="line">    num = <span class="number">13</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    System.out.println(num); <span class="comment">// output: 10</span></span><br><span class="line">    test(num);</span><br><span class="line">    System.out.println(num); <span class="comment">// output: 10</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面这两段代码分别是在 <code>python</code> 中和在 <code>Java</code> 中对一个 <code>Immutable</code> 变量进行重新赋值. 我们可以看到在函数给不可变变量重新赋值并不会影响原先的值. 就好像传入参数的, 仅仅只是一份拷贝( 尽管在 Java 中事实就是这样).</p>
+<p>我们再来看两段代码</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">lst = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># output: [1,2]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">lst</span>):</span><br><span class="line">  lst = [<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">test(lst)</span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># output: [1,2]</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span>[] lst)</span> &#123;</span><br><span class="line">    lst = <span class="keyword">new</span> <span class="title class_">int</span>[] &#123; <span class="number">3</span>, <span class="number">4</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] lst = <span class="keyword">new</span> <span class="title class_">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; lst.length; i++) &#123;</span><br><span class="line">      System.out.print(lst[i] + <span class="string">&quot; &quot;</span>); <span class="comment">// output: 1 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    test(lst);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; lst.length; i++) &#123;</span><br><span class="line">      System.out.print(lst[i] + <span class="string">&quot; &quot;</span>); <span class="comment">// output: 1 2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面这两段分别在函数内给一个可变对象重新赋值, 结果都是没有影响原先的值. 这也进一步验证了, 如果传入的是一个对象, 传入的应该是对象引用的拷贝, 而不是引用本身. 不然在函数内部修改引用的指向应该会影响原来在函数外部传入的引用. 有一些小伙伴可能在这里还是不太理解什么是引用的拷贝, 那么我就用我不太熟练的 C 语言做个示范.</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">(<span class="type">int</span> &amp;num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  num = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; <span class="comment">// 0</span></span><br><span class="line">  <span class="built_in">test</span>(a);</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; <span class="comment">// 10</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在如上 C++语言代码中, 我们可以看到, 如果是引用传递, 而不是值传递, 传进去的参数就是指向原先内存块的那个指针, 而不是引用的拷贝. 这也是为什么我们对传入的引用重新赋值, 会影响到外面的变量<code>a</code>.</p>
+<p>同理, 如果我们把数组的指针传入到函数内, 重新给指针赋值也会影响原来的数组, 代码如下:</p>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">(<span class="type">int</span> *&amp;arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">int</span> new_arr[] = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">  arr = new_arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">  <span class="type">int</span> *p = arr;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    cout &lt;&lt; p[i] &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// output: 1 2</span></span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; endl;</span><br><span class="line">  <span class="built_in">test</span>(p);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    cout &lt;&lt; p[i] &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// output: 3 4</span></span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在这个例子中，我们创建了一个名为 <code>arr</code> 的数组，并在 test 函数中改变了 <code>p</code> 指向的数组。然后，我们在 main 函数中输出了数组的元素，以验证 test 函数确实改变了 p 指向的数组。 (注: 因为在 C++中数组名本身是一个常量指针, 没法直接修改数组本身的地址, 所以额外使用了一个指针指向数组本身)</p>
+<p>我们最后再来看两段代码</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line">lst = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># output: [1,2]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test</span>(<span class="params">lst</span>):</span><br><span class="line">  lst[<span class="number">0</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">test(lst)</span><br><span class="line"><span class="built_in">print</span>(lst) <span class="comment"># output: [3,2]</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span>[] lst)</span> &#123;</span><br><span class="line">    lst[<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">int</span>[] lst = <span class="keyword">new</span> <span class="title class_">int</span>[] &#123; <span class="number">1</span>, <span class="number">2</span> &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; lst.length; i++) &#123;</span><br><span class="line">      System.out.print(lst[i] + <span class="string">&quot; &quot;</span>); <span class="comment">// output: 1 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    test(lst);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; lst.length; i++) &#123;</span><br><span class="line">      System.out.print(lst[i] + <span class="string">&quot; &quot;</span>); <span class="comment">// output: 3 2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>上面这两段代码分别对传入的对象的<strong>内容</strong>做出了改变, 这会影响到外面原来的值.这验证了传入函数内部的应该是一份指向同一个对象的引用的拷贝.</p>
+<p>那么问题来了, 既然传入不可变变量又或是可变变量, python 和 Java 的处理都相同. 为什么一个是 <code>pass-by-referencce</code> 一个是 <code>pass-by-value</code> ?<br>这两个到底有什么区别. 现在就来揭晓.</p>
+<p>之所以有这样的不同, 是因为 python 和 Java 语言本身导致的不同. 在 python 中是没有基础数据类型的. 所有的一切都是 <code>object</code> 对象. 也就是说, 不管是不可变的 <code>Number</code> 还是 <code>String</code> 也好. 还是可变的 <code>list</code> 或是 <code>map</code> 也罢. 在 python 中都是一个对象, 而存储在变量内的其实是它们在内存中的 16 进制的地址, 也就是类似这样的东西: <code>0x7ff6b2c03cf8</code>. 你使用 python 保存一个数字, 最后存储在变量的内容应该类似这样: <code>a = 10</code>, <code>a -&gt; 0x7ff6b2c03cf8</code></p>
+<p>而在 Java 中, 数据分为基础数据类型 <code>Primitive Types</code> 和 引用类型 <code>Reference Types</code>. 也就是说, 在 Java 中使用变量保存的数字, 在变量中就是这个数字本身, 比如: <code>int num = 10</code>. 那么 <code>num</code> 就是 10, 而不是一串十六进制地址. 所以说, 在 Java 中传递参数, 如果参数类型为基础数据类型, 则传递的是基础数据类型的拷贝, 这也是为什么在第一个例子中对参数重新赋值并不会改变原有的值. 而传递的参数类型如果是引用类型, 则传递的是引用的拷贝, 也就是一个指向同一块内存的指针.</p>
+<p>而在 python 中, 所有的参数都是引用的拷贝, 指向参数指向的那一块内存.</p>
+<p><strong>总结</strong>: python 和 Java 在参数传递上最终的处理结果是类似的, 但实际参数保存的内容是不同的. 在 python 中所有数据都是对象, 所以所有变量都是一个十六进制的内存地址. 而在 Java 中, 当数据类型为基础数据类型时参数是其本身的拷贝. 而参数为引用数据类型时, 传入的参数才是十六进制的内存地址</p>
+]]></content>
+      <tags>
+        <tag>ALL</tag>
+        <tag>PL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo合集</title>
+    <url>/2024/01/18/hexo%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<h1 id="hexo-使用"><a href="#hexo-使用" class="headerlink" title="hexo 使用"></a>hexo 使用</h1><h2 id="hexo-内-markdown-文章插入图片"><a href="#hexo-内-markdown-文章插入图片" class="headerlink" title="hexo 内 markdown 文章插入图片"></a>hexo 内 markdown 文章插入图片</h2><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/265077468" >hexo 博客如何插入图片 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="关于all-minifier里的image-minifier的interlace属性"><a href="#关于all-minifier里的image-minifier的interlace属性" class="headerlink" title="关于all-minifier里的image-minifier的interlace属性"></a>关于all-minifier里的image-minifier的interlace属性</h2><p>“Interlacing” a GIF refers to a specific method of encoding the image that allows for a more gradual and visually pleasing loading of the image, particularly over slow internet connections. Interlacing is a technique used in GIF image format, where the image is initially displayed as a series of low-resolution scans before the full image is loaded.</p>
+<p>Here’s a brief explanation of the process:</p>
+<ol>
+<li><p><strong>Interlaced GIFs:</strong> In an interlaced GIF, the image is divided into multiple passes or “interlaces.” The first pass consists of every 8th pixel, the second pass includes every 4th pixel, the third pass includes every 2nd pixel, and the final pass includes all pixels. Each pass is progressively refined, providing a basic preview of the image early in the loading process.</p>
+</li>
+<li><p><strong>Loading Sequence:</strong> When an interlaced GIF is loaded in a web browser or an image viewer, the initial passes are displayed quickly, allowing users to see a low-resolution version of the image early on. Subsequent passes then fill in more detail until the full image is loaded.</p>
+</li>
+<li><p><strong>Benefits:</strong> The main advantage of interlacing is that users can get a sense of what the image looks like before the entire file has finished loading. This can be particularly useful for images on websites, as users may not have to wait for the entire image to load before getting a preview.</p>
+</li>
+<li><p><strong>Disadvantages:</strong> While interlacing improves the perceived loading speed, it may slightly increase the file size of the GIF. Additionally, the visual quality of the initial passes is lower, so the user sees a progressively clearer image as more passes are loaded.</p>
+</li>
+</ol>
+<p>Keep in mind that interlacing is a feature specific to the GIF image format and may not be applicable to other image formats.</p>
+]]></content>
+      <tags>
+        <tag>ALL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建丐版代理服务器遇到的坑</title>
+    <url>/2024/01/18/%E6%90%AD%E5%BB%BA%E4%B8%90%E7%89%88%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h1 id="搭建丐版代理服务器遇到的坑"><a href="#搭建丐版代理服务器遇到的坑" class="headerlink" title="搭建丐版代理服务器遇到的坑"></a>搭建丐版代理服务器遇到的坑</h1><p>感觉好久没做项目了，今天这个挺有意思的，发出来分享分享。</p>
+<p>最近在搞一个服务检测系统，就是那个检查自家服务挂没挂的玩意儿。如果挂了就发条消息叫码农（👉me ）起来修 bug 。因为这玩意会不定期频繁的调用飞书的 API。飞书对不同的 IP 地址会进行限制，而终端设备的 IP 地址又是通过 DHCP 协议动态获取的，这也就导致在本地开发一个健康监测系统得经常性的到飞书上更新 IP 白名单。这不糟了老罪了吗。转念一想整个固定 IP 可不就解决了嘛 。但由于终端都是私网 IP，你固定了也没用，换个路由器照样 IP 要变。所以我就萌生了自己撸一个转发 API 请求的代理服务器。正好前些天整了个云服务器，于是说干就干。用 Express + Node.js 搭了个丐版代理服务器，为了方便部署，用 docker 做成了镜像，然后通过 aws ECR 上搭的私人 docker 镜像仓库部署到云服务器上了。</p>
+<p>以下是一些我遇到的坑, 下次万一你们有碰到可以节省点时间</p>
+<p>首先, 实现一个请求转发代理服务器的原理还是很简单的. 毕竟我们的最终需求不就是要一个固定 IP 地址好霍霍嘛. 所以我的思路就是把待转发的请求的所有信息都保存在请求体内发送给代理服务器, 代理服务器通过 web 框架, 这里是 Express, 你也可以用别的比如 Tomcat 之类的. 从请求体内把要转发的请求的信息都扒拉出来, 比如 <code>请求地址(url)</code>, <code>请求体(request data)</code>, <code>请求头(token, authorization...)</code> 之类的, 然后造一个请求报文发送过去, 拿到响应以后再原封不动的传回去. 这样就完成了一个代理服务器的处理全逻辑.</p>
+<p>好, 现在是踩坑时间:</p>
+<h4 id="第一个坑-当请求中加入原有请求的-headers-后无法正确转发请求-但是去掉后就可以正确转发"><a href="#第一个坑-当请求中加入原有请求的-headers-后无法正确转发请求-但是去掉后就可以正确转发" class="headerlink" title="第一个坑: 当请求中加入原有请求的 headers 后无法正确转发请求, 但是去掉后就可以正确转发"></a>第一个坑: 当请求中加入原有请求的 headers 后无法正确转发请求, 但是去掉后就可以正确转发</h4><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// original request</span></span><br><span class="line"><span class="comment">// 拿不到 response</span></span><br><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">axios</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: req.<span class="property">body</span>.<span class="property">url</span>,</span><br><span class="line">	<span class="attr">data</span>: newData,</span><br><span class="line">	<span class="attr">headers</span>: &#123;</span><br><span class="line">		<span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">		<span class="string">&quot;user-agent&quot;</span>: req.<span class="property">headers</span>[<span class="string">&quot;user-agent&quot;</span>],</span><br><span class="line">		<span class="string">&quot;content-length&quot;</span>: req.<span class="property">headers</span>[<span class="string">&quot;content-length&quot;</span>],</span><br><span class="line">		<span class="string">&quot;authorization&quot;</span>: req.<span class="property">headers</span>[<span class="string">&quot;authorization&quot;</span>],</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// modified request</span></span><br><span class="line"><span class="comment">// 可以拿到 response</span></span><br><span class="line"><span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">axios</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: req.<span class="property">body</span>.<span class="property">url</span>,</span><br><span class="line">	<span class="attr">data</span>: newData,</span><br><span class="line">	<span class="attr">headers</span>: &#123;</span><br><span class="line">		<span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">		<span class="string">&quot;authorization&quot;</span>: req.<span class="property">headers</span>[<span class="string">&quot;authorization&quot;</span>],</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p>底层原因就是我是通过在请求体内添加带转发请求的所有信息的, 所以当代理服务器收到请求后, 要将那些无用信息全部踢出去. 但由于原来请求头里 Content-Length 是根据原始请求计算的, 包含那些额外开销, 但是在转发流量中我将转发请求的信息剔除后, 原始请求头中的 Content-Length 应该重新计算, 不然就会出现服务器等待未发完的请求, 一直等待的问题. 你 Content-Length 写 100, 结果传过去 20 就直接拍屁股走人了, 但是对面的服务器不知道啊, 就一直干等着. 这也是为啥请求发送后既没有报错也没有响应, 而是一直在请求状态, 这就是对面那服务器还在干巴巴等你送数据呢.</p>
+<h4 id="第二个坑-代理服务器最麻烦的地方在于代理请求的请求头设置问题-绝大多数找不出原因的错误都来源于请求头配置有问题"><a href="#第二个坑-代理服务器最麻烦的地方在于代理请求的请求头设置问题-绝大多数找不出原因的错误都来源于请求头配置有问题" class="headerlink" title="第二个坑: 代理服务器最麻烦的地方在于代理请求的请求头设置问题, 绝大多数找不出原因的错误都来源于请求头配置有问题"></a>第二个坑: 代理服务器最麻烦的地方在于代理请求的请求头设置问题, 绝大多数找不出原因的错误都来源于请求头配置有问题</h4><p>这个跟之前一样, 不过更玄乎一点. 就是通过 Postman 直接请求远程服务器是可以拿到数据的, 但是通过请求代理服务器转发请求后就不行了, 会抛错误. 请求报文从单方面是没有问题的, 格式正确, 数据没差错. 唯一的问题就在于 Postman 本身. 由于 Postman 发送请求会在请求头内自己携带一个 Postman Token. 这玩意不符合 API 要求的请求头标准, 于是就送一次拒一次. 当初我一行一行注释请求头, 才找到这个问题. 所以以后发送请求报文,要记得对请求报文做预处理, 包括清除那些发送请求用途的 app 自身携带的请求头字段. 某些有严格要求的 API 可能会给你拒掉.</p>
+<h4 id="第三个坑-在本地部署的-docker-容器运行正常-可以正确转发流量-但是部署在云服务器上的相同容器-却一直处于请求被挂起的状态-即无报错-无响应"><a href="#第三个坑-在本地部署的-docker-容器运行正常-可以正确转发流量-但是部署在云服务器上的相同容器-却一直处于请求被挂起的状态-即无报错-无响应" class="headerlink" title="第三个坑: 在本地部署的 docker 容器运行正常, 可以正确转发流量. 但是部署在云服务器上的相同容器, 却一直处于请求被挂起的状态, 即无报错, 无响应."></a>第三个坑: 在本地部署的 docker 容器运行正常, 可以正确转发流量. 但是部署在云服务器上的相同容器, 却一直处于请求被挂起的状态, 即无报错, 无响应.</h4><p>就一句话: 切记, 在部署代理服务器后, 记得在服务器控制台(腾讯云, aws)开放端口. 大部分云服务器都有防火墙拦截请求. 说人话就是云服务器的防火墙给你请求栏掉了, 根本没有跑到你的服务那里, 这也就导致服务没有报错日志, 请求方没有任何回应.</p>
+]]></content>
+      <tags>
+        <tag>ALL</tag>
+        <tag>EXPERIENCE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows安装linux环境以及配置C++工具链</title>
+    <url>/2024/01/18/windows%E5%AE%89%E8%A3%85linux%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEC++%E5%B7%A5%E5%85%B7%E9%93%BE/</url>
+    <content><![CDATA[<h1 id="Windows-安装-Linux-以及配置-C-工具链"><a href="#Windows-安装-Linux-以及配置-C-工具链" class="headerlink" title="Windows 安装 Linux 以及配置 C++工具链"></a>Windows 安装 Linux 以及配置 C++工具链</h1><p>港大 ENGG1340 课程内里有包含 Linux 和 C++相关内容. 介于有很多同学都是小萌新和小白, 不知道如何在 windows 环境下配置 linux 以及 c++. 于此写一篇攻略</p>
+<p>首先我们了解一个概念. windows 和 linux 分别是两套操作系统, 我们在 1340 上学习的应该是 linux 世界里的 Shell, 一门编程语言. 这和 window 上的 powershell 以及 cmd (Command Line) 是不一样的. 就比如命令上的差异:</p>
+<table>
+<thead>
+<tr>
+<th>powershell</th>
+<th>shell</th>
+<th>cmd</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Get-ChildItem</td>
+<td>ls</td>
+<td>dir</td>
+<td><strong>列出当前目录</strong></td>
+</tr>
+<tr>
+<td>New-Item -ItemType Directory -Path C:\NewDirectory</td>
+<td>mkdir NewDirectory</td>
+<td>mkdir NewDirectory</td>
+<td><strong>创建新目录</strong></td>
+</tr>
+<tr>
+<td>Copy-Item -Path C:\Source\File.txt -Destination C:\Destination\</td>
+<td>cp Source&#x2F;File.txt Destination&#x2F;</td>
+<td>copy C:\Source\File.txt C:\Destination\</td>
+<td><strong>复制文件</strong></td>
+</tr>
+<tr>
+<td>Remove-Item -Path C:\Path\To\File.txt</td>
+<td>rm Path&#x2F;To&#x2F;File.txt</td>
+<td>del C:\Path\To\File.txt</td>
+<td><strong>删除文件</strong></td>
+</tr>
+<tr>
+<td>Move-Item -Path C:\Source\File.txt -Destination C:\Destination\</td>
+<td>mv Source&#x2F;File.txt Destination&#x2F;</td>
+<td>move C:\Source\File.txt C:\Destination\</td>
+<td><strong>移动文件或目录</strong></td>
+</tr>
+</tbody></table>
+<p>所以你没法在 windows 上的 <code>powershell</code> 或是 <code>cmd</code> 中运行 <code>shell</code> 的命令. 这也是为什么你需要一个 linux 系统.</p>
+<p>以下是两篇我觉得比较好的链接, 帮助你了解各种关于<strong>命令行</strong>, <strong>终端</strong>, <strong>内核</strong> 等概念.</p>
+<h5 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h5><ul>
+<li><a class="link"   href="https://www.geeksforgeeks.org/what-is-terminal-console-shell-and-kernel/" >What is Terminal, Console, Shell and Kernel? - GeeksforGeeks <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://hackernoon.com/the-shell-and-the-terminal-whats-the-difference#" >The Shell and the Terminal: What’s the Difference? | HackerNoon <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="Windows-安装-Linux"><a href="#Windows-安装-Linux" class="headerlink" title="Windows 安装 Linux"></a>Windows 安装 Linux</h2><h3 id="1-使用虚拟机安装-Linux"><a href="#1-使用虚拟机安装-Linux" class="headerlink" title="1. 使用虚拟机安装 Linux"></a>1. 使用虚拟机安装 Linux</h3><h4 id="1-1-使用-Oracle-VM-VirtualBox-安装"><a href="#1-1-使用-Oracle-VM-VirtualBox-安装" class="headerlink" title="1.1 使用 Oracle VM VirtualBox 安装"></a>1.1 使用 Oracle VM VirtualBox 安装</h4><p>Oracle VM VirtualBox 是一款<strong>免费</strong>开源的<strong>轻量级</strong>的虚拟机, 非常适合小白上手. 这里推荐几篇文章和视频教你如何安装</p>
+<h5 id="安装文档"><a href="#安装文档" class="headerlink" title="安装文档:"></a>安装文档:</h5><ul>
+<li><a class="link"   href="https://www.virtualbox.org/wiki/Downloads" >Oracle VM VirtualBox 官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://blog.csdn.net/syy2668/article/details/122208127" >Oracle VM VirtualBox 安装 Ubuntu 虚拟机_oracle 使用已有 ubuntu vdi 安装虚拟机-CSDN 博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h5 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程:"></a>视频教程:</h5><ul>
+<li><a class="link"   href="https://www.bilibili.com/video/BV12S4y1P7CU?p=6&vd_source=ed766dd5e64b589f3515149823363dbd" >0006 3 Setup a Linux Virtual Machine_哔哩哔哩_bilibili <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h5 id="虚拟机和虚拟机之间的区别"><a href="#虚拟机和虚拟机之间的区别" class="headerlink" title="虚拟机和虚拟机之间的区别?"></a>虚拟机和虚拟机之间的区别?</h5><ul>
+<li><a class="link"   href="https://www.bilibili.com/video/BV12S4y1P7CU?p=5&vd_source=ed766dd5e64b589f3515149823363dbd" >0005 2 Introduction to Virtualization Virtual Machines_哔哩哔哩_bilibili <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h4 id="1-2-使用-VMWare-安装"><a href="#1-2-使用-VMWare-安装" class="headerlink" title="1.2 使用 VMWare 安装"></a>1.2 使用 VMWare 安装</h4><p>VMWare 是一款<strong>商业化</strong>的<strong>高性能</strong>, <strong>高度配置</strong>的虚拟机. 一般企业用的比较多. 付费嘛~, 算什么大问题, 咱百度上啥资源没有你说是吧(doge). 破解版随便搜一下就可以了.</p>
+<p>介于 VMware 与 HyperV 会有冲突问题, 我把解决方案的文章链接也贴下面了</p>
+<h5 id="安装文档-1"><a href="#安装文档-1" class="headerlink" title="安装文档:"></a>安装文档:</h5><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/141033713" >2020 最新版 VMware 安装 Ubuntu20.04 教程(巨细)！ - 知乎 (zhihu.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://cloud.tencent.com/developer/article/1701473" >5 秒解决：VMware Workstation 与 Hyper-V 不兼容-腾讯云开发者社区-腾讯云 (tencent.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<p>注: 本人使用的是 VMWare 17 Pro, 好像 VM 在 15.5 后就把冲突兼容问题给解决了…</p>
+<p>在安装好虚拟机后你就可以拥有半台自己的 linux 操作系统的电脑了, 为什么算半台? 因为这玩意占你本机资源, 撑死算个双胞胎兄弟.</p>
+<p>在你安装好 ubuntu, 配置到系统后. 在系统里面按 <code>Ctrl + Alt + t</code> 就可以打开一个终端, 在里面你就可以尽情的尝试 shell 脚本啦</p>
+<h3 id="2-安装-WSL-Windows-Subsystem-Linux"><a href="#2-安装-WSL-Windows-Subsystem-Linux" class="headerlink" title="2. 安装 WSL (Windows Subsystem Linux)"></a>2. 安装 WSL (Windows Subsystem Linux)</h3><p>wsl 就是一个阉割版的 linux 子系统, 在性能上会有所欠缺, 但好处就是<strong>轻量</strong>, <strong>快速</strong>. 对于仅仅想学习 linux 命令的同学, 这个会是个非常不错的选择. 但是对于以后想搞运维, 需要深入理解 linux, 亦或者学习跨平台开发, 远程服务器之类的, 搞个虚拟机, 不亏. (注: 不嫌麻烦的话可以学习本人, 两个都有, 既有虚拟机也有 wsl)</p>
+<h5 id="安装文档-2"><a href="#安装文档-2" class="headerlink" title="安装文档:"></a>安装文档:</h5><ul>
+<li><a class="link"   href="https://cloud.tencent.com/developer/article/2287063" >最详尽教程完整介绍-Windows 的 Linux 子系统-WSL1&amp;WSL2-腾讯云开发者社区-腾讯云 (tencent.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<p>安装成功后在终端里敲 <code>bash</code> 就可以进入 linux 子系统的终端啦 (记得要运行该系统, 不然系统死的你怎么搞都进不去)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240118205313275.png"
+                      alt="image-20240118205313275"
+                ></p>
+<p>注: 由于 wsl2 默认安装在 C 盘, 很多人不希望杂七杂八的玩意儿都塞 C 盘, 这里就附上一则教你怎么迁移 wsl 的教程</p>
+<h5 id="迁移-wsl"><a href="#迁移-wsl" class="headerlink" title="迁移 wsl:"></a>迁移 wsl:</h5><ul>
+<li><a class="link"   href="https://blog.csdn.net/qq_29931565/article/details/121070602" >【WSL】WSL 迁移教程-CSDN 博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="2-Windows-配置-C"><a href="#2-Windows-配置-C" class="headerlink" title="2. Windows 配置 C++"></a>2. Windows 配置 C++</h2><p>windows 上配置 c++ 相关的工具链其实也挺简单的, 虽然我当时糊弄了好久… 想要编写 C++和 C 语言, 你必须在你的电脑上安装这俩程序的编译器, 也就是 <code>gcc</code> , (<code>g++</code> 也可以奥, <code>g++</code>其实就是 <code>gcc</code> 的升级版, 专门为 C++ 做了适配的), 以及 <code>gdb</code> 用来 debug 修代码的.</p>
+<p>由于 windows 上没有原生的包管理工具, 所以你的自己手动下载一下, 可能还得自己配一下环境变量. 这时候有人问, 为啥不直接在虚拟机上耍啊, linux 自带 gcc 编译器. 没问题啊, 你完全可以在虚拟机上写代码. 但对本人来说, 电脑配置比较吃紧(虚拟机分配的不多), 而且虚拟机上没有你辛辛苦苦用了好久的 IDE, 比如我的 VS Code. 里面好多好用的插件呢. 在虚拟机上搞得话得重新下载. 而且虚拟机还吃资源, 卡. 所以本人倾向于在 windows 整个 gcc, 然后在本地敲代码. 美滋滋~</p>
+<p>那接下来话不多说, 扒拉扒拉如何安装 C&#x2F;C++ 工具链</p>
+<h3 id="1-配置-C-编译器"><a href="#1-配置-C-编译器" class="headerlink" title="1. 配置 C++编译器"></a>1. 配置 C++编译器</h3><h4 id="1-1-使用-MinGW-w64"><a href="#1-1-使用-MinGW-w64" class="headerlink" title="1.1 使用 MinGW-w64"></a>1.1 使用 MinGW-w64</h4><p>MinGW 说人话就是一个能在 Windows 下运行的二进制文件, 不依赖任何非 windows 的东西. 但是 mingw 本身不带有 linux shell 环境, 一些常用的编译前处理命令工具没法使用. 而 MSYS2 就是提供了一个 shell 环境, 然后支持安装 mingw. (注: 本人用的就是 MYSY2). 相较于 MinGW 要大一点, 多了个 shell 脚本环境.</p>
+<h5 id="安装文档-3"><a href="#安装文档-3" class="headerlink" title="安装文档:"></a>安装文档:</h5><ul>
+<li><a class="link"   href="https://blog.csdn.net/B11050729/article/details/132176767" >MinGW-W64 下载、安装与配置（支持最新版的 GCC，目前 GCC 13.2.0）-CSDN 博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h4 id="1-2-使用-MSYS2"><a href="#1-2-使用-MSYS2" class="headerlink" title="1.2 使用 MSYS2"></a>1.2 使用 MSYS2</h4><h5 id="安装文档-4"><a href="#安装文档-4" class="headerlink" title="安装文档:"></a>安装文档:</h5><ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/401188789" >给萌新的 C&#x2F;C++环境搭建攻略（VSCode 和 MSYS2） - 知乎 (zhihu.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h5 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量:"></a>配置环境变量:</h5><p>右击此电脑打开属性</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240118210013387.png"
+                      alt="image-20240118210013387"
+                ></p>
+<p>单击高级系统设置 -&gt; 选择环境变量 -&gt; 找到系统变量里的 PATH 内并进入</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240118210209741.png"
+                      alt="image-20240118210209741"
+                ></p>
+<p>单击新建, 将你们下载的 wingw64 的安装路径填进去, <strong>记得是你们自己的安装路径!!!</strong> , 安装路径记得带有 bin 目录 (bin 表示 binary, 存放的是所有二进制文件, 实际的 g++, gcc, gdb 程序都在那里)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240118210345961.png"
+                      alt="image-20240118210345961"
+                ></p>
+<p>然后疯狂点确定就好了</p>
+<p>安装好后配置环境变量后就可以在 windows 终端内使用 c++编译器啦</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240118205744486.png"
+                      alt="image-20240118205744486"
+                ></p>
+]]></content>
+      <tags>
+        <tag>HKU</tag>
+        <tag>Linux</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何快速登录学校服务器</title>
+    <url>/2024/01/19/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="如何快速登录学校服务器"><a href="#如何快速登录学校服务器" class="headerlink" title="如何快速登录学校服务器"></a>如何快速登录学校服务器</h1><p>咱BENG 1340 的友友们有没有觉得登录学校的服务器非常麻烦. 不仅要两次ssh, 而且老是输错<strong>密码</strong>, <strong>用户名</strong>, 又或者是万恶的<strong>服务器地址</strong>. 来回复制粘贴不仅麻烦, 而且有些时候手错给终端x掉了得重头再来.  这种痛苦可以一次解决啦. <strong>一次配置, 终身适用</strong>. </p>
+<p>最终效果如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119165307677.png"
+                      alt="image-20240119165307677"
+                ></p>
+<ol>
+<li>可以通过自定义服务器地址, 比如我的 (hku), 好记又好使</li>
+<li>仅需输入一次密码就可以直接登录.</li>
+</ol>
+<p>来咱们开整!!!</p>
+<h2 id="1-自定义服务器地址"><a href="#1-自定义服务器地址" class="headerlink" title="1. 自定义服务器地址"></a>1. 自定义服务器地址</h2><p>windows的友友们请在你的电脑文件夹里找到如下的地址:</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\&lt;username&gt;\.ssh</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>remark:</strong> 记得把 <code>&lt;username&gt;</code> 替换成你自己的用户名, 比如我的用户名就是 <code>33237</code>, 文件夹地址就是 <code>C:\Users\33237\.ssh</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119165638122.png"
+                      alt="image-20240119165638122"
+                ></p>
+<p>然后找到<strong>config</strong> 文件, 如果没有的话可以自己用txt新建一个, 把后缀去掉就可以啦.</p>
+<p>在config里填写如下配置:</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host &lt;自定义服务器名称&gt;</span><br><span class="line">  HostName &lt;目的服务器地址&gt;</span><br><span class="line">  User &lt;登录用户&gt;</span><br><span class="line">  ProxyJump &lt;门户服务器地址&gt;</span><br><span class="line"></span><br><span class="line">#### 我的配置 ####</span><br><span class="line">Host hku</span><br><span class="line">  HostName academy11.cs.hku.hk</span><br><span class="line">  User h3626454</span><br><span class="line">  ProxyJump h3626454@gatekeeper.cs.hku.hk</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p><strong>Host</strong>: 这里面定义了你ssh命令后面跟的参数的名称, 也就是你要ssh的服务器叫什么. 你可以填写任意你自己喜欢的就好. 比如 <code>hku-server</code>, <code>beng1340</code> 扒拉扒拉的 (remark: 不要有空格!)</p>
+</li>
+<li><p><strong>HostName</strong>: 填写我们学校服务器地址就行: academy11.cs.hku.hk</p>
+</li>
+<li><p><strong>User</strong>: 填写你自己的account_id, 就是你CS account的那个</p>
+</li>
+<li><p><strong>ProxyJump</strong>: 填写门户服务器的地址, 也就是我们学校那个: gatekeeper.cs.hku.hk. (<strong>切记!!!</strong>, 在前面添加自己的用户名, 不然就会出现以windows用户访问门户服务器的问题)</p>
+</li>
+</ul>
+<p>配置好后你就可以直接使用你自定义的服务器名称登录啦!</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">ssh hku</span><br></pre></td></tr></table></figure></div>
+
+<p>不过现在还有点小问题, 那就是你仍旧需要输入两次密码来登录服务器.</p>
+<p>现在开始咱们的第二步</p>
+<h2 id="2-一次密码登录服务器"><a href="#2-一次密码登录服务器" class="headerlink" title="2. 一次密码登录服务器"></a>2. 一次密码登录服务器</h2><p>跟着如下的步骤走</p>
+<ol>
+<li>首先检查一下你.ssh目录下是否已经有了ssh的密匙对, 也就是这个</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119170835362.png"
+                      alt="image-20240119170835362"
+                ></p>
+<p>如果有的话直接跳到第四步</p>
+<ol start="2">
+<li>第二步, 没有密匙对的同学在本地电脑打开命令行 <code>Win+R</code> 输入cmd回车进入的黑框框, 然后输入以下命令</li>
+</ol>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></div>
+
+<p>一路回车, 最后该命令会在本地.ssh文件夹内生成一对密匙.</p>
+<ol start="3">
+<li><p>第三步, 复制后缀为 <code>.pub</code> 文件内的内容, 也就是公匙.</p>
+</li>
+<li><p>第四步, 先按原始的方式登陆一次学校的远程服务器<br>在自己的目录下输入</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure></div>
+
+<p>看看有没有 .ssh 文件夹</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119171136312.png"
+                      alt="image-20240119171136312"
+                ></p>
+<p>没有的话输入如下命令创建</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir .ssh</span><br></pre></td></tr></table></figure></div>
+
+<p>然后进入该目录</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">cd .ssh</span><br></pre></td></tr></table></figure></div>
+
+<p>创建一个名为 <code>authorized_keys</code> 的文件</p>
+<div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure></div>
+
+<p>然后将你第三步复制的内容粘贴进去. 可以右键 paste.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119171449851.png"
+                      alt="image-20240119171449851"
+                ></p>
+<p>然后按 <code>ESC</code> , 输入 <code>:wq</code> 保存文件并退出.</p>
+<p>这样就大功告成啦.</p>
+<p>现在你就可以通过自定义的服务器名称, 输入一次密码登录学校服务器咯</p>
+<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释:"></a>原理解释:</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240119175500187.png"
+                      alt="image-20240119175500187"
+                ></p>
+<ol>
+<li>使用命令 “ssh hku” 时，ssh client会自动检查 .ssh 下的config文件，查看是否有相匹配的Host, 如果有, 则应用那条Host对应的配置. </li>
+<li>根据我们的配置, 其中有一个 ProxyJump 配置。于是ssh client会先会调用 “ssh <a class="link"   href="mailto:&#x68;&#51;&#x36;&#50;&#x36;&#52;&#53;&#52;&#64;&#x67;&#x61;&#116;&#x65;&#107;&#x65;&#101;&#112;&#101;&#114;&#46;&#99;&#x73;&#46;&#104;&#107;&#x75;&#46;&#x68;&#x6b;" >h3626454@gatekeeper.cs.hku.hk <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>“ 门户服务器。</li>
+<li>由于gatekeeper上我们没有除了ssh以外的任何权限, 所以没法创建ssh的配置文件. 这也是为什么没法实现免密登录的原因. 你唯一需要输入的密码就在这里. 用于登录门户服务器</li>
+<li>在成功登录 ProxyJump 中配置的服务器后，ssh client会自动发起对目的服务器地址的ssh请求, 如果配置中包含User, 则会使用配置的User身份登录.</li>
+<li>由于我们在目的服务器上配置了 RSA 密钥对，第二次登录将不再使用用户名密码，而是使用基于 RSA 密钥的身份验证。实现免密登录, 如果ssh配置出错或是没有配置的同学, 就会需要输入第二次密码, 用于登录目的服务器.</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>HKU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何跨跳板机免密ssh内网服务器</title>
+    <url>/2024/01/20/%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="快速登录学校服务器第二版-一步到”胃”"><a href="#快速登录学校服务器第二版-一步到”胃”" class="headerlink" title="快速登录学校服务器第二版: 一步到”胃”"></a>快速登录学校服务器第二版: 一步到”胃”</h1><p>俗话说的好, 懒惰是进步的第一生产力. 咱们上一讲聊到如何自定义服务器地址从而避免记忆冗长的地址, 如何做到只输入一次密码就可以直接登录. 但是! <strong>密码太长太恶心了啊</strong>QAQ. 于是就有了这篇, 偷懒大法. 咱直接一步到位, <strong>配置一次, 以后无需再填写任何密码. 一条命令直接登录!</strong>  具体效果如下:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/demo.gif"
+                      alt="demo.gif"
+                ></p>
+<p>那咱废话不多说, 直接开搞!</p>
+<p>(PS: 如果你足够懒, 可以直接翻到最后面, 我写了一个脚本可以帮你一键配置ssh配置文件. 但前提条件是要在电脑上安装PuTTY)</p>
+<h2 id="1-第一步安装PuTTY"><a href="#1-第一步安装PuTTY" class="headerlink" title="1. 第一步安装PuTTY"></a>1. 第一步安装PuTTY</h2><p>首先我们需要在windows上面下载 PuTTY. 苹果用户可以使用 sshpass. 下载地址在这 <a class="link"   href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" >Download PuTTY: latest release (0.80) (greenend.org.uk) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>然后找到属于自己的安装包, 比如我的电脑是 64位系统, 所以选择<code> 64-bit x86</code> 的安装包. 双击下载后的安装包, 跟着步骤开始安装. </p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240120152914215.png"
+                      alt="image-20240120152914215"
+                ></p>
+<p>找到下载后的安装包, 双击打开. 记得选择下载位置. 我一般不放在C盘. 毕竟C盘且用且珍惜.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240120143557059.png"
+                      alt="image-20240120143557059"
+                ></p>
+<p>然后一直按next, 等待安装结束就好啦…</p>
+<p>如何检测安装是否成功, 可以打开cmd然后敲<strong>plink</strong>命令, 看看是否能正确显示</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240120143733293.png"
+                      alt="image-20240120143733293"
+                ></p>
+<p>如果报错的话可以看这篇文章, 如何配置windows环境变量. 把plink.exe所处的文件夹路径添加到PATH里就可以啦</p>
+<ul>
+<li><a class="link"   href="https://zhuanlan.zhihu.com/p/671349063" >windows11如何配置环境变量？ - 知乎 (zhihu.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h2 id="2-第二步修改ssh配置文件"><a href="#2-第二步修改ssh配置文件" class="headerlink" title="2. 第二步修改ssh配置文件"></a>2. 第二步修改ssh配置文件</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host hku</span><br><span class="line">  HostName academy11.cs.hku.hk</span><br><span class="line">  User h3626454</span><br><span class="line">  ProxyCommand plink -ssh -l h3626454 -pw &lt;password&gt; gatekeeper.cs.hku.hk -nc %h:%p</span><br></pre></td></tr></table></figure></div>
+
+<p>老规矩, 把 <code>&lt;password&gt;</code> 所处位置替换成你自己的密码. 毕竟是隐私, 我就不暴露了.</p>
+<p><strong>remark:</strong> 现在这个是 <code>ProxyCommand</code> 而不是 <code>ProxyJump</code>, 记得修改. 不要只改了后面的内容</p>
+<p>配置完就大功告成啦…</p>
+<p><strong>最终效果如下</strong>:</p>
+<p>只需要输入 <code>ssh hku</code> 就可以直接登录学校服务器啦. 到现在为止, 我们已经能够<strong>偷懒</strong>到极致, 无需密码, 无需输入服务器地址. 一条命令, 直接包办.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240120153439768.png"
+                      alt="image-20240120153439768"
+                ></p>
+<p>好了, 接下来是解释时间. </p>
+<h2 id="原理解释"><a href="#原理解释" class="headerlink" title="原理解释:"></a>原理解释:</h2><p>书接上回, 我们使用<strong>用户名+密码</strong> 的方式登录门户服务器, 然后使用 <strong>密匙</strong> 来免密登录学校服务器, 实现一次密码直接登陆的”壮举”. 但是, 我们有没有能力直接将密码携带在命令里登陆呢, 那样是不是就不用输入密码了? 有搞头, 冲!. </p>
+<p>在网上搜了好一番. 才发现ssh并没有内置的, 携带密码的选择. 所以我们得使用一些<strong>外挂</strong>, 也就是PuTTY. 一个小巧简洁的ssh登录客户端. 它里面提供了一个工具 <strong>plink</strong> 可以在命令行里携带密码发送 <strong>ssh请求</strong>. 这不就是我们需要的东西嘛</p>
+<p>现在携带密码的工具已经搞定了, 那我们应该如何在使用ssh命令时, 让其自动执行呢? 记不记得上回在配置文件里设置的 <strong>ProxyJump</strong> 参数, 它接收一个 <code>username@address</code> 字符串, 然后在连接到目的服务器前, 先使用ssh连接到 <strong>ProxyJump</strong> 参数里指定的服务器, 然后再通过那个服务器作为代理发送ssh请求到目标服务器. 但是问题来了: <strong>ProxyJump只能发送ssh请求, 没法使用plink来携带密码怎么办?</strong> . 于是一个新的参数出现了, <strong>ProxyCommand</strong> 它允许指定用于连接到服务器的命令. 也就是说, 我们可以使用 <strong>plink</strong> 来连接我们的门户服务器了. </p>
+<p>下面是对配置完整的解释:</p>
+<ul>
+<li>使用 <code>plink -ssh -l h3626454 -pw &lt;password&gt; gatekeeper.cs.hku.hk</code> 来连接代理服务器,</li>
+<li><code>-ssh</code>: 指定使用ssh登录</li>
+<li><code>-l</code> : 指定登录用户</li>
+<li><code>-pw</code>: 指定携带的密码</li>
+<li><code>-nc %h:%p</code> 命令使用 nc (netcat) 工具设置转发请求的目的服务器地址以及端口</li>
+<li><code>%h</code> 和 <code>%p</code> 分别是 <strong>host</strong> 和 <strong>port</strong> 的占位符, 在命令执行时会自动替换成配置前面设置的 <strong>HostName</strong> 和 <strong>Port</strong> 的值</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">ProxyCommand plink -ssh -l h3626454 -pw &lt;password&gt; gatekeeper.cs.hku.hk -nc %h:%p</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>Remark:</strong> ProxyCommand 只能用于连接代理服务器, 不能直接连接目标服务器. 所以我们一般搭配 <code>-nc</code> 参数来配置最终的目标服务器. </p>
+<p><strong>reference:</strong></p>
+<ul>
+<li><a class="link"   href="https://man.openbsd.org/ssh_config" >ssh_config(5) - OpenBSD manual pages <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://man.openbsd.org/nc.1" >nc(1) - OpenBSD 手册页 — nc(1) - OpenBSD manual pages <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://documentation.help/PuTTY/plink-usage.html" >Using Plink - PuTTY Documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://the.earth.li/~sgtatham/putty/0.62/htmldoc/Chapter7.html#plink-usage" >Using the command-line connection tool Plink (earth.li) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   href="https://stackoverflow.com/questions/12118308/execute-ssh-with-password-authentication-via-windows-command-prompt" >Execute ssh with password authentication via windows command prompt - Stack Overflow <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<hr>
+<h2 id="一键配置"><a href="#一键配置" class="headerlink" title="一键配置"></a>一键配置</h2><p>介于有些人不太理解怎么配置, 我写了一个 <code>.bat</code> 脚本, 有需要可以找我要. 或者新建一个 <code>.txt</code> 文件, 然后将下面代码复制进去. 最后修改文件名后缀为 <code>.bat</code> . 双击运行就可以啦.</p>
+<p><strong>非常重要!!!</strong></p>
+<p><strong>remark:</strong></p>
+<ul>
+<li>在电脑上必须安装 <code>PuTTY</code>, 要求在终端内输入 <code>plink</code> 不报错, 即命令存在. 如命令不存在, 先检查有无下载 PuTTY, 再检查环境变量是否配置. 如果都没出错, 可以考虑删了重下</li>
+<li>如果原先已经在 <code>~/.ssh/config</code> 下配置过类似配置, 或是运行过一次脚本, 需要自己手动清除之前的配置. 因为新配置默认添加在文件末尾. 如果前面有匹配的配置, 就会覆盖新的配置!</li>
+<li>由于第二次登录学校服务器是使用ssh密匙实现的! 所以仍旧需要跟着 <strong>“如何快速登录学校服务器”</strong> 里的第二步在学校服务器的用户目录下创建 <code>.ssh/authorized_keys</code> 并配置公匙</li>
+<li>如果以上三点都没问题, 但是还是没法一键登录学校服务器, 可以检查用户密码是否填写错误. 最后实在搞不定可以私聊我.</li>
+</ul>
+<div class="highlight-container" data-rel="Bat"><figure class="iseeu highlight bat"><table><tr><td class="code"><pre><span class="line"><span class="comment">rem @echo off: hides the text that is normally output</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">setlocal</span> enabledelayedexpansion</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem Prompt user for input</span></span><br><span class="line"><span class="built_in">set</span> /p username=Enter username:</span><br><span class="line"><span class="built_in">set</span> /p host=Enter host:</span><br><span class="line"><span class="built_in">set</span> /p password=Enter password:</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem Define the SSH config file path</span></span><br><span class="line"><span class="built_in">set</span> &quot;sshConfigFile=<span class="variable">%USERPROFILE%</span>\.ssh\config&quot;</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem Check if .ssh directory exists, create if not</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exist</span> &quot;<span class="variable">%USERPROFILE%</span>\.ssh&quot; <span class="built_in">mkdir</span> &quot;<span class="variable">%USERPROFILE%</span>\.ssh&quot;</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">rem Append SSH configuration to config file</span></span><br><span class="line">(</span><br><span class="line"><span class="built_in">echo</span>.</span><br><span class="line"><span class="built_in">echo</span> Host <span class="variable">%host%</span></span><br><span class="line"><span class="built_in">echo</span>   HostName academy11.cs.hku.hk</span><br><span class="line"><span class="built_in">echo</span>   User <span class="variable">%username%</span></span><br><span class="line"><span class="built_in">echo</span>   ProxyCommand plink -ssh -l <span class="variable">%username%</span> -pw <span class="variable">%password%</span> gatekeeper.cs.hku.hk -nc <span class="variable">%%h</span>:<span class="variable">%%p</span></span><br><span class="line">) &gt;&gt; &quot;<span class="variable">%sshConfigFile%</span>&quot;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> SSH configuration added successfully.</span><br><span class="line"><span class="built_in">endlocal</span></span><br></pre></td></tr></table></figure></div>
+
+<p>使用教程如图:</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/image-20240120175515964.png"
+                      alt="image-20240120175515964"
+                ></p>
+<ol>
+<li>双击 .bat 文件开始运行脚本</li>
+<li>输入用户名, 密码, 以及自定义的主机名</li>
+<li>脚本会自动在 <code>~/.ssh/config</code> 中生成配置</li>
+</ol>
+<p>有些人觉得这么大费周章其实很没必要. 但其实这个具有很广泛的用途. 在这几天专研的过程中, 我发现这种 <strong>跳板机-内网服务器</strong> 的形式在很多公司里都有应用.  公司不会轻易的将自己的服务器暴露在外网, 而是使用一个 <strong>跳板机</strong> 来充当内网访问的门户, 这样做的好处有以下几点:</p>
+<ul>
+<li><strong>安全性增强：</strong> 跳板机作为中介可以减少直接暴露内部服务器给外部的风险，提高网络安全性。比如防御黑客入侵, DDos等</li>
+<li><strong>审计和监控：</strong> 通过跳板机，管理员可以更容易地监控用户的活动和进行审计，因为所有的连接都经过这个服务器。</li>
+<li><strong>访问控制：</strong> 跳板机可以实施更严格的访问控制，只允许授权用户连接到内部服务器。</li>
+<li><strong>集中管理：</strong> 管理员可以集中管理跳板机上的安全策略，而无需在每个服务器上进行配置。</li>
+</ul>
+<p>所以通过这种可以越过跳板机直接访问内网服务器的方式, 一定程度上的减少了浪费的时间. </p>
+<p><strong>注意:</strong> </p>
+<p>由于学校的跳板机没有给我们权限更改文件, 所以只能使用 <strong>密码 + ssh密匙</strong> 混合的形式来登录. 但是以后如果在公司, 更推荐的做法是找你们的管理员把你的密匙也添加到 <strong>跳板机</strong> 上, 这样就可以直接使用 <strong>密匙登录</strong> , 相比起将密码写死在文件内的方式更加的安全.</p>
+]]></content>
+      <tags>
+        <tag>HKU</tag>
+      </tags>
+  </entry>
+</search>
