@@ -13,14 +13,14 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://ivanfan-van.github.io/page/5/"/>
+    <link rel="canonical" href="https://ivanfan-van.github.io/all/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
         <meta property="og:type" content="website">
 <meta property="og:title" content="Ivan&#39;s Scribbles">
-<meta property="og:url" content="https://ivanfan-van.github.io/page/5/index.html">
+<meta property="og:url" content="https://ivanfan-van.github.io/all/index.html">
 <meta property="og:site_name" content="Ivan&#39;s Scribbles">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Ivan">
@@ -116,40 +116,62 @@
 <main class="page-container" id="swup">
 
     
-        <style>
-    .home-article-item,
-    .sidebar-links,
-    .sidebar-content,
-    a.page-number,
-    a.extend,
-    .sidebar-links .links:hover,
-    .right-bottom-tools,
-    footer.footer {
-        background-color: var(--background-color-transparent-80) !important;
-    }
-    .right-bottom-tools:hover,
-    a.page-number:hover,
-    a.extend:hover {
-        background-color: var(--primary-color) !important;
-    }
-    .site-info,
-    .home-article-sticky-label {
-        background-color: var(--background-color-transparent-15) !important;
-    }
-    .home-article-sticky-label {
-        backdrop-filter: none !important;
-    }
-    .home-banner-background {
-        filter: blur(15px);
-    }
-</style>
+        
+    <style>
+        .home-banner-container {
+            background: none !important;
+        }
+        .home-article-item,
+        .sidebar-links,
+        .sidebar-content,
+        a.page-number,
+        a.extend,
+        .sidebar-links .links:hover,
+        .right-bottom-tools,
+        footer.footer {
+            background-color: var(--background-color-transparent-80) !important;
+        }
+        .right-bottom-tools:hover,
+        a.page-number:hover,
+        a.extend:hover {
+            background-color: var(--primary-color) !important;
+        }
+        .site-info,
+        .home-article-sticky-label {
+            background-color: var(--background-color-transparent-15) !important;
+        }
+        .home-article-sticky-label {
+            backdrop-filter: none !important;
+        }
+    </style>
+    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
+        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
+        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+    </div>
 
-<div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-    <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-    <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
+
+<div class="home-banner-container flex justify-center items-center transition-fade relative">
+    
+    <div class="content mt-8 flex flex-col justify-center items-center">
+        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
+        
+        >
+            Welcome to Ivan's Scribbles
+            
+            
+                <p><i id="subtitle"></i></p>
+            
+        </div>
+        
+    </div>
+    <script>
+        const scrollToMain = ()=> {
+            console.log('scroll');
+            const target = document.querySelector('.main-content-container');
+            target.scrollIntoView({ behavior: 'smooth'});
+        }
+    </script>
 </div>
-
-
     
 
     <div class="main-content-container flex flex-col justify-between min-h-dvh">
@@ -157,12 +179,8 @@
 
         <div class="main-content-header">
             <header class="navbar-container px-6 md:px-12">
-    <div class="navbar-content transition-navbar ">
+    <div class="navbar-content transition-navbar has-home-banner">
         <div class="left">
-            
-                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
-                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
-                </a>
             
             <a class="logo-title" href="/">
                 <h1>
@@ -181,7 +199,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -273,7 +291,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/"
                         >
                             <span>
@@ -408,7 +426,7 @@
             
             <div class="sidebar-content"  marginTop >
                 <div class="avatar flex justify-center">
-    <img src="/images/avatar.png">
+    <img src="/images/profile.jpg">
 </div>
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
@@ -453,67 +471,18 @@
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/09/03/note-1-inbox-015/">
-                            算法笔记
+                        <a href="/2026/10/23/CV-Chinese/">
+                            中文简历
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            多路归并题:
+                            中文简历打开或下载中文简历 (PDF) · English CV
 
-给定两个数列&#x2F;链表, 将其以某种方式归并
 
-回溯算法就是树遍历算法, 想构建一个回溯算法, 需要三个要点:
-
-当前路径是什么
-有什么选择
-终止条件
-
-根据这三个条件我们就可以构建以下回溯算法框架
-12345678910result = []def backtrace(path, choices):	if 终止条件满足:		result.append(path)		r...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Sep 03 2026 00:00:00 GMT+0800">
-                
-                    2026-09-03
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/03/note-1-inbox-015/">Read more<span class="seo-reader-text">算法笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/03/note-2-seed-006/">
-                            构建模板笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            学习 labuladong 算法笔记, 将一些常用的知识抽取为模板. 目前想包含 reinforcement learning 以及拖拽式幕布
-拖拽式幕布的 template 可见 如何构建一个无限大自由幕布 
+如果无法在线预览，请使用上方的 PDF 链接。
 
                         
                     </div>
@@ -521,277 +490,9 @@
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Sep 03 2026 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Fri Oct 23 2026 00:00:00 GMT+0800">
                 
-                    2026-09-03
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/03/note-2-seed-006/">Read more<span class="seo-reader-text">构建模板笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/02/note-1-inbox-016/">
-                            随记 2026-09-02
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            我未来想达到什么样的目标?我又该如何达到这个目标?
-我真的想走科研这条道路吗? 我又真的想走大厂这条路吗? 
-这些路得要试验一下才知道
-
-问 Anupam 科研是什么感觉, 能否跟着体验一下干科研的感觉
-进大厂实习 (我这学期还能实习吗? 寒假可以吗? 半学期可以吗?)
-
-
-寒假: 12.24 -&gt; 1.17 (一个月) (可能还要延误一周)
-现在的大厂更加看重 github 开源项目...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Sep 02 2026 00:00:00 GMT+0800">
-                
-                    2026-09-02
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/02/note-1-inbox-016/">Read more<span class="seo-reader-text">随记 2026-09-02</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/01/note-1-inbox-030/">
-                            ELEC3255 Control System 2
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            控制论就是如何调整输入 u, 来改动 dynamic model, 使得我们得到想要的 trajectory
-有点像隐马尔可夫模型, 带有隐状态和可观测序列.
-system identification (系统建模), 给定一系列输入 u 和输出 y, 根据数据拟合得到模型 (和机器学习很像)
-有点像 inverse dynamic model (逆运动学模型)
-语言模型建模, 最大似然
-给...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Sep 01 2026 00:00:00 GMT+0800">
-                
-                    2026-09-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/01/note-1-inbox-030/">Read more<span class="seo-reader-text">ELEC3255 Control System 2</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/31/note-2-seed-031/">
-                            BipedalWalker 强化学习
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            
-
-在训练过程中发现 critic_loss 出现波浪状, 目前分析是每个 episode 刚开始时, critic 无法很好的预测, 因此会出现较大的 td error 误差. 但紧接着 walker 陷入一个很奇怪的姿势将自己卡住, 使得 critic 能够很好的预测 (因为 walker 没有往前移动, 分数一直在 0左右, 所以 critic 一直预测0 就能使的 critic lo...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Aug 31 2026 00:00:00 GMT+0800">
-                
-                    2026-08-31
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/31/note-2-seed-031/">Read more<span class="seo-reader-text">BipedalWalker 强化学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/30/note-1-inbox-010/">
-                            如何解读 td error
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            actor loss 的具体公式如下$$L(\pi) &#x3D; -log(\pi(a|s)) \Psi$$
-其中 $\pi(a|s)$ 是我们能改变的，而 $\Psi$ 是一个用于指导该行为好坏的标准，当其大于零时代表该动作是好动作，应当增大其可能性，而小于零则相反。
-所以 $\Psi$ 可以是以下任意一个：
-
-G: 回报，即该动作之后得到的所有奖励折扣和，是 Q(s,a) 的蒙特卡洛近...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 30 2026 00:00:00 GMT+0800">
-                
-                    2026-08-30
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/30/note-1-inbox-010/">Read more<span class="seo-reader-text">如何解读 td error</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/30/note-2-seed-003/">
-                            创建一个不断迭代的 llm 模型
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            我想创建一个能够不断迭代更新的 llm 模型，并将其部署上线能够被别人游玩。
-基模一开始选自 FreeCodeCamp Full Handbook 中的 Urdu 模型。
-之后使用模型手术来增进式迭代，模型手术是一种能够不重新训练模型而在起原先基础上修改架构继续增强模型的方式。
-计划先跟着教程把第一版模型做出来，然后记录一下以下信息：
-
-tokenizer
-训练数据
-训练参数（vocab_s...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 30 2026 00:00:00 GMT+0800">
-                
-                    2026-08-30
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/30/note-2-seed-003/">Read more<span class="seo-reader-text">创建一个不断迭代的 llm 模型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/30/note-3-growing-012/">
-                            为什么重启 git bash 后运行 opencode 提示 post-install 没有运行
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            每一次在 vscode 重启后重新开启 git bash, 都无法正确运行 opencode 命令, 会出现以下报错:
-123456ASUS@LAPTOP-CN9D0PCU MINGW64 /d/Coding/projects/todo-canvas (main) $ opencode Error: opencode-ai&#x27;s postinstall script was not ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 30 2026 00:00:00 GMT+0800">
-                
-                    2026-08-30
+                    2026-10-23
                 
             </span>
         </span>
@@ -803,7 +504,7 @@ tokenizer
                     
                         <li>
                             
-                            <a href="/tags/debug/">debug</a>&nbsp;
+                            <a href="/tags/CV/">CV</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -811,7 +512,7 @@ tokenizer
         
     </div>
 
-    <a href="/2026/08/30/note-3-growing-012/">Read more<span class="seo-reader-text">为什么重启 git bash 后运行 opencode 提示 post-install 没有运行</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/10/23/CV-Chinese/">Read more<span class="seo-reader-text">中文简历</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -826,27 +527,28 @@ tokenizer
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/08/26/note-2-seed-015/">
-                            强化学习学习报告
+                        <a href="/2026/10/23/CV-English/">
+                            CV (English)
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            沿着历史发展线，从头到尾跟着先贤的思路走一遍强化学习的道路。
-强化学习需要一个 agent 不断与环境进行交互，最终得到一条轨迹。一个环境就是一个马尔科夫奖励过程。
-马尔科夫链定义为 $P(s’|s)$， 其是一个状态转移矩阵，给定某个初始状态，每一次根据状态转移矩阵更新状态，直到抵达 end state。此时生成的轨迹中只包含状态 $s$
-马尔科夫过程则是 $P(s’|s,a)$，此时状态...
+                            CV (English)Open or download the English CV (PDF) · 中文简历
+
+
+If the preview is unavailable, use the PDF link above.
+
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Aug 26 2026 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Fri Oct 23 2026 00:00:00 GMT+0800">
                 
-                    2026-08-26
+                    2026-10-23
                 
             </span>
         </span>
@@ -858,7 +560,7 @@ tokenizer
                     
                         <li>
                             
-                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+                            <a href="/tags/CV/">CV</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -866,7 +568,7 @@ tokenizer
         
     </div>
 
-    <a href="/2026/08/26/note-2-seed-015/">Read more<span class="seo-reader-text">强化学习学习报告</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/10/23/CV-English/">Read more<span class="seo-reader-text">CV (English)</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -881,26 +583,26 @@ tokenizer
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/08/24/note-2-seed-012/">
-                            幕布缩放如何兼容触摸板和鼠标滚轮
+                        <a href="/2026/10/23/note-1-inbox-023/">
+                            训练状态更新
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            WheelEvent 是浏览器标准的事件, 和 MouseScrollEvent 以及MouseWheelEvent 这两个非兼容事件不同.
-使用触摸板时, WheelEvent 的 deltaX 和 deltaY 
-
+                            在 ROS2 中 Action 是由三个 service 和两个 topic 构成的. 其中两个 topic 分别是 feedback 以及 status. action server 会实时往这两个 topic 中输入数据流.
+在 nocodile 中, 我能否实现类似的效果? 我应该如何在后端实现 topic 机制? 
+例如当用户发起请求时, 得到 task id, 通过 task id...
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Aug 24 2026 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Fri Oct 23 2026 00:00:00 GMT+0800">
                 
-                    2026-08-24
+                    2026-10-23
                 
             </span>
         </span>
@@ -908,7 +610,372 @@ tokenizer
         
     </div>
 
-    <a href="/2026/08/24/note-2-seed-012/">Read more<span class="seo-reader-text">幕布缩放如何兼容触摸板和鼠标滚轮</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/10/23/note-1-inbox-023/">Read more<span class="seo-reader-text">训练状态更新</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/22/note-2-seed-010/">
+                            看门狗 WatchDog
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            看门狗最早来自于嵌入式系统，ta 可以由软件或是硬件实现。 用于在计算机死机时自动恢复。
+看门狗是一个倒计时，在倒计时结束时会自动触发恢复计算机的程序。计算机在正常运行时会在 timeout 前主动重置倒计时，是的看门狗不会触发。
+这种机制在 ROS 中可以用于检测某个 publisher 是否宕机。
+我在思索，对于我在日常中开发的健康系统监测平台，是否也能够使用看门狗机制来实现，甚至用于自...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Oct 22 2026 00:00:00 GMT+0800">
+                
+                    2026-10-22
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/CI-CD/">CI/CD</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E7%9C%8B%E9%97%A8%E7%8B%97/">看门狗</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/10/22/note-2-seed-010/">Read more<span class="seo-reader-text">看门狗 WatchDog</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/15/note-1-inbox-011/">
+                            如何快速的进入一个新领域
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            第一步： 
+
+了解这个领域在研究什么，也就是问题是如何定义的，例如语言模型要建模的是这个条件概率分布 $p(w_t|w_1, \dots, w_{t-1})$  
+
+为什么这个问题重要，了解这个问题的应用场景
+
+问题的难点在哪
+
+哪些问题已经解决，哪些仍然在解决的路上
+
+
+第二步：通过了解前人的工作，来知道整个发展路线。
+
+了解经典工作：主要是那些奠定了后续发展的基本概念和研究范式的论文
+了...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Oct 15 2026 00:00:00 GMT+0800">
+                
+                    2026-10-15
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/10/15/note-1-inbox-011/">Read more<span class="seo-reader-text">如何快速的进入一个新领域</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/14/note-2-seed-045/">
+                            Typescript 的类型推导函数
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            在某些情况下，我们可能需要获取某个已经存在的函数所定义的参数类型或是返回值类型。此时可以使用 typescript 给我们提供的一些内置的类型推导方法：
+1234567891011121314151617181920212223class User &#123;  ...    enroll(course: string) &#123;...&#125;&#125;function crea...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Oct 14 2026 00:00:00 GMT+0800">
+                
+                    2026-10-14
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/10/14/note-2-seed-045/">Read more<span class="seo-reader-text">Typescript 的类型推导函数</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/14/note-4-evergreen-001/">
+                            常用 Agent 开发提示词
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            AGENTS.mdGit 使用12345678每次改动后，请使用 git 管理项目版本，并遵循以下规则：1. 保持 main 分支干净，并按以下方式管理对应改动：  1.1 如果是对文档进行改动，则无需创建新分支，但提交 commit 时需要添加 (docs) 前缀，例如 &quot;(docs) &lt;commit_message&gt;&quot;。  1.2 如果是修复 bug, 则...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Oct 14 2026 00:00:00 GMT+0800">
+                
+                    2026-10-14
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/">提示词</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/10/14/note-4-evergreen-001/">Read more<span class="seo-reader-text">常用 Agent 开发提示词</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/11/note-3-growing-019/">
+                            python 对象魔法方法
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            python 编程语言有一个特性, 叫做 Duck typing. 其意味着一个对象并不是由其实际的类类型决定的, 而是由其提供的方法和属性定义的. 
+如果一个对象长得像鸭子, 行为像鸭子, 那么我们就认为这是一个鸭子. 
+因此衍生出了非常多独特的应用. 其中一个最重要的概念就是 magic method. 这是一组 python 为每个对象内置的方法, 我们可以通过重写这些方法让 pyth...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Oct 11 2026 00:00:00 GMT+0800">
+                
+                    2026-10-11
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/python/">python</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/10/11/note-3-growing-019/">Read more<span class="seo-reader-text">python 对象魔法方法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/10/note-1-inbox-024/">
+                            遗传算法 genetic algorithm
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Oct 10 2026 00:00:00 GMT+0800">
+                
+                    2026-10-10
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">遗传算法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/10/10/note-1-inbox-024/">Read more<span class="seo-reader-text">遗传算法 genetic algorithm</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/09/note-1-inbox-009/">
+                            人工势能场 Artificial Potential Field
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            人工势能场是一种能在连续空间中进行导航的算法。其核心思想是目标点是低势能，而障碍物是高势能，机器人每次沿着势能场的负梯度方向进行导航。
+可以类比成机器人和障碍物都是一个平原上的高山, 那么能量倾向于往低谷流动. 因此规划的路径不会朝着山上(障碍物) 走, 而是会绕开障碍物.
+该算法将这种思想实例化为类似于万有引力的排斥力, 然后在吸引力的影响下生成一个速度向量, 自动的让机器人实现路径规划以...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri Oct 09 2026 00:00:00 GMT+0800">
+                
+                    2026-10-09
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/10/09/note-1-inbox-009/">Read more<span class="seo-reader-text">人工势能场 Artificial Potential Field</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -918,7 +985,7 @@ tokenizer
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/"><i class="fa-regular fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/all/page/2/">2</a><a class="page-number" href="/all/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/all/page/13/">13</a><a class="extend next" rel="next" href="/all/page/2/"><i class="fa-regular fa-angle-right"></i></a>
 </div>
 
     </div>

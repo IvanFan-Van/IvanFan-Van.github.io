@@ -13,14 +13,14 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://ivanfan-van.github.io/page/13/"/>
+    <link rel="canonical" href="https://ivanfan-van.github.io/all/page/12/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
         <meta property="og:type" content="website">
 <meta property="og:title" content="Ivan&#39;s Scribbles">
-<meta property="og:url" content="https://ivanfan-van.github.io/page/13/index.html">
+<meta property="og:url" content="https://ivanfan-van.github.io/all/page/12/index.html">
 <meta property="og:site_name" content="Ivan&#39;s Scribbles">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Ivan">
@@ -160,10 +160,6 @@
     <div class="navbar-content transition-navbar ">
         <div class="left">
             
-                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
-                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
-                </a>
-            
             <a class="logo-title" href="/">
                 <h1>
                 Ivan&#39;s Scribbles
@@ -181,7 +177,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -273,7 +269,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/"
                         >
                             <span>
@@ -408,7 +404,7 @@
             
             <div class="sidebar-content"  marginTop >
                 <div class="avatar flex justify-center">
-    <img src="/images/avatar.png">
+    <img src="/images/profile.jpg">
 </div>
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
@@ -453,26 +449,532 @@
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2023/12/10/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Pass-By-Object-Reference%E5%92%8CPass-By-Value%E7%9A%84%E5%8C%BA%E5%88%AB/">
-                            一文读懂Pass-By-Object-Reference和Pass-By-Value的区别
+                        <a href="/2025/10/20/note-2-seed-032/">
+                            C 语言中消息机制的用处
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            有没有人被 python 里所谓的pass by object reference 所困扰. 明明和 Java 中的值传递( pass by value ) 表现得近乎一致, 但还是被人告知, 这两个不是同一个东西.
-这篇文章就来告诉你, 所谓的 python 中的 pass by object reference 和 Java 里 pass by value 有何不同.
-我们先来看两段代码...
+                            C 语言中的消息机制的常见用法
+优雅退出, 例如对于一个 web 服务器应用, 如果用户使用 Ctrl+C 向应用程序发起了 SIGINT 信号, 该信号的默认行为是终止进程, 这就会导致一些 socket 没有发送关闭消息. 客户端会在一段时间后提示服务端连接不到.
+而使用了自定义 signal handler, 我们就能对 SIGNINT 信号进行处理, 在终止进程之前, 先将已经连接的...
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Dec 10 2023 22:12:13 GMT+0800">
+            <span class="home-article-date" data-date="Mon Oct 20 2025 00:00:00 GMT+0800">
                 
-                    2023-12-10
+                    2025-10-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/C-Cpp/">C/Cpp</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Signal/">Signal</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/10/20/note-2-seed-032/">Read more<span class="seo-reader-text">C 语言中消息机制的用处</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/10/14/note-4-evergreen-004/">
+                            为什么 sqlite3 中需要有 connector 和 cursor 两个模型
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            为什么 python 中的 sqlite3 除了 conn 对象还会有个 cursor 对象? 该 cursor 对象起到什么作用?
+单独设计 conn 以及 cursor 对象的原因有以下几点:
+
+创建 conn 的开销很大, 对于大部分大型关系型数据库, 例如 postgrl 和 mysql 都采用 client&#x2F;server 架构, 数据库连接本质是建立了一个 TCP 连接管...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Oct 14 2025 00:00:00 GMT+0800">
+                
+                    2025-10-14
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/python/">python</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/sqlite/">sqlite</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/database/">database</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/10/14/note-4-evergreen-004/">Read more<span class="seo-reader-text">为什么 sqlite3 中需要有 connector 和 cursor 两个模型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/09/03/note-4-evergreen-008/">
+                            javascript 中箭头函数的作用
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            javascript 中箭头函数的作用消除二义性
+javascript 中函数可以既当构造函数使用, 也可以当普通函数使用
+123456function fn() &#123;  ...&#125;new fn(); // validfn();     // valid
+
+这个时候 this 的指向是动态不确定的, 例如在当作构造函数使用时, this 指向 obj 本身, 但是当作为函数调...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Sep 03 2025 00:00:00 GMT+0800">
+                
+                    2025-09-03
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/javascript/">javascript</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/09/03/note-4-evergreen-008/">Read more<span class="seo-reader-text">javascript 中箭头函数的作用</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/08/27/note-4-evergreen-002/">
+                            关于 conda 的一些笔记
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            conda 理解
+conda 是一个安装工具, 最早是 python 科学计算库的一个大的整合包, 包含诸如 numpy, scipy, matplotlib 等科学计算库的编译二进制文件. 可以在各个平台运行. 后续发展成一个包管理平台, 不仅包含 python, 还有 R, Ruby 等. 
+conda 团队一开始自己在维护一个包仓库, 里面的依赖都被处理的很干净没有冲突, 但是缺点是缺...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Aug 27 2025 00:00:00 GMT+0800">
+                
+                    2025-08-27
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2025/08/27/note-4-evergreen-002/">Read more<span class="seo-reader-text">关于 conda 的一些笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/05/24/note-4-evergreen-006/">
+                            huggingface evalute 库
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            学习huggingface evaluate 库, 用于获取各种计算指标的库. 例如 accuracy, f1, 以及其他常用指标等.
+1pip install evaluate
+
+12345678910111213141516171819202122232425262728import evaluatemetric = evaluate.load(&quot;accuracy&quot;)...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat May 24 2025 00:00:00 GMT+0800">
+                
+                    2025-05-24
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/05/24/note-4-evergreen-006/">Read more<span class="seo-reader-text">huggingface evalute 库</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/01/20/%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                            如何跨跳板机免密ssh内网服务器
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            快速登录学校服务器第二版: 一步到”胃”俗话说的好, 懒惰是进步的第一生产力. 咱们上一讲聊到如何自定义服务器地址从而避免记忆冗长的地址, 如何做到只输入一次密码就可以直接登录. 但是! 密码太长太恶心了啊QAQ. 于是就有了这篇, 偷懒大法. 咱直接一步到位, 配置一次, 以后无需再填写任何密码. 一条命令直接登录!  具体效果如下:
+
+那咱废话不多说, 直接开搞!
+(PS: 如果你足够懒...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jan 20 2024 16:13:25 GMT+0800">
+                
+                    2024-01-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/HKU/">HKU</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/01/20/%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read more<span class="seo-reader-text">如何跨跳板机免密ssh内网服务器</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                            如何快速登录学校服务器
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            如何快速登录学校服务器咱BENG 1340 的友友们有没有觉得登录学校的服务器非常麻烦. 不仅要两次ssh, 而且老是输错密码, 用户名, 又或者是万恶的服务器地址. 来回复制粘贴不仅麻烦, 而且有些时候手错给终端x掉了得重头再来.  这种痛苦可以一次解决啦. 一次配置, 终身适用. 
+最终效果如下:
+
+
+可以通过自定义服务器地址, 比如我的 (hku), 好记又好使
+仅需输入一次密码就可以...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri Jan 19 2024 17:58:37 GMT+0800">
+                
+                    2024-01-19
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/HKU/">HKU</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/01/19/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read more<span class="seo-reader-text">如何快速登录学校服务器</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/01/18/hexo%E5%90%88%E9%9B%86/">
+                            hexo合集
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            hexo 使用hexo 内 markdown 文章插入图片
+hexo 博客如何插入图片 
+
+关于all-minifier里的image-minifier的interlace属性“Interlacing” a GIF refers to a specific method of encoding the image that allows for a more gradual and visu...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Jan 18 2024 21:30:03 GMT+0800">
+                
+                    2024-01-18
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/ALL/">ALL</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/01/18/hexo%E5%90%88%E9%9B%86/">Read more<span class="seo-reader-text">hexo合集</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/01/18/windows%E5%AE%89%E8%A3%85linux%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEC++%E5%B7%A5%E5%85%B7%E9%93%BE/">
+                            windows安装linux环境以及配置C++工具链
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            Windows 安装 Linux 以及配置 C++工具链港大 ENGG1340 课程内里有包含 Linux 和 C++相关内容. 介于有很多同学都是小萌新和小白, 不知道如何在 windows 环境下配置 linux 以及 c++. 于此写一篇攻略
+首先我们了解一个概念. windows 和 linux 分别是两套操作系统, 我们在 1340 上学习的应该是 linux 世界里的 Shell...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Jan 18 2024 21:12:53 GMT+0800">
+                
+                    2024-01-18
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/HKU/">HKU</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/C-C/">C/C++</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/01/18/windows%E5%AE%89%E8%A3%85linux%E7%8E%AF%E5%A2%83%E4%BB%A5%E5%8F%8A%E9%85%8D%E7%BD%AEC++%E5%B7%A5%E5%85%B7%E9%93%BE/">Read more<span class="seo-reader-text">windows安装linux环境以及配置C++工具链</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/01/18/%E6%90%AD%E5%BB%BA%E4%B8%90%E7%89%88%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+                            搭建丐版代理服务器遇到的坑
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            搭建丐版代理服务器遇到的坑感觉好久没做项目了，今天这个挺有意思的，发出来分享分享。
+最近在搞一个服务检测系统，就是那个检查自家服务挂没挂的玩意儿。如果挂了就发条消息叫码农（👉me ）起来修 bug 。因为这玩意会不定期频繁的调用飞书的 API。飞书对不同的 IP 地址会进行限制，而终端设备的 IP 地址又是通过 DHCP 协议动态获取的，这也就导致在本地开发一个健康监测系统得经常性的到飞书...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Jan 18 2024 00:28:08 GMT+0800">
+                
+                    2024-01-18
                 
             </span>
         </span>
@@ -489,7 +991,7 @@
                     
                         <li>
                             | 
-                            <a href="/tags/PL/">PL</a>&nbsp;
+                            <a href="/tags/EXPERIENCE/">EXPERIENCE</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -497,122 +999,7 @@
         
     </div>
 
-    <a href="/2023/12/10/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Pass-By-Object-Reference%E5%92%8CPass-By-Value%E7%9A%84%E5%8C%BA%E5%88%AB/">Read more<span class="seo-reader-text">一文读懂Pass-By-Object-Reference和Pass-By-Value的区别</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/11/12/pylint-learning/">
-                            快速入门Pylint
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            快速入门 Pylint如何下载 Pylint1pip install pylint
-
-使用该命令来安装 pylint
-使用 pylint1pylint &lt;filename&gt;
-
-可以运行pyling &lt;filename&gt; 来分析某个 Python 文件, 并生成一个报告. 这个报告会包含 Pylint 发现的任何问题, 以及你的代码的总体评分.
-例如想分析一个名为mai...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Nov 12 2023 11:26:48 GMT+0800">
-                
-                    2023-11-12
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/TOOL/">TOOL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/11/12/pylint-learning/">Read more<span class="seo-reader-text">快速入门Pylint</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/10/18/hello-world/">
-                            Hello World
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Oct 18 2023 21:30:03 GMT+0800">
-                
-                    2023-10-18
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/ALL/">ALL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/10/18/hello-world/">Read more<span class="seo-reader-text">Hello World</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2024/01/18/%E6%90%AD%E5%BB%BA%E4%B8%90%E7%89%88%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">Read more<span class="seo-reader-text">搭建丐版代理服务器遇到的坑</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -622,7 +1009,7 @@
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    <a class="extend prev" rel="prev" href="/all/page/11/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/all/">1</a><span class="space">&hellip;</span><a class="page-number" href="/all/page/10/">10</a><a class="page-number" href="/all/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/all/page/13/">13</a><a class="extend next" rel="next" href="/all/page/13/"><i class="fa-regular fa-angle-right"></i></a>
 </div>
 
     </div>

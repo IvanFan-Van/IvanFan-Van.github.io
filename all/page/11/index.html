@@ -13,14 +13,14 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://ivanfan-van.github.io/page/6/"/>
+    <link rel="canonical" href="https://ivanfan-van.github.io/all/page/11/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
         <meta property="og:type" content="website">
 <meta property="og:title" content="Ivan&#39;s Scribbles">
-<meta property="og:url" content="https://ivanfan-van.github.io/page/6/index.html">
+<meta property="og:url" content="https://ivanfan-van.github.io/all/page/11/index.html">
 <meta property="og:site_name" content="Ivan&#39;s Scribbles">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Ivan">
@@ -160,10 +160,6 @@
     <div class="navbar-content transition-navbar ">
         <div class="left">
             
-                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
-                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
-                </a>
-            
             <a class="logo-title" href="/">
                 <h1>
                 Ivan&#39;s Scribbles
@@ -181,7 +177,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -273,7 +269,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/"
                         >
                             <span>
@@ -408,7 +404,7 @@
             
             <div class="sidebar-content"  marginTop >
                 <div class="avatar flex justify-center">
-    <img src="/images/avatar.png">
+    <img src="/images/profile.jpg">
 </div>
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
@@ -453,69 +449,29 @@
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/08/23/note-2-seed-033/">
-                            cloudflare 概念合集
+                        <a href="/2026/06/20/note-2-seed-035/">
+                            CNN
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            C3 指代的是 creat-cloudflare cli 这个工具。该工具可以用于创建 cloudflare 资源，例如 pages，workers 等
-Wrangler 是 cloudflare worker 使用的 cli 工具，专门用于开发 测试以及部署本地应用到 cloudflare workers 内。
-现在单个 worker 可以部署一整个全栈项目了。
+                            在图像任务上，传统 NLP 需要将图像从二维拉伸为一维向量，这导致了空间信息没有被保留。例如，在手写数字识别任务 MNIST 中，将数字整体平移几个像素点位置，就会导致 MLP 模型识别率下降。而 CNN 通过捕捉局部空间特征（二维处理），来实现局部不变性，对平移更加鲁棒。
+CNN 有三个核心：
 
+卷积核：提取局部特征，参数共享
+池化层：增大感受野，提供平移不变性
+全连接层：用于分类或回归，...
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 23 2026 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
                 
-                    2026-08-23
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/23/note-2-seed-033/">Read more<span class="seo-reader-text">cloudflare 概念合集</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/22/note-2-seed-034/">
-                            cloudflare pages function VS cloudflare workers
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            cloudflare，下面简称 CF，是一个网络供应商，提供一系列云服务，例如数据库，对象存储，静态资源服务等
-其中有 page 是用来部署静态资源，例如 html 文件的，但我们通常也会需要一些后端 api 之类的功能（用于访问数据库等后端服务），我们就可以将其部署为 page function。
-而 workers，则负责提供一个运行环境（node），用于运行任意脚本（不管是 web 服...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Aug 22 2026 00:00:00 GMT+0800">
-                
-                    2026-08-22
+                    2026-06-20
                 
             </span>
         </span>
@@ -527,247 +483,17 @@ Wrangler 是 cloudflare worker 使用的 cli 工具，专门用于开发 测试�
                     
                         <li>
                             
-                            <a href="/tags/cloudflare/">cloudflare</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/08/22/note-2-seed-034/">Read more<span class="seo-reader-text">cloudflare pages function VS cloudflare workers</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/22/note-3-growing-014/">
-                            学习 Deepseek Harness
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            12345678910111213141516171819flowchart LR    subgraph WRITE[&quot;① 你编写&quot;]        P[&quot;Plugin（插件）&lt;br/&gt;export function apply(ctx)&lt;br/&gt;或 Service 类&lt;br/&gt;注册工具 / 服务 / 钩子&quot;]  ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Aug 22 2026 00:00:00 GMT+0800">
-                
-                    2026-08-22
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/harness/">harness</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/08/22/note-3-growing-014/">Read more<span class="seo-reader-text">学习 Deepseek Harness</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/19/note-2-seed-019/">
-                            如何理解 A2C 算法图表
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            如何理解强化学习中 A2C 算法中的几个常见指标图表.
-actor_loss$$	\nabla L(\theta) &#x3D; \sum_{t&#x3D;0}^{T}\log(\pi(s_{t}|a_{t})) Q(s_{t}, a_{t})$$
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Aug 19 2026 00:00:00 GMT+0800">
-                
-                    2026-08-19
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/19/note-2-seed-019/">Read more<span class="seo-reader-text">如何理解 A2C 算法图表</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/18/note-3-growing-020/">
-                            react router
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            React Router 是一个能让单页应用切换页面的技术.
-在早期没有 SPA (Single Page Application) 的时候, 每一个页面都是一个单独的, 完整的 html 文件. 人们通过 a 链接 访问不同的页面. 例如对于 home page 是 /index.html 文件, 对于 about page 是 /about.html. 
-但这种方式有一些问题, 首先就是...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Aug 18 2026 00:00:00 GMT+0800">
-                
-                    2026-08-18
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/18/note-3-growing-020/">Read more<span class="seo-reader-text">react router</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/18/note-3-growing-021/">
-                            VSCode 好用配置
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            介绍一些 vscode 的好用配置
-
-取消文件夹折叠, 当一个多层文件夹只包含子文件夹时, vscode 会自动折叠, 如下所示这个时候想要新建文件或是移动文件到 data 目录下会非常不方便 (至少对于我而言). 我们可以通过修改用户配置文件中 compactFolder 字段来修改这个行为.
-
-首先按 Ctrl + Shift + P 打开命令行, 然后输入 Open User Sett...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Aug 18 2026 00:00:00 GMT+0800">
-                
-                    2026-08-18
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/18/note-3-growing-021/">Read more<span class="seo-reader-text">VSCode 好用配置</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/17/note-3-growing-016/">
-                            优化 Tokenizer
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            BBPE (Byte-level BPE) Tokenizer 复杂度是 O(N^2)
-naive BPE Implementation
-核心逻辑集中在 get_stats() 和 merge() 函数中
-12345def get_stats(ids):	stats = &#123;&#125;	for p0, p1 in zip(ids, ids[1:]):		stats[(p0, p1)...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Aug 17 2026 00:00:00 GMT+0800">
-                
-                    2026-08-17
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%88%86%E8%AF%8D%E5%99%A8/">分词器</a>&nbsp;
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
                         </li>
                     
                         <li>
                             | 
-                            <a href="/tags/%E5%B7%A5%E7%A8%8B%E4%BC%98%E5%8C%96/">工程优化</a>&nbsp;
+                            <a href="/tags/CNN/">CNN</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Computer-Vision/">Computer-Vision</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -775,7 +501,7 @@ naive BPE Implementation
         
     </div>
 
-    <a href="/2026/08/17/note-3-growing-016/">Read more<span class="seo-reader-text">优化 Tokenizer</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/06/20/note-2-seed-035/">Read more<span class="seo-reader-text">CNN</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -790,107 +516,32 @@ naive BPE Implementation
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2026/08/16/note-1-inbox-006/">
-                            了解 deepseek harness
+                        <a href="/2026/06/20/note-2-seed-038/">
+                            HMM
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            我希望在了解 dsh 的过程中, 证据总是从源码中获取, 而不单单是博客或是帖子 (确保信息来源真实性)
-deepseek 对于工作区的三种权限对比dsh 针对某个工作区有三种不同的权限模式, 分别是 workspace read, workspace write 以及 full acess. Read/Write 很好理解, 分别是读取和写入权限. 但是 Full Access 相比起前两...
+                            隐马尔科夫模型（Hiden Markov Model）
+有三个参数，分别是
+
+转移矩阵 A，大小为 N×N，其中 N 是隐藏状态的数量
+发射矩阵 B，大小为 N×O，其中 O 为观测状态的数量
+初始矩阵 $\pi$ ，大小为 N×1，其中每一个元素代表初始状态为隐藏状态 i 的概率
+
+隐马尔科夫模型 &#x3D; 初始状态矩阵 + 转移矩阵 + 发射矩阵
+$\lambda &#x3D; P(...
                         
                     </div>
 
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 16 2026 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
                 
-                    2026-08-16
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/16/note-1-inbox-006/">Read more<span class="seo-reader-text">了解 deepseek harness</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/16/note-1-inbox-005/">
-                            构建一个遗忘 idea 推送插件
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            我想构建一个 obsidian 插件, 能够不定期给我的微信发送我可能遗忘的一些 idea
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 16 2026 00:00:00 GMT+0800">
-                
-                    2026-08-16
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/16/note-1-inbox-005/">Read more<span class="seo-reader-text">构建一个遗忘 idea 推送插件</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/16/note-1-inbox-012/">
-                            如何让 obsidian 目录显示该目录下有几篇文章
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            有些时候我需要能够查看某个目录下有多少篇文章, 例如 1-inbox/, 我希望在 obsidian 上能够动态显示文章数量, 例如 1-inbox (13)
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 16 2026 00:00:00 GMT+0800">
-                
-                    2026-08-16
+                    2026-06-20
                 
             </span>
         </span>
@@ -902,7 +553,7 @@ deepseek 对于工作区的三种权限对比dsh 针对某个工作区有三种�
                     
                         <li>
                             
-                            <a href="/tags/obsidian/">obsidian</a>&nbsp;
+                            <a href="/tags/Machine-Learning/">Machine-Learning</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -910,7 +561,456 @@ deepseek 对于工作区的三种权限对比dsh 针对某个工作区有三种�
         
     </div>
 
-    <a href="/2026/08/16/note-1-inbox-012/">Read more<span class="seo-reader-text">如何让 obsidian 目录显示该目录下有几篇文章</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2026/06/20/note-2-seed-038/">Read more<span class="seo-reader-text">HMM</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-2-seed-043/">
+                            RNN
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            RNN &amp; CRU由于 MLP 无法处理不定长数据的原因，MLP 本质是一个 Directed Acyclic Graph (DAG)。其没有任何循环，所以只能固定处理一定长度的内容，模仿类似于 n-gram 模型的能力，因为其没办法保留之前序列的内容，每一次前向传播都只会关注输入的几个字符。RNN 通过引入隐藏变量来模拟人类的记忆，来做到能够处理不定长的序列。
+1234567891...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/NLP/">NLP</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-2-seed-043/">Read more<span class="seo-reader-text">RNN</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-2-seed-046/">
+                            WaveNet
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                             TTS 任务中，wavenet  是个 vocoder，输入音频特征（梅尔频谱），输出 pcm 音频数据
+音频本质是一个序列，类似于文字序列，为什么RNN 等模型不能处理？
+因为音频序列太过于长了，传统文字序列可能包含上百上千个，但是对于音频，一秒就包含 16000 个 sample。想要分析一秒的音频等同于分析一个包含 16000 单词的序列，这导致了训练困难，推理慢等核心问题。
+关于音...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Audio/">Audio</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-2-seed-046/">Read more<span class="seo-reader-text">WaveNet</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-3-growing-006/">
+                            如何寻找最佳学习率
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            最近在学习深度学习的时候，在想应该如何找到最佳的初始学习率？尽管网上有很多的资料告诉我初始可以高一点，然后使用 scheduler 来下降。也有告诉我每一个不同的模型以及不同的 batch size 都会有不同的学习率。但是没有一个用工程化，代码来指导我们怎么为任意一个特定的模型或是特定 batch_size 来找到最合适的初始学习率。通常都是根据经验为复杂的模型，例如 CNN，LSTM 设...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Optimization/">Optimization</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-3-growing-006/">Read more<span class="seo-reader-text">如何寻找最佳学习率</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-3-growing-011/">
+                            为什么从稠密 MoE 转变到稀疏 MoE
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            最早出现的 MoE 模型仅仅只添加了一个门控模型，负责输出每个专家对应的权重。所以每个专家都会被使用到。但这个方法为什么现在被稀疏 MoE 取代了呢？
+和 DeepSeek 的讨论中得知，最初 MoE 的提出，是因为观察到一个单一模型在一个具备多个不同分布的映射上，会因为梯度的来回拉扯导致训练缓慢甚至无法收敛。
+尽管近似定理证明了存在一组参数可以让 MLP 拟合任意连续函数，但是其并没有提出...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/MoE/">MoE</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-3-growing-011/">Read more<span class="seo-reader-text">为什么从稠密 MoE 转变到稀疏 MoE</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-4-evergreen-005/">
+                            研究不同缩放因子下瓶颈网络和卷积网络的性能和参数差异
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            自从 ResNet 论文中第一次提出瓶颈网络来减少参数并优化模型性能. 其核心在于每一个特征图的特征向量其实都是冗余的, 我们可以通过降维来保留大部分信息, 然后在降维后的特征图上面做卷积, 最后再恢复维度, 此过程能减少大量参数, 同时避免性能下降.
+这篇小论文主要是研究在 fashion-mnist 数据集上, 一个四层卷积网络, 以及一个四层瓶颈网络在不同因子下的性能.
+具体实验结果可...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/CNN/">CNN</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-4-evergreen-005/">Read more<span class="seo-reader-text">研究不同缩放因子下瓶颈网络和卷积网络的性能和参数差异</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/04/21/note-4-evergreen-011/">
+                            React 中的 useState 和 useEffect 隐藏的危险
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            如果 useEffect 的依赖数组中包含被 useEffect 本身修改的 state 时, 会导致无限递归执行, 最终报错 max depth exceeded 栈溢出错误. 例如以下形式。其中 state 既被 useEffect 修改，又被 useEffect 依赖。
+12345678910111213141516171819import React from &#x27;react...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Apr 21 2026 00:00:00 GMT+0800">
+                
+                    2026-04-21
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/React/">React</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Bug/">Bug</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/04/21/note-4-evergreen-011/">Read more<span class="seo-reader-text">React 中的 useState 和 useEffect 隐藏的危险</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/04/20/note-4-evergreen-009/">
+                            Nodejs 的 createServer 是如何实现的
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            NodeJS 中的 createServer 是如何实现的? 其底层返回的 web 服务器具体要具备哪些功能? 我应该如何实现一个自己的 createServer 函数? 
+12345678910import &#123; createServer &#125; from &quot;node:http&quot;;const server = createServer((req, res)...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Apr 20 2026 00:00:00 GMT+0800">
+                
+                    2026-04-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/web/">web</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/nodejs/">nodejs</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/04/20/note-4-evergreen-009/">Read more<span class="seo-reader-text">Nodejs 的 createServer 是如何实现的</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/02/11/draft/">
+                            draft
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Feb 11 2026 16:07:39 GMT+0800">
+                
+                    2026-02-11
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/02/11/draft/">Read more<span class="seo-reader-text">draft</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -920,7 +1020,7 @@ deepseek 对于工作区的三种权限对比dsh 针对某个工作区有三种�
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/"><i class="fa-regular fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/all/page/10/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/all/">1</a><span class="space">&hellip;</span><a class="page-number" href="/all/page/9/">9</a><a class="page-number" href="/all/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/all/page/12/">12</a><a class="page-number" href="/all/page/13/">13</a><a class="extend next" rel="next" href="/all/page/12/"><i class="fa-regular fa-angle-right"></i></a>
 </div>
 
     </div>
