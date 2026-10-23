@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Ivan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://ivanfan-van.github.io/2026/06/20/note-2-seed-043/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="RNN &amp; CRU由于 MLP 无法处理不定长数据的原因，MLP 本质是一个 Directed Acyclic Graph (DAG)。其没有任何循环，所以只能固定处理一定长度的内容，模仿类似于 n-gram 模型的能力，因为其没办法保留之前序列的内容，每一次前向传播都只会关注输入的几个字符。RNN 通过引入隐藏变量来模拟人类的记忆，来做到能够处理不定长的序列。 1234567891011">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RNN">
+<meta property="og:url" content="https://ivanfan-van.github.io/2026/06/20/note-2-seed-043/index.html">
+<meta property="og:site_name" content="Ivan&#39;s Scribbles">
+<meta property="og:description" content="RNN &amp; CRU由于 MLP 无法处理不定长数据的原因，MLP 本质是一个 Directed Acyclic Graph (DAG)。其没有任何循环，所以只能固定处理一定长度的内容，模仿类似于 n-gram 模型的能力，因为其没办法保留之前序列的内容，每一次前向传播都只会关注输入的几个字符。RNN 通过引入隐藏变量来模拟人类的记忆，来做到能够处理不定长的序列。 1234567891011">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2094479/202008/2094479-20200802140232915-262746398.png">
+<meta property="article:published_time" content="2026-06-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-23T10:02:31.533Z">
+<meta property="article:author" content="Ivan">
+<meta property="article:tag" content="Deep-Learning">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2020.cnblogs.com/blog/2094479/202008/2094479-20200802140232915-262746398.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            RNN | Ivan&#39;s Scribbles
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"ivanfan-van.github.io","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"},"delete_mask":false},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]},"pangu_js":false},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/wallhaven-wqery6-light.webp","description":"Ivan's Scribbles - A personal blog about programming and technology."},"google_analytics":{"enable":false,"id":null},"side_tools":{"gear_rotation":true,"auto_expand":false}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to Ivan's Scribbles","subtitle":{"text":["Computer Science is a science of abstraction","The best way to predict the future is to invent it","Imagination is more important than knowledge","Computer science is no more about computers than astronomy is about telescopes"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.7.3","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"CV":{"path":"/tags/CV/","icon":"fa-regular fa-address-card"},"Notes":{"path":"/notes/","icon":"fa-regular fa-note-sticky"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":false,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/10/18 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Ivan&#39;s Scribbles
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/CV/"
+                                        >
+                                    <i class="fa-regular fa-address-card fa-fw"></i>
+                                    CV
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/notes/"
+                                        >
+                                    <i class="fa-regular fa-note-sticky fa-fw"></i>
+                                    NOTES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/CV/"
+                        >
+                            <span>
+                                CV
+                            </span>
+                            
+                                <i class="fa-regular fa-address-card fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/notes/"
+                        >
+                            <span>
+                                NOTES
+                            </span>
+                            
+                                <i class="fa-regular fa-note-sticky fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">123</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">RNN</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Ivan</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-06-20</span>
+        <span class="mobile">2026-06-20</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-10-23 18:02:31</span>
+            <span class="mobile">2026-10-23 18:02:31</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/Notes/Seed/">Seed</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/NLP/">NLP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.4k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="RNN-CRU"><a href="#RNN-CRU" class="headerlink" title="RNN &amp; CRU"></a>RNN &amp; CRU</h2><p>由于 MLP 无法处理不定长数据的原因，MLP 本质是一个 Directed Acyclic Graph (DAG)。其没有任何循环，所以只能固定处理一定长度的内容，模仿类似于 n-gram 模型的能力，因为其没办法保留之前序列的内容，每一次前向传播都只会关注输入的几个字符。RNN 通过引入隐藏变量来模拟人类的记忆，来做到能够处理不定长的序列。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RNNCell</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim</span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.input_dim = input_dim</span><br><span class="line">    <span class="variable language_">self</span>.hidden_dim = hidden_dim</span><br><span class="line">    <span class="variable language_">self</span>.Wih = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Whh = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, hidden=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># x: [B, C]</span></span><br><span class="line">    <span class="comment"># hidden: [B, H]</span></span><br><span class="line">    <span class="keyword">if</span> hidden <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">      hidden = <span class="variable language_">self</span>._init_hidden()</span><br><span class="line">    z = <span class="variable language_">self</span>.Wih(x) <span class="comment"># (B, H)</span></span><br><span class="line">    s = <span class="variable language_">self</span>.Whh(hidden) <span class="comment"># (B, H)</span></span><br><span class="line">    new_hidden = torch.tanh(z + s)</span><br><span class="line">    <span class="keyword">return</span> new_hidden</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">_init_hidden</span>(<span class="params">self，x</span>):</span><br><span class="line">    <span class="keyword">return</span> tensor.zeros((x.size(<span class="number">0</span>), <span class="variable language_">self</span>.hidden_dim), device=x.device)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RNN</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embed_dim, hidden_dim, num_layers=<span class="number">1</span></span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.num_layers = num_layers</span><br><span class="line">    <span class="variable language_">self</span>.layers = nn.ModuleList([</span><br><span class="line">      RNNCell(embed_dim, hidden_dim)</span><br><span class="line">      <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_layers)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">    <span class="comment"># x: (B, T, H)</span></span><br><span class="line">    B, T, H = x.shape</span><br><span class="line">    outputs = []</span><br><span class="line">    hiddens = [<span class="literal">None</span>] * <span class="variable language_">self</span>.num_layers</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">      inputs = x[:, t, :] <span class="comment"># (B, C)</span></span><br><span class="line">      <span class="keyword">for</span> i, layer <span class="keyword">in</span> <span class="built_in">enumerate</span>(<span class="variable language_">self</span>.layers):</span><br><span class="line">        hiddens[i] = layer(inputs, hiddens[i]) <span class="comment"># (B, H)</span></span><br><span class="line">        inputs = hiddens[i]</span><br><span class="line">      outputs.append(hiddens[-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> torch.stack(outputs, dim=<span class="number">1</span>) <span class="comment"># (B, T, H)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>以上是 RNN 的实现。核心概念就是，每一个 RNNCell 都保存着一个关于输入序列的记忆，即 hidden_dim，迭代序列的每一个元素并将其传入 RNN 模型，都会使其更新这个内部记忆。这就解决了无法处理不定长序列的问题。但是这样的方法是否有弊端呢？</p>
+<p>有的，首先，随着序列变长，每一个 loss 的计算都依赖于以前的每一个字符，这会导致依赖链非常长。这么来思考，要求矩 W 的梯度，就是求矩阵 W 的值对于损失的影响，由于矩阵 W 从 t &#x3D; 0  开始就参与到计算，所以计算梯度时，也会从 t  &#x3D;T 开始一直求解到 t  &#x3D; 0 。这会导致两个问题</p>
+<ol>
+<li>梯度爆炸&#x2F;梯度消失</li>
+<li>反向传播非常慢</li>
+</ol>
+<p>要解决第一个问题，我们得知道为什么梯度会爆炸或是消失</p>
+<p>假设 <code>Wih</code> 为 <code>W</code>，那么 ta 的梯度如下：</p>
+<p>$$<br>\frac{\partial L_n}{\partial W}<br>&#x3D; \sum^n<br>\frac{\partial L_n}{\partial o_n}<br>\frac{\partial o_n}{\partial s_n}<br>(<br>\prod_{j - k - 1}^{n}<br>\frac{\partial s_j}{\partial s_{j-1}}<br>)<br>\frac{\partial s_k}{\partial W}<br>$$<br>可以看到，在梯度中，有一项连乘项，该项为 tanh 的导数，以下是 tanh 的梯度图：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img2020.cnblogs.com/blog/2094479/202008/2094479-20200802140232915-262746398.png"
+                     
+                ><br>可以看到，只有当 x &#x3D; 0 时，tanh 的梯度才为 1，且最大为 1。这就导致当序列特别长时，这项连乘会趋于 0。当 W 特别大时，连乘项会趋于无穷。这就是为什么 RNN 很难训练，且有梯度消失和梯度爆炸问题的原因。那我们可以如何解决呢？其核心要点就一个，消除连乘项的影响</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GRUCell</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim</span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.Wxz = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Whz = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Wxr = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Whr = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Wxh = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.Whh = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, h</span>):</span><br><span class="line">    <span class="comment"># x: (B, C)</span></span><br><span class="line">    <span class="comment"># h: (B, H)</span></span><br><span class="line">    <span class="keyword">if</span> h <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">      h = <span class="variable language_">self</span>._init_hidden()</span><br><span class="line">    z = torch.sigmoid(</span><br><span class="line">      <span class="variable language_">self</span>.Wxz(x) + <span class="variable language_">self</span>.Whz(h)</span><br><span class="line">    )</span><br><span class="line">    r = torch.sigmoid(</span><br><span class="line">      <span class="variable language_">self</span>.Wxr(x) + <span class="variable language_">self</span>.Whr(h)</span><br><span class="line">    )</span><br><span class="line">    h_hat = torch.tanh(</span><br><span class="line">      <span class="variable language_">self</span>.Wxh(x) + <span class="variable language_">self</span>.Whh(r * h)</span><br><span class="line">    )</span><br><span class="line">    new_h = (<span class="number">1</span>-z) * h + z * h_hat</span><br><span class="line">    <span class="keyword">return</span> new_h</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GRU</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, input_dim, hidden_dim, num_layers=<span class="number">1</span></span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.num_layers = num_layers</span><br><span class="line">    <span class="variable language_">self</span>.layers = nn.ModuleList()</span><br><span class="line">    <span class="variable language_">self</span>.layers.append(GRUCell(input_dim, hidden_dim))</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_layers - <span class="number">1</span>):</span><br><span class="line">      <span class="variable language_">self</span>.layers.append(</span><br><span class="line">        GRUCell(hidden_dim, hidden_dim)</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">    B, T, C = x.shape</span><br><span class="line"></span><br><span class="line">    outputs = []</span><br><span class="line">    hiddens = [<span class="literal">None</span>] * <span class="variable language_">self</span>.num_layers</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">      inputs = x[:, t, :]</span><br><span class="line">      <span class="keyword">for</span> i, layer <span class="keyword">in</span> <span class="built_in">enumerate</span>(</span><br><span class="line">      <span class="variable language_">self</span>.layers):</span><br><span class="line">        hiddens[i] = layer(inputs, hiddens[i])</span><br><span class="line">        inputs = hiddens[i]</span><br><span class="line">    outputs.append(hiddens[-<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> torch.stack(outputs, dim=<span class="number">1</span>)    </span><br></pre></td></tr></table></figure></div>
+
+<p>门控网络之所以可以缓解梯度消失，可以这么理解，再更新隐藏状态时，门控可以决定是否要更新，如果不更新的话，当前隐藏状态会原封不动的传递到下一个时刻，再反向传播时梯度也就为 1 了。</p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p>为了训练模型，我们需要为不同类型任务准备不一样的数据集。</p>
+<p>对于情感分类任务，数据集格式应该是 （tokens，label）。输入经过 tokenizer 之后的文本 token ids，输出标签。</p>
+<p>常见的数据集有 GLEU，这是一个综合数据集，包含九种任务分别是：</p>
+<ol>
+<li>CoLA: The Corpus of Linguistic Acceptability ：单句子分类任务，分类句子是否合乎语法逻辑</li>
+<li>SST-2: The Stanford Sentiment Treebank: 句子情感分类任务</li>
+</ol>
+<h2 id="Attention-Mechanism"><a href="#Attention-Mechanism" class="headerlink" title="Attention Mechanism"></a>Attention Mechanism</h2><p>在 LSTM 和 CRU 问世之后，我们还能如何改进模型？首先明确 RNN 的一个核心思路就是将不定长的输入压缩到一个固定向量内，然后基于该固定向量执行任务，例如情感分类，生成，翻译任务等。</p>
+<p>但是当文本变长后，将其压缩到固定向量会损失大量信息，为了解决这个问题，Bahdanau 提出 Attention<br>机制。该 attention 机制最早用于 seq-seq 模型，用于 decoder 生成每一个字符时，接收不同的上下文向量，而不是固定的。</p>
+<p>该上下文向量如下：<br>$$<br>context &#x3D;<br>f(h_1, \dots , h_t) </p>
+<ul>
+<li>s_t </li>
+<li>y_{t-1}<br>$$<br>context 向量和原始文本中每一个 token 的隐向量有关，和当前 decoder 隐向量有关，和 decoder 上一个输出有关。</li>
+</ul>
+<p>通过结合输入 token  的隐变量，每一个待  生成的 token 都会具有不一样的上下文向量</p>
+<hr>
+<blockquote>
+<p>📂 返回 深度学习 MOC</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> RNN</li>
+        <li><strong>Author:</strong> Ivan</li>
+        <li><strong>Created at
+                :</strong> 2026-06-20 00:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-10-23 18:02:31
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://ivanfan-van.github.io/2026/06/20/note-2-seed-043/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Deep-Learning/">#Deep-Learning</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/NLP/">#NLP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2026/06/20/note-2-seed-038/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">HMM</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2026/06/20/note-2-seed-046/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">WaveNet</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">RNN</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN-CRU"><span class="nav-text">RNN &amp; CRU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention-Mechanism"><span class="nav-text">Attention Mechanism</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Ivan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        123 posts in total
+                    </span>
+                    
+                        <span>
+                            55.2k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.3</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+</body>
+</html>

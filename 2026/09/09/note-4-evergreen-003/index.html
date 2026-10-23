@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Ivan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://ivanfan-van.github.io/2026/09/09/note-4-evergreen-003/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="本文尝试解决以下问题: 如何构建一个无限大小, 可拖拽缩放的幕布 web app. 无限幕布类应用有非常广阔的场景, 例如 tldraw  手写幕布, 可以用于记录笔记, 绘制架构图等. 又或是用于展示路径图, 例如 labuladong 的算法学习路径 算法刷题路线图   抑或是构建零代码或低代码开发平台, 例如 Dify - The Platform for Production-Ready">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何构建一个无限大自由幕布">
+<meta property="og:url" content="https://ivanfan-van.github.io/2026/09/09/note-4-evergreen-003/index.html">
+<meta property="og:site_name" content="Ivan&#39;s Scribbles">
+<meta property="og:description" content="本文尝试解决以下问题: 如何构建一个无限大小, 可拖拽缩放的幕布 web app. 无限幕布类应用有非常广阔的场景, 例如 tldraw  手写幕布, 可以用于记录笔记, 绘制架构图等. 又或是用于展示路径图, 例如 labuladong 的算法学习路径 算法刷题路线图   抑或是构建零代码或低代码开发平台, 例如 Dify - The Platform for Production-Ready">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/4-evergreen/assets/Pasted%20image%2020260910005747.png">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/4-evergreen/assets/Pasted%20image%2020260910005810.png">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/4-evergreen/assets/Pasted%20image%2020260910010028.png">
+<meta property="article:published_time" content="2026-09-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-23T10:02:31.533Z">
+<meta property="article:author" content="Ivan">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ivanfan-van.github.io/notes-assets/4-evergreen/assets/Pasted%20image%2020260910005747.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            如何构建一个无限大自由幕布 | Ivan&#39;s Scribbles
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"ivanfan-van.github.io","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"},"delete_mask":false},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]},"pangu_js":false},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/wallhaven-wqery6-light.webp","description":"Ivan's Scribbles - A personal blog about programming and technology."},"google_analytics":{"enable":false,"id":null},"side_tools":{"gear_rotation":true,"auto_expand":false}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to Ivan's Scribbles","subtitle":{"text":["Computer Science is a science of abstraction","The best way to predict the future is to invent it","Imagination is more important than knowledge","Computer science is no more about computers than astronomy is about telescopes"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.7.3","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"CV":{"path":"/tags/CV/","icon":"fa-regular fa-address-card"},"Notes":{"path":"/notes/","icon":"fa-regular fa-note-sticky"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":false,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/10/18 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Ivan&#39;s Scribbles
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/CV/"
+                                        >
+                                    <i class="fa-regular fa-address-card fa-fw"></i>
+                                    CV
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/notes/"
+                                        >
+                                    <i class="fa-regular fa-note-sticky fa-fw"></i>
+                                    NOTES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/CV/"
+                        >
+                            <span>
+                                CV
+                            </span>
+                            
+                                <i class="fa-regular fa-address-card fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/notes/"
+                        >
+                            <span>
+                                NOTES
+                            </span>
+                            
+                                <i class="fa-regular fa-note-sticky fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">123</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">如何构建一个无限大自由幕布</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Ivan</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-09-09</span>
+        <span class="mobile">2026-09-09</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-10-23 18:02:31</span>
+            <span class="mobile">2026-10-23 18:02:31</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/Notes/Evergreen/">Evergreen</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>本文尝试解决以下问题:</p>
+<p>如何构建一个无限大小, 可拖拽缩放的幕布 web app.</p>
+<p>无限幕布类应用有非常广阔的场景, 例如 <a class="link"   target="_blank" rel="noopener" href="https://www.tldraw.com/" >tldraw <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 手写幕布, 可以用于记录笔记, 绘制架构图等.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/4-evergreen/assets/Pasted%20image%2020260910005747.png"
+                      alt="Pasted image 20260910005747.png"
+                ></p>
+<p>又或是用于展示路径图, 例如 labuladong 的算法学习路径 <a class="link"   target="_blank" rel="noopener" href="https://labuladong.online/zh/roadmap/algo/" >算法刷题路线图 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/4-evergreen/assets/Pasted%20image%2020260910005810.png"
+                      alt="Pasted image 20260910005810.png"
+                ></p>
+<p>抑或是构建零代码或低代码开发平台, 例如 <a class="link"   target="_blank" rel="noopener" href="https://dify.ai/" >Dify - The Platform for Production-Ready Agentic Workflows <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/4-evergreen/assets/Pasted%20image%2020260910010028.png"
+                      alt="Pasted image 20260910010028.png"
+                ></p>
+<p>它们的核心底座都是一个支持自由拖拽、节点创建与连线的无限画布。 </p>
+<p>自由幕布虽然应用场景各异，但其底层的物理模型与核心计算公式极其相似。只要掌握了其精髓，就能轻松复用并在此基础上定制属于自己的应用层。</p>
+<p>本文将带你深刻理解无限幕布的核心物理模型，一步步编写出完整、健壮的基础框架代码，并提供性能优化与架构进阶的指引。</p>
+<p>任何 web 应用底层都是由 <code>html</code>, <code>css</code>, <code>javascript</code> 构建的, 所以在构建任何 web app 时, 只需要思考以下三个问题:</p>
+<ol>
+<li>你的 app 应用应该包含哪些元素(component)</li>
+<li>每个元素应当具备哪些特性 (形状, 大小, 位置, 锚点等)</li>
+<li>每个元素应当如何响应用户交互行为 (例如鼠标, 滚轮)</li>
+</ol>
+<p>而无限画布的本质其实很简单：<strong>用一个可以整体平移缩放的”世界容器”包裹所有内容</strong>，用户看到的画面 &#x3D; 世界容器经过 <code>translate + scale</code> 变换后的样子。因此只要维护好 <code>offset(x, y)</code> 和 <code>scale</code> 这三个状态,剩下的都是围绕它们做数学计算。</p>
+<p>实现无限画布最简洁的 HTML 结构如下：</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;viewport&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;world&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;objects&quot;</span> /&gt;</span> </span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
+<p><code>viewport</code> 元素是视窗, 固定宽高, 你可以理解为摄像机的镜头屏幕, 摄像机多大该视口就多大.<br><code>world</code> 元素则是那个无限大的幕布, 不过我们没有办法实现无限大, 所以实际上该 <code>world</code> 元素是一个没有面积的点, 作为幕布世界坐标原点而存在, 幕布内元素的位置都会基于该原点进行计算. 如果现在看不懂没关系, 后文会详细解释这些概念.</p>
+<p>css:</p>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#viewport</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: ...;</span><br><span class="line">	<span class="attribute">height</span>: ...;</span><br><span class="line">	<span class="attribute">position</span>: relative; <span class="comment">/* 用于给 canvas 元素定位 */</span></span><br><span class="line">	<span class="attribute">overflow</span>: hidden; <span class="comment">/* 当元素移出 viewport 时应当消失不见 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/* 为了更好的展示缩放和拖拽效果, 我们为 viewport 添加如下 css 特性来为其添加一个点状背景 */</span></span><br><span class="line">	<span class="attribute">background-image</span>: <span class="built_in">radial-gradient</span>(circle, <span class="built_in">var</span>(--dot-color) <span class="number">1px</span>, transparent <span class="number">1px</span>);</span><br><span class="line">	<span class="attribute">background-size</span>: <span class="number">24px</span> <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#world</span> &#123;</span><br><span class="line">	<span class="attribute">position</span>: absolute; <span class="comment">/* 一定要绝对定位, 使其不占用 document flow */</span></span><br><span class="line">	<span class="comment">/* world 为世界坐标原点, 默认在容器左上角, 和浏览器坐标系保持一致 */</span></span><br><span class="line">	<span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>; <span class="comment">/*一定要和世界坐标原点对其, 默认是 50% 50%, 如果不对齐缩放会有问题 */</span></span><br><span class="line">	<span class="attribute">will-change</span>: transform; <span class="comment">/* 用于告诉浏览器该属性会经常变化, 优化性能 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><code>world</code> 元素只作为坐标系原点存在, 所以没有宽高. <code>transform-origin</code> 用于设置 scale 的原点位置, 由于设置了宽高为 0, 此时 <code>transform-origin</code> 和其本身重合, 其实无需指定该属性, 不过避免一些其他设置影响, 我们在这显示指定这个属性.</p>
+<p>在交互行为中, 幕布主要关注 <code>pointer</code> 和 <code>wheel</code> 事件</p>
+<ul>
+<li><code>pointerup</code>, <code>pointermove</code>, <code>pointerdown</code> 用于拖拽幕布, 移动物体, 框选等功能</li>
+<li><code>wheel</code> 用于缩放幕布操作.</li>
+</ul>
+<p>那怎么移动幕布或是缩放幕布大小呢? 我们通过对 <code>world</code> 元素施加 <code>transform</code> css 属性来应用平移和缩放, 其中所有 <code>world</code> 的子元素都会被应用相同的平移和缩放.</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">applyTransform</span>(<span class="params"></span>) &#123;</span><br><span class="line">  world.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`translate(<span class="subst">$&#123;state.x&#125;</span>px, <span class="subst">$&#123;state.y&#125;</span>px) scale(<span class="subst">$&#123;state.scale&#125;</span>)`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">	<span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">scale</span>: <span class="number">1.0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>实现拖拽平移的方式是在空白处按下鼠标记录起点，移动时用差值更新 offset：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义幕布拖拽功能</span></span><br><span class="line">viewport.<span class="title function_">addEventListener</span>(<span class="string">&quot;pointerdown&quot;</span>, <span class="function">(<span class="params">e: PointerEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.<span class="property">target</span> == viewport || e.<span class="property">target</span> == canvas) &#123;</span><br><span class="line">    viewport.<span class="title function_">setPointerCapture</span>(e.<span class="property">pointerId</span>); <span class="comment">// 在指针移出 viewport 元素时, 仍旧能获取 pointer 来移动幕布</span></span><br><span class="line">    isPanning = <span class="literal">true</span>;</span><br><span class="line">    panStart = &#123; <span class="attr">x</span>: e.<span class="property">clientX</span>, <span class="attr">y</span>: e.<span class="property">clientY</span>, <span class="attr">ox</span>: state.<span class="property">x</span>, <span class="attr">oy</span>: state.<span class="property">y</span> &#125;;</span><br><span class="line">    viewport.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">viewport.<span class="title function_">addEventListener</span>(<span class="string">&quot;pointermove&quot;</span>, <span class="function">(<span class="params">e: PointerEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isPanning) &#123;</span><br><span class="line">    state.<span class="property">x</span> = panStart.<span class="property">ox</span> + (e.<span class="property">clientX</span> - panStart.<span class="property">x</span>);</span><br><span class="line">    state.<span class="property">y</span> = panStart.<span class="property">oy</span> + (e.<span class="property">clientY</span> - panStart.<span class="property">y</span>);</span><br><span class="line">    <span class="title function_">applyTransform</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">viewport.<span class="title function_">addEventListener</span>(<span class="string">&quot;pointerup&quot;</span>, <span class="function">(<span class="params">e: PointerEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (isPanning) &#123;</span><br><span class="line">    viewport.<span class="title function_">releasePointerCapture</span>(e.<span class="property">pointerId</span>);</span><br><span class="line">    isPanning = <span class="literal">false</span>;</span><br><span class="line">    viewport.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>如果只是简单地改 <code>scale</code>，画面会绕左上角缩放，体验很差。正确做法是：<strong>缩放前后，鼠标指向的那个世界坐标点，屏幕位置不能变。</strong> </p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">viewport.<span class="title function_">addEventListener</span>(<span class="string">&quot;wheel&quot;</span>, <span class="function">(<span class="params">e: WheelEvent</span>) =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 区分触控板平移以及缩放</span></span><br><span class="line">  <span class="keyword">if</span> (e.<span class="property">ctrlKey</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> deltaY = e.<span class="property">deltaY</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Math</span>.<span class="title function_">abs</span>(e.<span class="property">deltaY</span>) &gt; <span class="number">10</span>) &#123;</span><br><span class="line">      deltaY = deltaY / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> rect = viewport.<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">    <span class="comment">// 1. 计算鼠标当前的屏幕坐标</span></span><br><span class="line">    <span class="keyword">const</span> mx = e.<span class="property">clientX</span> - rect.<span class="property">left</span>;</span><br><span class="line">    <span class="keyword">const</span> my = e.<span class="property">clientY</span> - rect.<span class="property">top</span>;</span><br><span class="line">    <span class="comment">// 2. 计算鼠标在幕布世界中的坐标</span></span><br><span class="line">    <span class="keyword">const</span> worldX = (mx - state.<span class="property">x</span>) / state.<span class="property">scale</span>;</span><br><span class="line">    <span class="keyword">const</span> worldY = (my - state.<span class="property">y</span>) / state.<span class="property">scale</span>;</span><br><span class="line">    <span class="comment">// 3. 计算新 scale</span></span><br><span class="line">    <span class="keyword">const</span> factor = <span class="title class_">Math</span>.<span class="title function_">exp</span>(-deltaY * <span class="number">0.02</span>);</span><br><span class="line">    <span class="keyword">const</span> newScale = <span class="title function_">clamp</span>(state.<span class="property">scale</span> * factor, <span class="number">0.1</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="comment">// 4. 反推 offset, 确保 worldX 和 worldY 仍旧落在 mx 和 my 上</span></span><br><span class="line">    state.<span class="property">x</span> = mx - worldX * newScale;</span><br><span class="line">    state.<span class="property">y</span> = my - worldY * newScale;</span><br><span class="line">    state.<span class="property">scale</span> = newScale;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    state.<span class="property">x</span> -= e.<span class="property">deltaX</span>;</span><br><span class="line">    state.<span class="property">y</span> -= e.<span class="property">deltaY</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">applyTransform</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>浏览器有一个几乎所有主流引擎（Chrome&#x2F;Firefox&#x2F;Safari）都遵守的约定, 可以帮助我们分辨用户究竟希望使用触控板平移还是缩放幕布. </p>
+<p><strong>触控板双指开合（捏合手势）</strong> → 浏览器会派发一个 <code>wheel</code> 事件，并且<strong>自动把 <code>ctrlKey</code> 设为 <code>true</code></strong>（即使你根本没按 Ctrl 键）<br><strong>触控板双指平移</strong> → 派发正常的 <code>wheel</code> 事件，<code>ctrlKey</code> 为 <code>false</code>，但 <code>deltaX</code>&#x2F;<code>deltaY</code> 都有值（因为是双向平移）</p>
+<p>通过判断 <code>ctrlKey</code> 是否触发, 我们就可以判断用户的意图, 来分辨触控板是要平移还是缩放幕布了.</p>
+<p>为了确保鼠标指向的那个位置在缩放后不会移动, 我们需要确保其世界坐标在缩放后的屏幕坐标仍旧是 <code>mx</code> 和 <code>my</code>. </p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newScreenX = worldX * newScale + newX</span><br></pre></td></tr></table></figure></div>
+
+<p>我们希望 <code>newScreenX</code> 仍旧是 <code>mx</code>, 此时可以得到</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newX = newScreenX - worldX * newScale` =&gt; `state.x = mx - worldX * newScale</span><br></pre></td></tr></table></figure></div>
+
+<p>至此, 我们就实现了一个最基础的无限大幕布应用. 包含以下基本功能:</p>
+<ul>
+<li>幕布平移</li>
+<li>鼠标中心缩放</li>
+<li>物体拖拽</li>
+</ul>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> 如何构建一个无限大自由幕布</li>
+        <li><strong>Author:</strong> Ivan</li>
+        <li><strong>Created at
+                :</strong> 2026-09-09 00:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-10-23 18:02:31
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://ivanfan-van.github.io/2026/09/09/note-4-evergreen-003/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/web/">#web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2026/09/11/note-1-inbox-003/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">代码世界的抽象</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2026/09/07/note-1-inbox-033/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">STAT3600 linear regression &amp; statistics</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">如何构建一个无限大自由幕布</div>
+        
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Ivan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        123 posts in total
+                    </span>
+                    
+                        <span>
+                            55.2k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.3</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+</body>
+</html>

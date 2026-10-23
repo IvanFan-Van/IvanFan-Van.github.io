@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Ivan">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://ivanfan-van.github.io/2026/04/20/note-4-evergreen-009/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="NodeJS 中的 createServer 是如何实现的? 其底层返回的 web 服务器具体要具备哪些功能? 我应该如何实现一个自己的 createServer 函数?  12345678910import &#123; createServer &#125; from &quot;node:http&quot;;const server &#x3D; createServer((req, res) &#x3D;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs 的 createServer 是如何实现的">
+<meta property="og:url" content="https://ivanfan-van.github.io/2026/04/20/note-4-evergreen-009/index.html">
+<meta property="og:site_name" content="Ivan&#39;s Scribbles">
+<meta property="og:description" content="NodeJS 中的 createServer 是如何实现的? 其底层返回的 web 服务器具体要具备哪些功能? 我应该如何实现一个自己的 createServer 函数?  12345678910import &#123; createServer &#125; from &quot;node:http&quot;;const server &#x3D; createServer((req, res) &#x3D;&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005005438.png">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005005952.png">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005010135.png">
+<meta property="og:image" content="https://ivanfan-van.github.io/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005010419.png">
+<meta property="article:published_time" content="2026-04-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-10-23T10:02:31.533Z">
+<meta property="article:author" content="Ivan">
+<meta property="article:tag" content="nodejs">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ivanfan-van.github.io/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005005438.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Nodejs 的 createServer 是如何实现的 | Ivan&#39;s Scribbles
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"ivanfan-van.github.io","root":"/","language":"en","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"},"delete_mask":false},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]},"pangu_js":false},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"open_graph":{"enable":true,"image":"/images/wallhaven-wqery6-light.webp","description":"Ivan's Scribbles - A personal blog about programming and technology."},"google_analytics":{"enable":false,"id":null},"side_tools":{"gear_rotation":true,"auto_expand":false}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Welcome to Ivan's Scribbles","subtitle":{"text":["Computer Science is a science of abstraction","The best way to predict the future is to invent it","Imagination is more important than knowledge","Computer science is no more about computers than astronomy is about telescopes"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.7.3","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"CV":{"path":"/tags/CV/","icon":"fa-regular fa-address-card"},"Notes":{"path":"/notes/","icon":"fa-regular fa-note-sticky"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":false,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2023/10/18 00:00:00"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container flex flex-col justify-between min-h-dvh">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+                <a class="logo-image h-8 w-8 sm:w-10 sm:h-10 mr-3" href="/">
+                    <img src="/images/logo.png" class="w-full h-full rounded-sm">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                Ivan&#39;s Scribbles
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/CV/"
+                                        >
+                                    <i class="fa-regular fa-address-card fa-fw"></i>
+                                    CV
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/notes/"
+                                        >
+                                    <i class="fa-regular fa-note-sticky fa-fw"></i>
+                                    NOTES
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/CV/"
+                        >
+                            <span>
+                                CV
+                            </span>
+                            
+                                <i class="fa-regular fa-address-card fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/notes/"
+                        >
+                            <span>
+                                NOTES
+                            </span>
+                            
+                                <i class="fa-regular fa-note-sticky fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">123</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Nodejs 的 createServer 是如何实现的</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Ivan</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-04-20</span>
+        <span class="mobile">2026-04-20</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-10-23 18:02:31</span>
+            <span class="mobile">2026-10-23 18:02:31</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Notes/">Notes</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/Notes/Evergreen/">Evergreen</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/nodejs/">nodejs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>13 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>NodeJS 中的 <code>createServer</code> 是如何实现的? 其底层返回的 web 服务器具体要具备哪些功能? 我应该如何实现一个自己的 <code>createServer</code> 函数? </p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createServer &#125; <span class="keyword">from</span> <span class="string">&quot;node:http&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = <span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">	res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;);</span><br><span class="line">	res.<span class="title function_">end</span>(<span class="string">&quot;hello world!\n&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="string">&#x27;127.0.0.1&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Listening on 127.0.0.1:3000&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>为了一探究竟, 我们从源码入手, 从上往下深挖每一个点</p>
+<p>首先查看 <code>createServer</code> 函数来自于哪个文件, 通过查找我们找到了 node&#x2F;lib&#x2F;http.js 文件中这么定义了 <code>createServer</code> 函数:</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到上述的代码仍旧只是一个简单的调用, 所以为了更深入了解 Server 具体是什么, 我们得继续追踪, 然后可以找到在 <code>createServer</code> 中 new 的 <code>Server</code> 对象定义在 _http_server.js 第 556 行. 具体定义如下:</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Server</span>(<span class="params">options, requestListener</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (!(<span class="variable language_">this</span> instance <span class="keyword">of</span> <span class="title class_">Server</span>)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Server</span>(options, requestListener);</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里为什么 Server 是一个函数, 是因为早期 JS 语言的设计缺陷, 为了附和 OOP 面向对象的设计思路, 早期的 <code>function</code> 可以既作为函数来调用, 即 <code>function()</code>, 或是使用 new 关键词将其当作构造函数来调用 <code>new function()</code>. 当使用 new 关键词时, 后者会返回一个 json object. 如下</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">p instanceof Person =&gt; true</span></span><br><span class="line"><span class="comment">p instanceof Object =&gt; true</span></span><br><span class="line"><span class="comment">typeof a =&gt; &#x27;object&#x27;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">a, b</span>) &#123; <span class="keyword">return</span> a + b&#125;;</span><br><span class="line"><span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// valid</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005005438.png"
+                      alt="Pasted image 20251005005438.png"
+                ><br>在使用 new 关键字调用的函数内 <code>this</code> 被绑定到对象本身, 在调用中则是全局对象, 在浏览器内是 <code>window</code> 对象.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005005952.png"
+                      alt="Pasted image 20251005005952.png"
+                ></p>
+<p>对任何函数使用 new 关键字都是合法的, 所以早期 js 无法对函数的使用方式做出限制, 只能靠广大程序猿自己约束自己, 大家默认使用首字母大写的方式命名构造函数, 普通函数则使用小写字母开头, 然后根据函数名称的命名规范自己约束自己使用合适的方式. 但这个隐患很大, 所以 ES6 之后出现了两个新的概念用来解决早期 <code>function</code> 的歧义, 第一个是 <strong>箭头函数</strong>, 第二个是 <strong>class 关键字</strong>. 使用箭头函数语法声明的函数是纯函数, 无法通过 new 关键字调用, 同时没有 this 对象, this 对象为其父级作用域的 this, 在浏览器环境全局作用域内是 <code>window</code>, 在严格模式下为 <code>undefined</code>. 在某个函数内部则是该函数的 <code>this</code>.  而使用 class 声明的类, 则必须使用 new 关键字调用, 否则则会抛出错误.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005010135.png"
+                      alt="Pasted image 20251005010135.png"
+                ><br>可以从上图中看到, 当使用箭头函数语法创建函数时, 无法使用 new 来调用, 当使用 class 声明的函数时无法直接调用. 这样就从语法层面避免了函数的混用造成的问题以及函数的二义性.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/notes-assets/1-inbox/assets/Nodejs%20%E7%9A%84%20createServer%20%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/Pasted%20image%2020251005010419.png"
+                      alt="Pasted image 20251005010419.png"
+                ><br>可以看到不管是 <code>add</code> 还是 <code>Person</code> 他们的类型都还是 “function”, 所以可以将 <code>class 关键字</code> 以及 <code>箭头函数</code> 视作是 js 给我们提供的 <strong>语法糖</strong>.</p>
+<p>回到正题, 可以看到 nodejs 源代码中使用 new 关键字使用了 <code>Server</code> 函数, 说明该函数是视为类的构造函数使用的, 从首字母大写的命名也可以窥见.</p>
+<p>第一行 <code>if (!(this instanceof Server)) return new Server(options, requestListener)</code> 代码的作用这里就显而易见了, 当用户将 Server 函数作为纯函数调用时, <code>this</code> 不会指向 Server 对象, 而是全局对象 <code>window</code>, 这时这行代码就会将其行为跳转到使用 new 关键字来创建对象而不是调用该函数.</p>
+<p>继续看这个构造函数干了什么</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Server</span>(<span class="params">options, requestListener</span>) &#123;</span><br><span class="line">	  <span class="comment">// 设置如何传递参数, 如果只传了 handler, 则直接设置 options 为 kEmptyObject</span></span><br><span class="line">	  <span class="comment">// 然后验证 options 是否符合规范</span></span><br><span class="line">	  <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">	    requestListener = options;</span><br><span class="line">	    options = kEmptyObject;</span><br><span class="line">	  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options == <span class="literal">null</span>) &#123;</span><br><span class="line">	    options = kEmptyObject;</span><br><span class="line">	  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="title function_">validateObject</span>(options, <span class="string">&#x27;options&#x27;</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="comment">// 将 options 的值保存到 Server 类的实例上, 例如 IncomingMessage 类型、ServerResponse 类型、最大头部大小、解析器安全选项、请求和头部超时、保持连接超时、是否要求 Host 头、是否合并重复头、是否拒绝非标准 body 写入等</span></span><br><span class="line">	  storeHTTPOptions.<span class="title function_">call</span>(<span class="variable language_">this</span>, options);</span><br><span class="line">	  </span><br><span class="line">	  ...</span><br><span class="line">	  </span><br><span class="line">	  <span class="comment">// 这里很重要, 我们将 requestListener 函数注册为 request 事件的处理器</span></span><br><span class="line">	  <span class="comment">// 同时还注册了两个事件 connection 以及 listening, 并配置了默认的函数用于处理</span></span><br><span class="line">	  <span class="keyword">if</span> (requestListener) &#123;</span><br><span class="line">		  <span class="variable language_">this</span>.<span class="title function_">on</span>(<span class="string">&quot;request&quot;</span>, requestListener);</span><br><span class="line">	  &#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="variable language_">this</span>.<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, connectionListener);</span><br><span class="line">	  <span class="variable language_">this</span>.<span class="title function_">on</span>(<span class="string">&quot;listening&quot;</span>, setupConnectionsTracking);</span><br><span class="line">	  </span><br><span class="line">	  ... <span class="comment">// 其他设置代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">ObjectSetPrototypeOf</span>(<span class="title class_">Server</span>.<span class="property"><span class="keyword">prototype</span></span>, net.<span class="property">Server</span>.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"><span class="title class_">ObjectSetPrototypeOf</span>(<span class="title class_">Server</span>, net.<span class="property">Server</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到整个构造函数的核心就两个点, <strong>第一: 设置 options 的服务器相关参数</strong>, <strong>第二: 注册监听器</strong>. 同时我还在源代码该构造函数下面看到了以上末尾两行代码, 这两行代码将 Server 构造函数的原型从 <code>Object</code> 设置为了 <code>net.Server</code>, 很明显是希望继承以及使用一些 <code>net.Server</code> 类中有的函数, 那么核心就应该在那了. 同时值得注意的是, 因为 <code>Server</code> 构造函数内使用了 <code>on</code> 函数注册事件监听器, 这说明 <code>Server</code> 是一个 <code>EventEmitter</code> 的子类, 因为 <code>on</code> 函数是定义在 <code>EventEmitter</code> 上的, 而不是 js 自带的. </p>
+<p>ok 现在我们进到 node&#x2F;lib&#x2F;net.js 文件中查看 <code>net.Server</code> 的定义有何不同.</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Server</span>(<span class="params">options, connectionListener</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> (!(<span class="variable language_">this</span> <span class="keyword">instanceof</span> <span class="title class_">Server</span>)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Server</span>(options, connnectionListener);</span><br><span class="line">	</span><br><span class="line">	<span class="title class_">EventEmitter</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>);</span><br><span class="line">	</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到 net 中的 Server 函数内第一句也是确保该函数的执行行为应该是使用 new 关键字创建对象. 这里直接忽略. 很重要的第一个发现是, 该 Server 的第二个参数从 requestListener 变为了 connectionListener, 这说明该服务器的初始化, 要求的是传入一个 <strong>连接监听器</strong>, 连接监听器是在当有新客户端与服务端创建连接时触发的, 这时该监听器会收到一个 <code>net.Socket 实例</code>作为参数, 然后进行处理, 而 <code>http.Server</code> 中的 requestListener 则是当有一个 request 发送到该服务器时, 应该如何处理, 请求监听器会收到两个参数, 分别是 <code>http.Request 实例</code> 以及 <code>http.Response 实例</code>. </p>
+<p>第二行的 EventEmitter.call(this) 就是初始化父类, 即将 EventEmitter 上的一些属性绑定到 net.Server 实例上, 使其能够使用例如 <code>on</code> 或是 <code>emit</code> 方法, 这也是为什么 http.Server 中可以直接使用 <code>on</code> 方法, 因为末尾的两行 <code>setObjectPrototypeOf()</code> 将其设置为了 net.Server 的子类. 所以以下是当前原型链的关系图</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[http.Server]</span><br><span class="line">B[net.Server]</span><br><span class="line">C[EventEmitter]</span><br><span class="line">D[Object]</span><br><span class="line"></span><br><span class="line">A --&gt; B</span><br><span class="line">B --&gt; C</span><br><span class="line">C --&gt; D</span><br></pre></td></tr></table></figure></div>
+
+<p>其中 EventEmitter 提供 <code>on</code> 以及 <code>emit</code> 方法, net.Server 提供 <code>connectionListener</code> 方法, 而 http.Server 提供 <code>requestListener</code> 方法.</p>
+<p>所以现在的问题是, net.Server 是如何处理连接的? 以及EventEmitter 是如何让各个服务器知晓何时触发事件并执行相对应的函数的呢? 我们一个一个解决, 首先第一个问题, 我们需要去找到 http.Server 中是如何初始化 connectionListener 的, 也就是当我们没有传入 connectionListener 函数时, 默认的行为在哪里.</p>
+<p>在 _http_server.js 第 689 行定义了 connectionListener 函数</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">connectionListener</span>(<span class="params">socket</span>) &#123;</span><br><span class="line">  <span class="title function_">defaultTriggerAsyncIdScope</span>(</span><br><span class="line">    <span class="title function_">getOrSetAsyncId</span>(socket), connectionListenerInternal, <span class="variable language_">this</span>, socket,</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>其中该函数是直接调用了 <code>defaultTriggerAsyncIdScope</code> 函数, 我们继续深入, 我们了解到 <code>defaultTriggerAsyncIdScope</code> 以及 <code>getOrSetAsyncId</code> 函数都是 nodejs 中用于辅助管理异步资源的函数, 真正处理连接的函数仍旧是 <code>connectionListenerInternal</code>, 所以我们进到该函数里面去看看.</p>
+<p>在文件的第 695 行, 我们可以看到该函数的定义</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">connectionListenerInternal</span>(<span class="params">server, socket</span>) &#123;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>其中只看函数签名我们可以看到, 该函数接收两个参数, 分别是 <code>http.Server 实例</code> 以及 <code>net.Socket</code> 实例. 其中我们可以根据 <code>connectionListener</code> 中调用的 <code>getOrSetAsyncId()</code> 函数的第三个参数是 <code>this</code> 推断出该函数收到的是 <code>http.Server 实例</code> 而不是 <code>net.Server</code> 或是别的. </p>
+<p>光看函数签名看不出要做啥, 我们继续深入</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">connectionListenerInternal</span>(<span class="params">server, socket</span>) &#123;</span><br><span class="line">	<span class="title function_">debug</span>(<span class="string">&#x27;SERVER new http connection&#x27;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Ensure that the server property of the socket is correctly set.</span></span><br><span class="line">	<span class="comment">// See https://github.com/nodejs/node/issues/13435</span></span><br><span class="line">	socket.<span class="property">server</span> = server;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// If the user has added a listener to the server,</span></span><br><span class="line">	<span class="comment">// request, or response, then it&#x27;s their responsibility.</span></span><br><span class="line">	<span class="comment">// otherwise, destroy on timeout by default</span></span><br><span class="line">	<span class="keyword">if</span> (server.<span class="property">timeout</span> &amp;&amp; <span class="keyword">typeof</span> socket.<span class="property">setTimeout</span> === <span class="string">&#x27;function&#x27;</span>)</span><br><span class="line">	    socket.<span class="built_in">setTimeout</span>(server.<span class="property">timeout</span>);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;timeout&#x27;</span>, socketOnTimeout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>第一行是 nodejs 提供的 debug 函数, 用于调试, 当设置 NODE_DEBUG&#x3D;http 环境变量时会输出, 我们可以直接跳过.</p>
+<p>第二行很有意思, 看起来是因为一个 bug 导致的修复, 用于给 <code>net.Socket</code> 实例正确设置 server, 对应的 issue 地址在注释内, 和我们无关我们继续深入代码</p>
+<p>后面几行代码看注释是为 socket 连接设置 timeout, 当 socket 连接超时直接删除该 socket. </p>
+<p>后面几行代码开始深入核心了, 先总结一下就是:</p>
+<ol>
+<li>设置一个 HTTP 解析器 (parser), 用于解析客户端发送的 HTTP 请求</li>
+<li>为当前 socket 设置一堆监听器, 例如 <code>data</code>, <code>end</code>, <code>close</code>, <code>drain</code>, <code>error</code>. 用于处理例如 数据到达, 连接结束, 关闭, 流控, 错误等事件</li>
+</ol>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">connectionListenerInternal</span>(<span class="params">server, socket</span>) &#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">const</span> parser = parsers.<span class="title function_">alloc</span>();</span><br><span class="line">	</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">const</span> state = &#123;</span><br><span class="line">	    <span class="attr">onData</span>: <span class="literal">null</span>,</span><br><span class="line">	    <span class="attr">onEnd</span>: <span class="literal">null</span>,</span><br><span class="line">	    <span class="attr">onClose</span>: <span class="literal">null</span>,</span><br><span class="line">	    <span class="attr">onDrain</span>: <span class="literal">null</span>,</span><br><span class="line">	    <span class="attr">outgoing</span>: [],</span><br><span class="line">	    <span class="attr">incoming</span>: [],</span><br><span class="line">	    <span class="comment">// `outgoingData` is an approximate amount of bytes queued through all</span></span><br><span class="line">	    <span class="comment">// inactive responses. If more data than the high watermark is queued - we</span></span><br><span class="line">	    <span class="comment">// need to pause TCP socket/HTTP parser, and wait until the data will be</span></span><br><span class="line">	    <span class="comment">// sent to the client.</span></span><br><span class="line">	    <span class="attr">outgoingData</span>: <span class="number">0</span>,</span><br><span class="line">	    <span class="attr">requestsCount</span>: <span class="number">0</span>,</span><br><span class="line">	    <span class="attr">keepAliveTimeoutSet</span>: <span class="literal">false</span>,</span><br><span class="line">	&#125;;</span><br><span class="line">	state.<span class="property">onData</span> = socketOnData.<span class="title function_">bind</span>(<span class="literal">undefined</span>,</span><br><span class="line">								   server, socket, parser, state);</span><br><span class="line">	state.<span class="property">onEnd</span> = socketOnEnd.<span class="title function_">bind</span>(<span class="literal">undefined</span>,</span><br><span class="line">								 server, socket, parser, state);</span><br><span class="line">	state.<span class="property">onClose</span> = socketOnClose.<span class="title function_">bind</span>(<span class="literal">undefined</span>,</span><br><span class="line">									 socket, state);</span><br><span class="line">	state.<span class="property">onDrain</span> = socketOnDrain.<span class="title function_">bind</span>(<span class="literal">undefined</span>,</span><br><span class="line">									 socket, state);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, state.<span class="property">onData</span>);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, socketOnError);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, state.<span class="property">onEnd</span>);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, state.<span class="property">onClose</span>);</span><br><span class="line">	socket.<span class="title function_">on</span>(<span class="string">&#x27;drain&#x27;</span>, state.<span class="property">onDrain</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>可以看到具体核心逻辑应该在 <code>parser</code> 以及 <code>socketOnData</code> 函数中. js 中的 <code>bind</code> 函数会返回一个新函数, 其中新函数的 this 会被绑定为 bind 的第一个参数, 后续参数会被绑定为新函数的参数.</p>
+<p>所以这里 <code>state.onData</code> 也是一个函数, 里面应该包含了使用 parser 等来封装 HTTP 请求的逻辑.</p>
+<p>以下是 <code>socketOnData</code> 函数的逻辑, 在文件的第 861 行</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">socketOnData</span>(<span class="params">server, socket, parser, state, d</span>) &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">const</span> ret = parser.<span class="title function_">execute</span>(d);</span><br><span class="line">  <span class="title function_">onParserExecuteCommon</span>(server, socket, parser, state, ret, d);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>代码很短, 可以看到核心就是调用 <code>parser.execute</code> 来处理 HTTP 请求, 以及 <code>onParserExecuteCommon</code> 来响应? </p>
+<p>写道这里我在疑惑, 那么是谁负责 <code>emit</code> “connection” 信号给服务器, 并将 socket 传递给 ta, 让其接管进行处理的? 现在看到的大部分代码都是负责接收事件, 那么核心应该就在于发事件的那个人是如何做的. 这个也是我们实现服务器的核心.</p>
+<p>所以接下来我想深入去寻找一下<strong>事件发出者</strong>.</p>
+<p>通过 AI 的帮助, 我了解到事件 connection, data, request 等都是由 <code>net</code> 模块中的 <code>net.Server</code> 发出的, 即 <code>http.Server</code> 的父类. 在代码中寻找, 我们可以在 net.js 中的 onconnection 函数中找到如下这段代码:</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">onconnection</span>(<span class="params">err, clientHandle</span>) &#123;</span><br><span class="line">	<span class="keyword">const</span> handle = <span class="variable language_">this</span>;</span><br><span class="line">	<span class="keyword">const</span> self = handle[owner_symbol];</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">const</span> socket = <span class="keyword">new</span> <span class="title class_">Socket</span>(...);</span><br><span class="line">	self.<span class="title function_">emit</span>(<span class="string">&quot;connection&quot;</span>, socket);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>也就是 <code>onconnection</code> 函数调用时会发出该信号, 并将新创建的 <code>net.Socket</code> 实例作为参数传递给注册 connection 事件的监听器. </p>
+<p>那么 <code>onconnection</code> 何时会被调用呢? 我们可以看到 onconnection 函数被注册到了 handle 上, 所以 handle 会负责调用该函数, 而 handle 本身辗转腾挪最后发现是在创建 net.Socket 对象时传入的 handle 值</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">onconnection</span>(<span class="params">err, clientHandle</span>) &#123;</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">const</span> socket = <span class="keyword">new</span> <span class="title class_">Socket</span>(&#123;</span><br><span class="line">		<span class="attr">handle</span>: clientHandle,</span><br><span class="line">		...</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>而 clientHandle 是在该函数被调用时传入的, 很奇怪, 就像循环引用一样. </p>
+<p>不过我们还有个思路就是从下往上去发掘, 现在已经认识到了 nodejs 底层是基于 libuv 库的, libuv 会负责和用户请求, socket 等接轨, 所以我们可以从 libuv 动手深入. 今天先这样子, 明天继续. </p>
+<p>— 丑陋的分割线 —</p>
+<p>昨天跟踪着 nodejs 的源码, 从 <code>createServer</code> 开始陆续找到了三个核心模块, 其中 <code>http.Server</code> 负责注册 <code>requestListener</code>, <code>net.Server</code> 负责注册 <code>connectionListener</code>, <code>EventEmitter</code> 则提供了最基础的监听事件 (<code>on</code>) 与发送事件(<code>emit</code>) 的功能. </p>
+<p>同时还了解到 nodejs 底层是基于 libuv 库来构建的事件循环, libuv 是一个 c++, 利用原生 epoll, poll 和 select 实现的事件循环机制库. 而 nodejs 中最基本的 “connection”, “data” 等事件, 实际触发者是使用 C 编写的 TCPWrap 对象. 中间通过 js 和 C 胶水代码来缝合.</p>
+<p>整个 nodejs 的核心构建于两个 <strong>东西</strong> 之上, 分别是 <strong>V8 Engine</strong> 以及 <strong>Event Loop (libuv)</strong>. V8 引擎可以理解为 JVM 虚拟机, 能够跨平台运行 js 代码, 而 Event Loop 则提供对 js 中异步操作的支持. </p>
+<p>待完成…</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Nodejs 的 createServer 是如何实现的</li>
+        <li><strong>Author:</strong> Ivan</li>
+        <li><strong>Created at
+                :</strong> 2026-04-20 00:00:00</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-10-23 18:02:31
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://ivanfan-van.github.io/2026/04/20/note-4-evergreen-009/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/web/">#web</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/nodejs/">#nodejs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2026/04/21/note-4-evergreen-011/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">React 中的 useState 和 useEffect 隐藏的危险</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2026/02/11/draft/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">draft</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">Nodejs 的 createServer 是如何实现的</div>
+        
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Ivan</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        123 posts in total
+                    </span>
+                    
+                        <span>
+                            55.2k words in total
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.3</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/tocToggle.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/layouts/toc.js" type="module" data-swup-reload-script=""></script>
+
+<script src="/js/plugins/tabs.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+<script src="/js/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+<script src="/js/layouts/essays.js" type="module" data-swup-reload-script=""></script>
+
+
+
+
+</body>
+</html>
