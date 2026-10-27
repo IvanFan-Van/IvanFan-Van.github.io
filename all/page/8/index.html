@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">124</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">125</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">124</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">125</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,48 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/08/16/note-3-growing-015/">
+                            异步请求响应机制
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            在应对长耗时任务时，传统的请求响应机制有一些显而易见的缺点。例如后端在接收请求后需要调用一个长耗时同步任务，会导致该连接一直被挂起直到任务结束。如果中途客户端因为网络波动等原因断开连接，可能会导致发送重复的任务。
+而异步请求响应机制通过将耗时的操作封装为任务在后端运行，使得响应可以立即完成。后续任务状态让客户端主动查询得到。这样可以避免维护大量的连接，增加服务端的并发性。
+这个技术的详细细节...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Aug 16 2026 00:00:00 GMT+0800">
+                
+                    2026-08-16
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/08/16/note-3-growing-015/">Read more<span class="seo-reader-text">异步请求响应机制</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -955,49 +997,6 @@ python 的绝对导入会检查 sys.path 中的所有路径。其中运行脚本
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/01/note-2-seed-029/">
-                            Actor Critic 架构强化学习
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            AC 是一种同时具备策略网络和 Q 网络的强化学习架构。
-其中 Critic 通过环境给予的奖励和自己的打分来提高自己的判分能力。而 Actor 则会根据 Critic 给出的得分来更新自己的策略。
-因此 Critic 网络会先慢慢变好，然后 Actor 网络再慢慢变好。
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Aug 01 2026 00:00:00 GMT+0800">
-                
-                    2026-08-01
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/01/note-2-seed-029/">Read more<span class="seo-reader-text">Actor Critic 架构强化学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1032,11 +1031,11 @@ python 的绝对导入会检查 sys.path 中的所有路径。其中运行脚本
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        124 posts in total
+                        125 posts in total
                     </span>
                     
                         <span>
-                            55.7k words in total
+                            59.7k words in total
                         </span>
                     
                 </p>
