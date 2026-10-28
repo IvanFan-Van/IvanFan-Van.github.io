@@ -3751,4 +3751,19 @@
         <category>Evergreen</category>
       </categories>
   </entry>
+  <entry>
+    <title>Disentangle Representation Learning</title>
+    <url>/2026/10/28/note-1-inbox-b1768e31f3c60db7/</url>
+    <content><![CDATA[<p>在深度学习中有一个领域叫做 Disentangle Representation Learning, 其目的在于学习到一组特征表达, 其中每个维度都与其他维度解耦, 即数学上保持每个维度独立, 同时其含义也是独立的. </p>
+<p>例如 VAE 中的学习的图像分布 $P(X)$, 希望每一个维度都代表着图像的某一类属性, 例如大小, 旋转角度, 颜色等.</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>想法</tag>
+      </tags>
+  </entry>
 </search>

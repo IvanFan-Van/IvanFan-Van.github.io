@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">125</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">125</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,69 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/21/note-3-growing-003/">
+                            模型自进化，只改变 LoRA 参数
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            现在的模型通常都是离线训练的，不管是预训练还是微调，都是先收集数据，然后微调得到一个固定不动的权重，然后开始推理。在这篇文章中我想思考一个可能的在线学习 （online continuous learning）的架构。
+我的想法是允许模型在线调整 LoRA 模块的参数，来达到微调自身的功能。首先模型本身的权重代表了模型思考的能力体现，使用 LoRA 不会影响到模型本身的能力。同时由于 LoR...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jun 21 2026 00:00:00 GMT+0800">
+                
+                    2026-06-21
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/LoRA/">LoRA</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/21/note-3-growing-003/">Read more<span class="seo-reader-text">模型自进化，只改变 LoRA 参数</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -972,64 +1035,6 @@ $\lambda &#x3D; P(...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/04/21/note-4-evergreen-011/">
-                            React 中的 useState 和 useEffect 隐藏的危险
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            如果 useEffect 的依赖数组中包含被 useEffect 本身修改的 state 时, 会导致无限递归执行, 最终报错 max depth exceeded 栈溢出错误. 例如以下形式。其中 state 既被 useEffect 修改，又被 useEffect 依赖。
-12345678910111213141516171819import React from &#x27;react...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 21 2026 00:00:00 GMT+0800">
-                
-                    2026-04-21
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/React/">React</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Bug/">Bug</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/04/21/note-4-evergreen-011/">Read more<span class="seo-reader-text">React 中的 useState 和 useEffect 隐藏的危险</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1064,11 +1069,11 @@ $\lambda &#x3D; P(...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        125 posts in total
+                        126 posts in total
                     </span>
                     
                         <span>
-                            59.7k words in total
+                            59.8k words in total
                         </span>
                     
                 </p>
