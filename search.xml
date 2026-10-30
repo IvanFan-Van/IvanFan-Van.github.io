@@ -3766,4 +3766,16 @@
         <tag>想法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>神经网络可以做的工作</title>
+    <url>/2026/10/30/note-1-inbox-76a9fc5c9465faad/</url>
+    <content><![CDATA[<p>每一个任务，用传统的模拟，解析解，迭代求解的方式有众多不便，可能耗时，可能具有非常多的假设前提。 </p>
+<p>而使用神经网络进行端到端训练验证，又缺乏可解释性以及改进方向。所以我们能否多去寻找一些工作，其介于神经网络端到端解决问题和传统算法求解问题之间？</p>
+<p>即传统算法给出基础可行解，然后用神经网络拟合复杂的 edge case 部分？</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+  </entry>
 </search>

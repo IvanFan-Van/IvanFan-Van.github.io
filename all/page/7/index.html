@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,66 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/08/17/note-3-growing-016/">
+                            优化 Tokenizer
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            BBPE (Byte-level BPE) Tokenizer 复杂度是 O(N^2)
+naive BPE Implementation
+核心逻辑集中在 get_stats() 和 merge() 函数中
+12345def get_stats(ids):	stats = &#123;&#125;	for p0, p1 in zip(ids, ids[1:]):		stats[(p0, p1)...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Aug 17 2026 00:00:00 GMT+0800">
+                
+                    2026-08-17
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%88%86%E8%AF%8D%E5%99%A8/">分词器</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%B7%A5%E7%A8%8B%E4%BC%98%E5%8C%96/">工程优化</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/08/17/note-3-growing-016/">Read more<span class="seo-reader-text">优化 Tokenizer</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -848,47 +908,6 @@ deepseek 对于工作区的三种权限对比dsh 针对某个工作区有三种�
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/16/note-2-seed-036/">
-                            cordis 学习笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            cordis 是一个元框架，即用来开发框架的框架。主要用于开发任何一个意图实现可插拔的插件类框架。 其本身是脱胎自 koishi 库。该库的作者在开发到 koishi 4.0 时意识到，其 koishi 本身关于插件生命周期的管理方式，不仅仅可以用在 chatbot 上（koishi 本身的业务），也可以用于任何一套现存或是未来的插件类项目，因此将其逻辑提炼并开发了 cordis 框架。
-K...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sun Aug 16 2026 00:00:00 GMT+0800">
-                
-                    2026-08-16
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/16/note-2-seed-036/">Read more<span class="seo-reader-text">cordis 学习笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -923,11 +942,11 @@ K...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        126 posts in total
+                        127 posts in total
                     </span>
                     
                         <span>
-                            59.8k words in total
+                            59.9k words in total
                         </span>
                     
                 </p>

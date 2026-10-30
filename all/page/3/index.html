@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">126</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,48 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/05/note-3-growing-008/">
+                            深入研究 VAE 模型
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            VAE 是 variational auto encoder 模型，用于图像生成。该模型假定我们期望生成的图像都遵循某一个分布 $f$，图像就是该分布采样的结果。
+传递一个特征向量 $x$，采样结果 $f(x)$ 就是图像。
+VAE 假设特征向量 $x \sim Normal(0, I)$ 服从标准正态分布，基于该特征向量训练得到的图像分布 $f$, 我们可以通过采样标准正态分布，来生成随机...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Oct 05 2026 00:00:00 GMT+0800">
+                
+                    2026-10-05
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/10/05/note-3-growing-008/">Read more<span class="seo-reader-text">深入研究 VAE 模型</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -870,48 +912,6 @@ CAP （Consistency，Availability，Partition Tolerance） Theorem 是一个理�
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/21/note-1-inbox-017/">
-                            特征分解解耦与 VAE disentangle 的联系
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            今天学习控制论了解到，将某个矩阵 A 进行特征分解后得到的由特征向量组成的矩阵 Q，可以理解为一个变换，将一个耦合的向量 x 经过矩阵 Q 变换后，会解耦合。
-这让我想到 VAE 中的 disentangle 问题，我们期待模型能够学习到解耦合的隐变量 z
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Sep 21 2026 00:00:00 GMT+0800">
-                
-                    2026-09-21
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/21/note-1-inbox-017/">Read more<span class="seo-reader-text">特征分解解耦与 VAE disentangle 的联系</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -946,11 +946,11 @@ CAP （Consistency，Availability，Partition Tolerance） Theorem 是一个理�
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        126 posts in total
+                        127 posts in total
                     </span>
                     
                         <span>
-                            59.8k words in total
+                            59.9k words in total
                         </span>
                     
                 </p>
