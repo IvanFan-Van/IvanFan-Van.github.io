@@ -3778,4 +3778,21 @@
         <category>Inbox</category>
       </categories>
   </entry>
+  <entry>
+    <title>Jupyter 插件 not working debug 日志</title>
+    <url>/2026/11/06/note-4-evergreen-2d032b011a27d65e/</url>
+    <content><![CDATA[<p>在 vscode 中使用 <code>ctrl+shift+p</code> 打开控制面板, 选择 clear jupyter remote server list 清理所有残留过往 server list.</p>
+<p>确保 jupyter 插件版本不是 2025.9.0</p>
+<p>确保 ipykernel 版本 &lt;&#x3D; 7.0</p>
+<p>相关 stack overflow 问答: <a class="link"   href="https://stackoverflow.com/questions/79788502/jupyter-notebook-extension-visual-studio-code-stuck-connecting-to-kernel" >Jupyter Notebook extension Visual Studio Code stuck “connecting to kernel” - Stack Overflow <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Evergreen</category>
+      </categories>
+      <tags>
+        <tag>debug</tag>
+        <tag>vscode</tag>
+      </tags>
+  </entry>
 </search>

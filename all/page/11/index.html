@@ -354,7 +354,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -409,12 +409,12 @@
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
     
-        <div class="label">Lv5</div>
+        <div class="label">Lv6</div>
     
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,65 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/22/note-1-inbox-026/">
+                            真正的模仿学习？
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            现在的模仿学习是人类操作机械臂，然后让ai 学习操作机械臂来模仿。
+那我试想的是能否让 ai 观看人类用手做操作的视频，然后让 ai 自己 figure out 如何利用他自己的身体来实现这个？
+有点像是 language model 的预训练。我们先不考虑知识的正确性，或是事实的准确度。但仅仅只是让 language model 学习一个正常的话应该是什么样子的。例如动词，名词，谓语它们之...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Jun 22 2026 00:00:00 GMT+0800">
+                
+                    2026-06-22
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Behavior-Clone/">Behavior-Clone</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/22/note-1-inbox-026/">Read more<span class="seo-reader-text">真正的模仿学习？</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -976,65 +1035,6 @@ $\lambda &#x3D; P(...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/06/20/note-3-growing-011/">
-                            为什么从稠密 MoE 转变到稀疏 MoE
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            最早出现的 MoE 模型仅仅只添加了一个门控模型，负责输出每个专家对应的权重。所以每个专家都会被使用到。但这个方法为什么现在被稀疏 MoE 取代了呢？
-和 DeepSeek 的讨论中得知，最初 MoE 的提出，是因为观察到一个单一模型在一个具备多个不同分布的映射上，会因为梯度的来回拉扯导致训练缓慢甚至无法收敛。
-尽管近似定理证明了存在一组参数可以让 MLP 拟合任意连续函数，但是其并没有提出...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
-                
-                    2026-06-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/MoE/">MoE</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/06/20/note-3-growing-011/">Read more<span class="seo-reader-text">为什么从稠密 MoE 转变到稀疏 MoE</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1069,11 +1069,11 @@ $\lambda &#x3D; P(...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        127 posts in total
+                        128 posts in total
                     </span>
                     
                         <span>
-                            59.9k words in total
+                            60k words in total
                         </span>
                     
                 </p>

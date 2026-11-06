@@ -354,7 +354,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -409,12 +409,12 @@
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
     
-        <div class="label">Lv5</div>
+        <div class="label">Lv6</div>
     
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,75 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/08/05/note-2-seed-007/">
+                            构建一个小型搜索引擎
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            一个搜索引擎包含三个部分:
+
+获取数据 (Web Crawler)
+构建索引 (Tokenize)
+检索算法 (TF-IDF)
+
+获取数据其中 Web Crawler 本质上就是一个图遍历算法 (BFS&#x2F;DFS&#x2F;…). 其伪代码如下:
+123456789101112urls = []visited = set()urls.add(start_url)visited.add...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Aug 05 2026 00:00:00 GMT+0800">
+                
+                    2026-08-05
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">搜索引擎</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2/">信息检索</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/08/05/note-2-seed-007/">Read more<span class="seo-reader-text">构建一个小型搜索引擎</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -834,49 +903,6 @@ Grok 4.1 Fast (OpenRout...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/07/10/note-1-inbox-008/">
-                            强化学习如何应对稀疏奖励环境
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            突然想到的一个问题，对于大部分任务来说，我们只知道任务完成时是什么样，所以会给出一个最终奖励。但往往很难设计中间状态的奖励。
-这就像老师批卷子，答对了给分答错了扣分。但是如果要看步骤给分的话，就需要很高的水平了。
-所以现代的强化学习领域，是如何解决稀疏奖励环境任务的？
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 10 2026 00:00:00 GMT+0800">
-                
-                    2026-07-10
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/07/10/note-1-inbox-008/">Read more<span class="seo-reader-text">强化学习如何应对稀疏奖励环境</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -911,11 +937,11 @@ Grok 4.1 Fast (OpenRout...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        127 posts in total
+                        128 posts in total
                     </span>
                     
                         <span>
-                            59.9k words in total
+                            60k words in total
                         </span>
                     
                 </p>

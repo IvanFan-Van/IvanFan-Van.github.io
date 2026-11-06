@@ -354,7 +354,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -409,12 +409,12 @@
                 <div class="author flex flex-col justify-center my-2.5 mx-0">
     <div class="name">Ivan</div>
     
-        <div class="label">Lv5</div>
+        <div class="label">Lv6</div>
     
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">71</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">127</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,65 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-3-growing-011/">
+                            为什么从稠密 MoE 转变到稀疏 MoE
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            最早出现的 MoE 模型仅仅只添加了一个门控模型，负责输出每个专家对应的权重。所以每个专家都会被使用到。但这个方法为什么现在被稀疏 MoE 取代了呢？
+和 DeepSeek 的讨论中得知，最初 MoE 的提出，是因为观察到一个单一模型在一个具备多个不同分布的映射上，会因为梯度的来回拉扯导致训练缓慢甚至无法收敛。
+尽管近似定理证明了存在一组参数可以让 MLP 拟合任意连续函数，但是其并没有提出...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/MoE/">MoE</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-3-growing-011/">Read more<span class="seo-reader-text">为什么从稠密 MoE 转变到稀疏 MoE</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -932,61 +991,6 @@ conda 团队一开始自己在维护一个包仓库, 里面的依赖都被处理
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2024/01/20/%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                            如何跨跳板机免密ssh内网服务器
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            快速登录学校服务器第二版: 一步到”胃”俗话说的好, 懒惰是进步的第一生产力. 咱们上一讲聊到如何自定义服务器地址从而避免记忆冗长的地址, 如何做到只输入一次密码就可以直接登录. 但是! 密码太长太恶心了啊QAQ. 于是就有了这篇, 偷懒大法. 咱直接一步到位, 配置一次, 以后无需再填写任何密码. 一条命令直接登录!  具体效果如下:
-
-那咱废话不多说, 直接开搞!
-(PS: 如果你足够懒...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jan 20 2024 16:13:25 GMT+0800">
-                
-                    2024-01-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/HKU/">HKU</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2024/01/20/%E5%A6%82%E4%BD%95%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E5%AD%A6%E6%A0%A1%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read more<span class="seo-reader-text">如何跨跳板机免密ssh内网服务器</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1021,11 +1025,11 @@ conda 团队一开始自己在维护一个包仓库, 里面的依赖都被处理
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        127 posts in total
+                        128 posts in total
                     </span>
                     
                         <span>
-                            59.9k words in total
+                            60k words in total
                         </span>
                     
                 </p>
