@@ -3795,4 +3795,18 @@
         <tag>vscode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2018 卡耐基梅隆深度强化学习和控制公开课</title>
+    <url>/2026/11/07/note-1-inbox-2d8031c7f67647a5/</url>
+    <content><![CDATA[<p>强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。</p>
+<p>而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+      <tags>
+        <tag>强化学习</tag>
+      </tags>
+  </entry>
 </search>

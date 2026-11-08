@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,48 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/07/11/note-1-inbox-013/">
+                            神经网络可以输出概率密度分布吗
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            今天在阅读策略梯度时想到，对于策略网络而言，其是否只能够输出离散概率密度分布，每个神经元只能代表一个可能的行为取值。
+那是否有一种方式可以输出连续概率密度呢？ 我突然想到，是否能借助 VAE 的思想，假设这个行为的概率密度是已知的概率密度函数，例如高斯分布，然后让策略网络输出高斯网络的参数即可，是否就能实现连续概率密度网络的输出了
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jul 11 2026 00:00:00 GMT+0800">
+                
+                    2026-07-11
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/07/11/note-1-inbox-013/">Read more<span class="seo-reader-text">神经网络可以输出概率密度分布吗</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -890,68 +932,6 @@ misuse of ...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/06/24/note-3-growing-004/">
-                            能否将 MoE 中的负载均衡应用于 RL 中的 Exploration Exploition Trade Off
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            在 RL 学习中，我们没有办法像 CV 等其他深度学习任务那样，一直使用贪婪策略选择模型置信度最高的结果来进行训练，因为这种方法往往会导致模型陷入局部最优，无法训练下去。例如在 CliffWalking 任务中，一开始上下左右四个方向的 Q 值是一致的，此时模型会随机选择一个方向执行。如果恰好该方向会让 Q 值提高，那么更新后对应行为的 Q 值会提高，而贪婪策略会促使模型继续选择该行为，无穷...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Jun 24 2026 00:00:00 GMT+0800">
-                
-                    2026-06-24
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/MoE/">MoE</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/06/24/note-3-growing-004/">Read more<span class="seo-reader-text">能否将 MoE 中的负载均衡应用于 RL 中的 Exploration Exploition Trade Off</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -986,11 +966,11 @@ misuse of ...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        128 posts in total
+                        129 posts in total
                     </span>
                     
                         <span>
-                            60k words in total
+                            60.1k words in total
                         </span>
                     
                 </p>

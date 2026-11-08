@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,51 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/08/10/note-2-seed-025/">
+                            网络爬虫
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            这篇文章主要介绍构建一个网络爬虫中的各种细节. 
+首先网络爬虫本身可以视为一个图遍历算法, 例如 BFS 或是 DFS. 所以爬虫的代码实现本身会很类似于这些算法的框架. 
+在实现网络爬虫的过程中, 有这些细节需要注意:
+
+对于 url 的去重, 在 href 中可能是相对路径, 需要使用 urllib.urljoin 函数来拼接
+断点重续功能可以使用 sqlite 来追踪, 使用 stat...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Aug 10 2026 00:00:00 GMT+0800">
+                
+                    2026-08-10
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/08/10/note-2-seed-025/">Read more<span class="seo-reader-text">网络爬虫</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -861,48 +906,6 @@ Grok 4.1 Fast (OpenRout...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/07/11/note-1-inbox-013/">
-                            神经网络可以输出概率密度分布吗
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            今天在阅读策略梯度时想到，对于策略网络而言，其是否只能够输出离散概率密度分布，每个神经元只能代表一个可能的行为取值。
-那是否有一种方式可以输出连续概率密度呢？ 我突然想到，是否能借助 VAE 的思想，假设这个行为的概率密度是已知的概率密度函数，例如高斯分布，然后让策略网络输出高斯网络的参数即可，是否就能实现连续概率密度网络的输出了
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jul 11 2026 00:00:00 GMT+0800">
-                
-                    2026-07-11
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/07/11/note-1-inbox-013/">Read more<span class="seo-reader-text">神经网络可以输出概率密度分布吗</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -937,11 +940,11 @@ Grok 4.1 Fast (OpenRout...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        128 posts in total
+                        129 posts in total
                     </span>
                     
                         <span>
-                            60k words in total
+                            60.1k words in total
                         </span>
                     
                 </p>

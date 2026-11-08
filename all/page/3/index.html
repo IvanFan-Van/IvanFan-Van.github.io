@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,48 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/10/05/note-2-seed-039/">
+                            LangGraph
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            LangGraph 借鉴了google Pregel 系统的设计思想. 
+LangGraph 使用类似层序遍历的方式执行一个图拓扑程序. 所有并行的节点都在一个 super-step 中执行, sequential 执行的节点则是另一个 super-step.
+他们以 vertex 为中心, 每一次 vertex 会根据传入的数据更新自己的状态, 然后根据 edges 将其传递给下一个 ve...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Oct 05 2026 00:00:00 GMT+0800">
+                
+                    2026-10-05
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/10/05/note-2-seed-039/">Read more<span class="seo-reader-text">LangGraph</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -884,48 +926,6 @@ CAP （Consistency，Availability，Partition Tolerance） Theorem 是一个理�
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/09/23/note-2-seed-001/">
-                            2d 刚体物理引擎
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            PBD Position Based Dynamics 
-一个物理引擎伪代码如下:
-123456789101112131415161718192021222324while simulation:	for all particles i:		// update transformation integration		v_i = v_i + g * dt		p_i = x_i // save ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Sep 23 2026 00:00:00 GMT+0800">
-                
-                    2026-09-23
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/09/23/note-2-seed-001/">Read more<span class="seo-reader-text">2d 刚体物理引擎</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -960,11 +960,11 @@ CAP （Consistency，Availability，Partition Tolerance） Theorem 是一个理�
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        128 posts in total
+                        129 posts in total
                     </span>
                     
                         <span>
-                            60k words in total
+                            60.1k words in total
                         </span>
                     
                 </p>

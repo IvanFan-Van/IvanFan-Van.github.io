@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">128</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,48 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/08/31/note-2-seed-031/">
+                            BipedalWalker 强化学习
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            
+
+在训练过程中发现 critic_loss 出现波浪状, 目前分析是每个 episode 刚开始时, critic 无法很好的预测, 因此会出现较大的 td error 误差. 但紧接着 walker 陷入一个很奇怪的姿势将自己卡住, 使得 critic 能够很好的预测 (因为 walker 没有往前移动, 分数一直在 0左右, 所以 critic 一直预测0 就能使的 critic lo...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Aug 31 2026 00:00:00 GMT+0800">
+                
+                    2026-08-31
+                
+            </span>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2026/08/31/note-2-seed-031/">Read more<span class="seo-reader-text">BipedalWalker 强化学习</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -872,48 +914,6 @@ actor_loss$$	\nabla L(\theta) &#x3D; \sum_{t&#x3D;0}^{T}\log(\pi(s_{t}|a_{t})) Q
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/08/18/note-3-growing-020/">
-                            react router
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            React Router 是一个能让单页应用切换页面的技术.
-在早期没有 SPA (Single Page Application) 的时候, 每一个页面都是一个单独的, 完整的 html 文件. 人们通过 a 链接 访问不同的页面. 例如对于 home page 是 /index.html 文件, 对于 about page 是 /about.html. 
-但这种方式有一些问题, 首先就是...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Aug 18 2026 00:00:00 GMT+0800">
-                
-                    2026-08-18
-                
-            </span>
-        </span>
-        
-        
-    </div>
-
-    <a href="/2026/08/18/note-3-growing-020/">Read more<span class="seo-reader-text">react router</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -948,11 +948,11 @@ actor_loss$$	\nabla L(\theta) &#x3D; \sum_{t&#x3D;0}^{T}\log(\pi(s_{t}|a_{t})) Q
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        128 posts in total
+                        129 posts in total
                     </span>
                     
                         <span>
-                            60k words in total
+                            60.1k words in total
                         </span>
                     
                 </p>
