@@ -18,15 +18,15 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题">
+        <meta name="description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题 action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化性越差，越难在各个具备不同关节的机器人之间使用。越粗粒度的 action 泛化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2018 卡耐基梅隆深度强化学习和控制公开课">
 <meta property="og:url" content="https://ivanfan-van.github.io/2026/11/07/note-1-inbox-2d8031c7f67647a5/index.html">
 <meta property="og:site_name" content="Ivan&#39;s Scribbles">
-<meta property="og:description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题">
+<meta property="og:description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题 action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化性越差，越难在各个具备不同关节的机器人之间使用。越粗粒度的 action 泛化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-08T16:50:23.751Z">
+<meta property="article:modified_time" content="2026-11-15T09:50:20.522Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -323,7 +323,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">73</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -331,7 +331,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">130</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -385,8 +385,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-09 00:50:23</span>
-            <span class="mobile">2026-11-09 00:50:23</span>
+            <span class="desktop">2026-11-15 17:50:20</span>
+            <span class="mobile">2026-11-15 17:50:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -434,7 +434,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>110 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>489 Words</span>
         </span>
     
     
@@ -460,6 +460,15 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <p>强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。</p>
 <p>而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题</p>
+<p>action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化性越差，越难在各个具备不同关节的机器人之间使用。越粗粒度的 action 泛化性越好，但越依赖一个底层控制器将 action 转换为实际的控制指令。</p>
+<p>状态空间 &#x3D; 环境观测 + 机器人状态</p>
+<p>只要状态中包含的信息足够多, 那么马尔可夫性质就是成立的事实. 只不过针对我们要保留哪些信息, 可能会造成信息丢失.</p>
+<p>马尔可夫性质代表着遗忘, 会不计较模型在执行任务过程中的尝试. 只根据结果打分. 但事实上, 我们应该将 “努力” 也作为一部分状态. 这样 “低努力” + “达成结果” 应该优于 “高努力” + “达成结果”. 因为后者花费了更多的时间或是能量. </p>
+<blockquote>
+<p>能否在重建损失中加入特征的 L1 范数, 来让模型选择性丢弃某些不重要的特征? </p>
+</blockquote>
+<p><strong>agent 之间传递的信息就是 state-value function $V(s)$ 以及 state-action value function $Q(s, a)$.</strong></p>
+<p>例如一位年轻的教授, 在和学生大量讨论时会获得很多的即时愉悦. 但是一位经验丰富的教授会说长期来看这并不值得. 因为你浪费了很多本可以提升自己的时间. 老教授向年轻教授传授的就是 State Value Function 以及 State-Action Value Function.</p>
 
         </div>
 
@@ -474,7 +483,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-09 00:50:23
+                    :</strong> 2026-11-15 17:50:20
             </li>
         
         <li>
@@ -510,6 +519,21 @@
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2026/11/15/note-1-inbox-418a839ce557ac07/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">python + javascript 强化学习</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
@@ -573,11 +597,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        129 posts in total
+                        130 posts in total
                     </span>
                     
                         <span>
-                            60.1k words in total
+                            60.6k words in total
                         </span>
                     
                 </p>

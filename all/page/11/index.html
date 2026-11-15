@@ -354,7 +354,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">73</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">130</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -414,7 +414,7 @@
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">72</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">73</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">129</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">130</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,79 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/24/note-2-seed-044/">
+                            shell 脚本特殊字符
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            $$ 代表当前运行进程的 pid$# 代表传递给脚本的参数个数$0/$1/$2/$3... 代表传递给脚本的第一, 第二, 第三…个参数, 包含文件名 ($0)$? 最后一个命令执行的退出状态
+exit status
+
+
+exit code
+description
+example
+
+
+
+0
+successful
+ls
+
+
+1
+general error
+ls x
+
+
+2
+misuse of ...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Jun 24 2026 00:00:00 GMT+0800">
+                
+                    2026-06-24
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/shell/">shell</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/24/note-2-seed-044/">Read more<span class="seo-reader-text">shell 脚本特殊字符</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -980,66 +1053,6 @@ $\lambda &#x3D; P(...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/06/20/note-2-seed-046/">
-                            WaveNet
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                             TTS 任务中，wavenet  是个 vocoder，输入音频特征（梅尔频谱），输出 pcm 音频数据
-音频本质是一个序列，类似于文字序列，为什么RNN 等模型不能处理？
-因为音频序列太过于长了，传统文字序列可能包含上百上千个，但是对于音频，一秒就包含 16000 个 sample。想要分析一秒的音频等同于分析一个包含 16000 单词的序列，这导致了训练困难，推理慢等核心问题。
-关于音...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
-                
-                    2026-06-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Audio/">Audio</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/06/20/note-2-seed-046/">Read more<span class="seo-reader-text">WaveNet</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1074,11 +1087,11 @@ $\lambda &#x3D; P(...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        129 posts in total
+                        130 posts in total
                     </span>
                     
                         <span>
-                            60.1k words in total
+                            60.6k words in total
                         </span>
                     
                 </p>
