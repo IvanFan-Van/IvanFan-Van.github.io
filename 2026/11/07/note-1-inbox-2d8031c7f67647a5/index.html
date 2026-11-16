@@ -26,7 +26,7 @@
 <meta property="og:description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题 action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化性越差，越难在各个具备不同关节的机器人之间使用。越粗粒度的 action 泛化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-15T10:50:20.741Z">
+<meta property="article:modified_time" content="2026-11-16T04:50:20.575Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -385,8 +385,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-15 18:50:20</span>
-            <span class="mobile">2026-11-15 18:50:20</span>
+            <span class="desktop">2026-11-16 12:50:20</span>
+            <span class="mobile">2026-11-16 12:50:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -434,7 +434,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>614 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>703 Words</span>
         </span>
     
     
@@ -471,6 +471,10 @@
 <p>例如一位年轻的教授, 在和学生大量讨论时会获得很多的即时愉悦. 但是一位经验丰富的教授会说长期来看这并不值得. 因为你浪费了很多本可以提升自己的时间. 老教授向年轻教授传授的就是 State Value Function 以及 State-Action Value Function.</p>
 <p><strong>reward 不一定一定来自于环境, 也可以来自于 agent 自身.</strong> 例如人类在感到饥饿时会去吃东西. 可能是有一条神经连接着胃和大脑. 当胃感到空空的时候, 会向大脑发送一个 negative signal, 然后促使我去吃东西来抚平这个 negative signal. 而非吃东西给与我 reward.</p>
 <p><strong>所以 reward 并不一定是不可控的 (来自于环境的), 可能来自于自身, 是我们可控的.</strong></p>
+<p>给定一个策略才有一个 value function. 你无法说一个 value function 是什么样, 在没有阐述策略时.</p>
+<p>对于强化学习我们通常有两个任务:</p>
+<p>Prediction: 给定 <strong>MDP</strong> 以及 <strong>策略</strong>, 求出该策略对应的价值函数 $V_{\pi}$.<br>Solve: 给定 <strong>MDP</strong>, 求解最优策略.</p>
+<p>$$<br>V_{\pi} &#x3D; r_{\pi} + \gamma , T_{\pi} V_{\pi}<br>$$</p>
 
         </div>
 
@@ -485,7 +489,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-15 18:50:20
+                    :</strong> 2026-11-16 12:50:20
             </li>
         
         <li>
@@ -603,7 +607,7 @@
                     </span>
                     
                         <span>
-                            60.7k words in total
+                            61k words in total
                         </span>
                     
                 </p>
