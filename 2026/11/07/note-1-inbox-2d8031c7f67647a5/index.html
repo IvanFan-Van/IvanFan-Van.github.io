@@ -26,7 +26,7 @@
 <meta property="og:description" content="强化学习有信用分配问题，但是在物体检测等领域没有是因为强化学习需要和环境交互，因此最终的 reward 同时依赖于策略以及环境。我们没办法微分环境，来得到每一个神经元对其的影响。 而物体检测领域因为可以直接通过微分得到梯度，因此不会产生信用分配问题 action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化性越差，越难在各个具备不同关节的机器人之间使用。越粗粒度的 action 泛化">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T04:50:20.575Z">
+<meta property="article:modified_time" content="2026-11-16T05:50:20.619Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -385,8 +385,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-16 12:50:20</span>
-            <span class="mobile">2026-11-16 12:50:20</span>
+            <span class="desktop">2026-11-16 13:50:20</span>
+            <span class="mobile">2026-11-16 13:50:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -434,12 +434,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>703 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>858 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -474,7 +474,10 @@
 <p>给定一个策略才有一个 value function. 你无法说一个 value function 是什么样, 在没有阐述策略时.</p>
 <p>对于强化学习我们通常有两个任务:</p>
 <p>Prediction: 给定 <strong>MDP</strong> 以及 <strong>策略</strong>, 求出该策略对应的价值函数 $V_{\pi}$.<br>Solve: 给定 <strong>MDP</strong>, 求解最优策略.</p>
-<p>$$<br>V_{\pi} &#x3D; r_{\pi} + \gamma , T_{\pi} V_{\pi}<br>$$</p>
+<p>$$<br>\begin{equation}<br>V_{\pi} &#x3D; r_{\pi} + \gamma , T_{\pi} V_{\pi} \<br>V_{\pi} &#x3D; (I - \gamma , T_{\pi})^{-1} r_{\pi}<br>\end{equation}<br>$$<br>这是矩阵形式 value function 的通解.</p>
+<p>deterministic world 中的 value 更新公式</p>
+<p> $$<br>V_{new}(s) &#x3D; max(V_{old}(s), \quad r(s, a) + V_{old}(s’))<br>$$<br>在 indeterministic world, policy, environment, 以及 reward 都是随机的. </p>
+<p>$$<br>V_{\pi} &#x3D; \sum_{a \in A} \pi(a | s) , \left( r(s, a) + \sum_{s’ \in S} T_{\pi}(s’ | s, a) V_{\pi}(s’) \right)<br>$$<br>下一个状态 $s’$ 的价值是所有下一个状态价值的期望:<br>$$<br>\mathbb{E}[V_{\pi}(s’)] &#x3D; \sum_{a \in A} \pi(a | s) , \sum_{s’ \in S} T(s’ | s, a) V_{\pi}(s’)<br>$$<br>r 也是一个概率分布, 根据 s, a 采样得到一个 reward.</p>
 
         </div>
 
@@ -489,7 +492,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-16 12:50:20
+                    :</strong> 2026-11-16 13:50:20
             </li>
         
         <li>
@@ -607,7 +610,7 @@
                     </span>
                     
                         <span>
-                            61k words in total
+                            61.1k words in total
                         </span>
                     
                 </p>

@@ -3792,7 +3792,10 @@
 <p>给定一个策略才有一个 value function. 你无法说一个 value function 是什么样, 在没有阐述策略时.</p>
 <p>对于强化学习我们通常有两个任务:</p>
 <p>Prediction: 给定 <strong>MDP</strong> 以及 <strong>策略</strong>, 求出该策略对应的价值函数 $V_{\pi}$.<br>Solve: 给定 <strong>MDP</strong>, 求解最优策略.</p>
-<p>$$<br>V_{\pi} &#x3D; r_{\pi} + \gamma , T_{\pi} V_{\pi}<br>$$</p>
+<p>$$<br>\begin{equation}<br>V_{\pi} &#x3D; r_{\pi} + \gamma , T_{\pi} V_{\pi} \<br>V_{\pi} &#x3D; (I - \gamma , T_{\pi})^{-1} r_{\pi}<br>\end{equation}<br>$$<br>这是矩阵形式 value function 的通解.</p>
+<p>deterministic world 中的 value 更新公式</p>
+<p> $$<br>V_{new}(s) &#x3D; max(V_{old}(s), \quad r(s, a) + V_{old}(s’))<br>$$<br>在 indeterministic world, policy, environment, 以及 reward 都是随机的. </p>
+<p>$$<br>V_{\pi} &#x3D; \sum_{a \in A} \pi(a | s) , \left( r(s, a) + \sum_{s’ \in S} T_{\pi}(s’ | s, a) V_{\pi}(s’) \right)<br>$$<br>下一个状态 $s’$ 的价值是所有下一个状态价值的期望:<br>$$<br>\mathbb{E}[V_{\pi}(s’)] &#x3D; \sum_{a \in A} \pi(a | s) , \sum_{s’ \in S} T(s’ | s, a) V_{\pi}(s’)<br>$$<br>r 也是一个概率分布, 根据 s, a 采样得到一个 reward.</p>
 ]]></content>
       <categories>
         <category>Notes</category>
