@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">130</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">132</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">130</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">132</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,129 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/07/06/note-2-seed-042/">
+                            RAG 系统中的 hybrid search 实现
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            目前主流的有三种检索方式：
+
+关键词检索（e.g. BM25）
+稠密向量检索 （e.g. text embeddings）
+稀疏向量检索（e.g. SPLADE）
+
+其中稀疏向量的核心特点是，能够通过语言模型建模的上下文，来为近义词也进行检索。例如 Forest，jungle，trees 等词都可能会被检索到。算是关键词检索的一个加强版本。
+而 hybrid search 检索的核心公式 R...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Jul 06 2026 00:00:00 GMT+0800">
+                
+                    2026-07-06
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/RAG/">RAG</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Information-Retrieval/">Information-Retrieval</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/07/06/note-2-seed-042/">Read more<span class="seo-reader-text">RAG 系统中的 hybrid search 实现</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/07/02/note-1-inbox-021/">
+                            学习 embodied ai 的笔记
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            最早的 robotic 模型来自于 2022 年的 SayCan。 使用大语言模型的理解能力，结合在某些 skill 上训练好的策略模型来实现 robotics 任务
+有点像是 agent 调用工具的形式，工具通过某种形式（例如 json）暴露给模型，然后让模型决定调用哪个，以及如何调用。
+为了限制模型输出指定的动作， SayCan 会构建一个行为候选集，然后通过句子 perplexity ...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Jul 02 2026 00:00:00 GMT+0800">
+                
+                    2026-07-02
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Embodied-AI/">Embodied-AI</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/07/02/note-1-inbox-021/">Read more<span class="seo-reader-text">学习 embodied ai 的笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -935,129 +1058,11 @@ CNN 有三个核心：
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/06/20/note-2-seed-038/">
-                            HMM
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            隐马尔科夫模型（Hiden Markov Model）
-有三个参数，分别是
-
-转移矩阵 A，大小为 N×N，其中 N 是隐藏状态的数量
-发射矩阵 B，大小为 N×O，其中 O 为观测状态的数量
-初始矩阵 $\pi$ ，大小为 N×1，其中每一个元素代表初始状态为隐藏状态 i 的概率
-
-隐马尔科夫模型 &#x3D; 初始状态矩阵 + 转移矩阵 + 发射矩阵
-$\lambda &#x3D; P(...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
-                
-                    2026-06-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Machine-Learning/">Machine-Learning</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/06/20/note-2-seed-038/">Read more<span class="seo-reader-text">HMM</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/06/20/note-2-seed-043/">
-                            RNN
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            RNN &amp; CRU由于 MLP 无法处理不定长数据的原因，MLP 本质是一个 Directed Acyclic Graph (DAG)。其没有任何循环，所以只能固定处理一定长度的内容，模仿类似于 n-gram 模型的能力，因为其没办法保留之前序列的内容，每一次前向传播都只会关注输入的几个字符。RNN 通过引入隐藏变量来模拟人类的记忆，来做到能够处理不定长的序列。
-1234567891...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
-                
-                    2026-06-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/NLP/">NLP</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/06/20/note-2-seed-043/">Read more<span class="seo-reader-text">RNN</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
         <div class="paginator">
-    <a class="extend prev" rel="prev" href="/all/page/10/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/all/">1</a><span class="space">&hellip;</span><a class="page-number" href="/all/page/9/">9</a><a class="page-number" href="/all/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/all/page/12/">12</a><a class="page-number" href="/all/page/13/">13</a><a class="extend next" rel="next" href="/all/page/12/"><i class="fa-regular fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/all/page/10/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/all/">1</a><span class="space">&hellip;</span><a class="page-number" href="/all/page/9/">9</a><a class="page-number" href="/all/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/all/page/12/">12</a><a class="page-number" href="/all/page/13/">13</a><a class="page-number" href="/all/page/14/">14</a><a class="extend next" rel="next" href="/all/page/12/"><i class="fa-regular fa-angle-right"></i></a>
 </div>
 
     </div>
@@ -1087,11 +1092,11 @@ $\lambda &#x3D; P(...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        130 posts in total
+                        132 posts in total
                     </span>
                     
                         <span>
-                            61.1k words in total
+                            61.4k words in total
                         </span>
                     
                 </p>
