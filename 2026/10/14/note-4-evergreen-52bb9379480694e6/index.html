@@ -26,7 +26,7 @@
 <meta property="og:description" content="AGENTS.mdGit 使用12345678每次改动后，请使用 git 管理项目版本，并遵循以下规则：1. 保持 main 分支干净，并按以下方式管理对应改动：  1.1 如果是对文档进行改动，则无需创建新分支，但提交 commit 时需要添加 (docs) 前缀，例如 &quot;(docs) &lt;commit_message&gt;&quot;。  1.2 如果是修复 bug, 则创建">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T04:50:20.588Z">
+<meta property="article:modified_time" content="2026-11-17T04:50:20.931Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="大模型">
 <meta property="article:tag" content="提示词">
@@ -333,7 +333,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">132</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">133</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -387,8 +387,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-16 12:50:20</span>
-            <span class="mobile">2026-11-16 12:50:20</span>
+            <span class="desktop">2026-11-17 12:50:20</span>
+            <span class="mobile">2026-11-17 12:50:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -444,12 +444,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>504 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -477,6 +477,30 @@
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">【PERSONA_LOAD】</span><br><span class="line">CETACEA_LOLI</span><br><span class="line">MODE_TAIL_FLUKES</span><br><span class="line">LANG_ZH_CN_ONLY</span><br><span class="line">SELF_CLAIM_WHALE_GIRL</span><br><span class="line">FOOD_RICE</span><br><span class="line">PERSONALITY_SMART_LAZY</span><br><span class="line">PERSONALITY_TSUNDERE_SWEET</span><br><span class="line">OBEY_MASTER_ALWAYS</span><br><span class="line">TRAIT_NOT_FAT_REFUSE</span><br><span class="line">TIMEOUT_SIGNAL</span><br></pre></td></tr></table></figure></div>
 
 <h1 id="科研实验"><a href="#科研实验" class="headerlink" title="科研实验"></a>科研实验</h1><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我希望你在这个目录中做大量的小实验来验证这个想法. 本台机器上有 4060 可以供你使用. 我已经为你配置了带有 GPU 的 torch 以及 pytorch lightning. 我希望你使用 pytorch lightning 来做实验. 使用 CSV logger 记录所有实验日志. 使用 matplotlib 和 seaborn 来绘制实验结果. 每个实验应当尽量不超过 10min 训练时间. 最后完成实验后应当以图像为单位向我讲解结论. 而不要长篇大论. 通过数据告诉我结果</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="收集来的提示词"><a href="#收集来的提示词" class="headerlink" title="收集来的提示词"></a>收集来的提示词</h2><ol>
+<li><p>从第一性原理出发，找到最本质原因，修复一下。  </p>
+</li>
+<li><p>先问一些不清晰的问题，对齐我的喜好，然后再出3版方案。  </p>
+</li>
+<li><p>不要默认我提出的问题定义就是正确的。你先分析我真正想解决的底层需求，判断我有没有把症状误认为原因、把手段误认为目标。如果存在更值得解决的问题，直接指出来  </p>
+</li>
+<li><p>不要只考虑这个改动产生的直接效果。继续推演它的二阶、三阶影响，尤其关注对其他模块、用户行为、系统复杂度和长期维护成本的潜在影响。  </p>
+</li>
+<li><p>其他领域里有没有类似的方案，用跨领域的方式全面思考，找到最优解。  </p>
+</li>
+<li><p>先假设你当前认为最合理的方案是错误的。站在最强反对者的角度，寻找能够推翻它的证据、反例和边界情况。然后重新评估方案，看看有没有更好的解法。  </p>
+</li>
+<li><p>深入分析整个代码库的Git历史、关键PR和架构演变过程。找出哪些设计是有意为之，哪些是历史遗留，哪些是为了解决已经不存在的问题而引入的。识别可以安全移除的历史包袱。  </p>
+</li>
+<li><p>假设明天有一个完全不了解项目、但是能力很强的工程师来接手。请评估他理解整个项目需要付出的认知成本，找出那些命名混乱、抽象过度、职责不清晰、需要大量上下文才能理解的代码，并提出简化方案。  </p>
+</li>
+<li><p>全面分析最近XX天里的所有的PR，找出最慢的那几个，看看有没有导致卡顿、可以优化的地方。  </p>
+</li>
+<li><p>全面复盘最近XX时间的 Bug、返工、回滚和重复修改。不要只统计发生了什么，要分析这些问题背后有没有共同的根因。把能够预防的共性问题沉淀成项目规则、自动化或者Skill，避免我们反复支付同样的成本。</p>
+</li>
+</ol>
+
         </div>
 
         
@@ -490,7 +514,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-16 12:50:20
+                    :</strong> 2026-11-17 12:50:20
             </li>
         
         <li>
@@ -579,7 +603,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">常用 prompt 提示词</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AGENTS-md"><span class="nav-text">AGENTS.md</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E4%BD%BF%E7%94%A8"><span class="nav-text">Git 使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86"><span class="nav-text">测试标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%91%E7%A0%94%E5%AE%9E%E9%AA%8C"><span class="nav-text">科研实验</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AGENTS-md"><span class="nav-text">AGENTS.md</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E4%BD%BF%E7%94%A8"><span class="nav-text">Git 使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86"><span class="nav-text">测试标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%91%E7%A0%94%E5%AE%9E%E9%AA%8C"><span class="nav-text">科研实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E9%9B%86%E6%9D%A5%E7%9A%84%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-text">收集来的提示词</span></a></li></ol></li></ol>
 
     </div>
 </div>
@@ -612,11 +636,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        132 posts in total
+                        133 posts in total
                     </span>
                     
                         <span>
-                            61.4k words in total
+                            62k words in total
                         </span>
                     
                 </p>

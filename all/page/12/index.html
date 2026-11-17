@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">132</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">133</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -422,7 +422,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">132</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">133</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -439,6 +439,73 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/06/20/note-2-seed-035/">
+                            CNN
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            在图像任务上，传统 NLP 需要将图像从二维拉伸为一维向量，这导致了空间信息没有被保留。例如，在手写数字识别任务 MNIST 中，将数字整体平移几个像素点位置，就会导致 MLP 模型识别率下降。而 CNN 通过捕捉局部空间特征（二维处理），来实现局部不变性，对平移更加鲁棒。
+CNN 有三个核心：
+
+卷积核：提取局部特征，参数共享
+池化层：增大感受野，提供平移不变性
+全连接层：用于分类或回归，...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Jun 20 2026 00:00:00 GMT+0800">
+                
+                    2026-06-20
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Deep-Learning/">Deep-Learning</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/CNN/">CNN</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/Computer-Vision/">Computer-Vision</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/06/20/note-2-seed-035/">Read more<span class="seo-reader-text">CNN</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -949,65 +1016,6 @@ $\lambda &#x3D; P(...
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/10/20/note-2-seed-032/">
-                            C 语言中消息机制的用处
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            C 语言中的消息机制的常见用法
-优雅退出, 例如对于一个 web 服务器应用, 如果用户使用 Ctrl+C 向应用程序发起了 SIGINT 信号, 该信号的默认行为是终止进程, 这就会导致一些 socket 没有发送关闭消息. 客户端会在一段时间后提示服务端连接不到.
-而使用了自定义 signal handler, 我们就能对 SIGNINT 信号进行处理, 在终止进程之前, 先将已经连接的...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Oct 20 2025 00:00:00 GMT+0800">
-                
-                    2025-10-20
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/C-Cpp/">C/Cpp</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Signal/">Signal</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/10/20/note-2-seed-032/">Read more<span class="seo-reader-text">C 语言中消息机制的用处</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1042,11 +1050,11 @@ $\lambda &#x3D; P(...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        132 posts in total
+                        133 posts in total
                     </span>
                     
                         <span>
-                            61.4k words in total
+                            62k words in total
                         </span>
                     
                 </p>
