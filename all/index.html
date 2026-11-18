@@ -376,7 +376,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">75</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">77</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -384,7 +384,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">135</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">136</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -436,7 +436,7 @@
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">75</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">77</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -444,7 +444,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">135</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">136</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -516,6 +516,72 @@
     </div>
 
     <a href="/2026/11/18/note-1-inbox-46ba3715ff9d954d/">Read more<span class="seo-reader-text">构建一个完全由函数构成的编程语言</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2026/11/18/note-1-inbox-590ddc32957aa62c/">
+                            参考 Excite Activation模型，为 GRU 添加动态门控
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            
+                            现在的 GRU 或是 LSTM 会对隐状态的所有维度施加相同的衰减。例如 0.7。 
+但如果每个维度的重要性不同，应当视情况衰减呢？
+所以能不能参考 Excite Activation，为每一个维度选择一个衰减阈值，而非所有维度共用一个。
+这个输出重要性权重的组件，是否有一个上限？即超过某个参数量，对模型的提升就不大了？
+隐状态的维度和重要性组件的平衡关系。应该扩大隐状态维度，还是加强重要性...
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Nov 18 2026 00:00:00 GMT+0800">
+                
+                    2026-11-18
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%97%B6%E5%BA%8F%E6%A8%A1%E5%9E%8B/">时序模型</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/RNN/">RNN</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2026/11/18/note-1-inbox-590ddc32957aa62c/">Read more<span class="seo-reader-text">参考 Excite Activation模型，为 GRU 添加动态门控</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -938,65 +1004,6 @@ action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化�
                 </div>
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2026/10/28/note-1-inbox-b1768e31f3c60db7/">
-                            Disentangle Representation Learning
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            在深度学习中有一个领域叫做 Disentangle Representation Learning, 其目的在于学习到一组特征表达, 其中每个维度都与其他维度解耦, 即数学上保持每个维度独立, 同时其含义也是独立的. 
-例如 VAE 中的学习的图像分布 $P(X)$, 希望每一个维度都代表着图像的某一类属性, 例如大小, 旋转角度, 颜色等.
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Oct 28 2026 00:00:00 GMT+0800">
-                
-                    2026-10-28
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E6%83%B3%E6%B3%95/">想法</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2026/10/28/note-1-inbox-b1768e31f3c60db7/">Read more<span class="seo-reader-text">Disentangle Representation Learning</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
     </ul>
 
     <div class="home-paginator px-7 py-5">
@@ -1031,11 +1038,11 @@ action 的粒度决定了泛化性。 action 的粒度越细，策略的泛化�
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        135 posts in total
+                        136 posts in total
                     </span>
                     
                         <span>
-                            62.4k words in total
+                            62.7k words in total
                         </span>
                     
                 </p>

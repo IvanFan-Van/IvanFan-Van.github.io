@@ -3915,6 +3915,14 @@
 <p>那么这个集合就是 vector space</p>
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">VectorSpace</span>(<span class="title class_ inherited__">Set</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">scalar_multi</span>(<span class="params">a, k</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></div>
 
+<p>subspace 就是一个 subset，但是具有相同的：</p>
+<ul>
+<li>additive identity （零）</li>
+<li>close on add</li>
+<li>close on scalar multiplication</li>
+</ul>
+<p>假设 $V &#x3D; V_1 + V_2 + \dots + V_m$  是直和（direct sum）的，意味着每一个元素 $v \in V$ 都只有一个唯一的分解 $v &#x3D; v_1 + v_2 + \dots + v_m$ </p>
+<p>判断是否直和只需要判断 additive identity 是否只有唯一分解即可。</p>
 ]]></content>
       <categories>
         <category>Notes</category>
@@ -3948,6 +3956,26 @@
       <tags>
         <tag>思考</tag>
         <tag>编程语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>参考 Excite Activation模型，为 GRU 添加动态门控</title>
+    <url>/2026/11/18/note-1-inbox-590ddc32957aa62c/</url>
+    <content><![CDATA[<p>现在的 GRU 或是 LSTM 会对隐状态的所有维度施加相同的衰减。例如 0.7。 </p>
+<p>但如果每个维度的重要性不同，应当视情况衰减呢？</p>
+<p>所以能不能参考 Excite Activation，为每一个维度选择一个衰减阈值，而非所有维度共用一个。</p>
+<p>这个输出重要性权重的组件，是否有一个上限？即超过某个参数量，对模型的提升就不大了？</p>
+<p>隐状态的维度和重要性组件的平衡关系。应该扩大隐状态维度，还是加强重要性组件？</p>
+<p>类似于 deepseek 中的 memory 模块。</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+        <tag>时序模型</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
 </search>
