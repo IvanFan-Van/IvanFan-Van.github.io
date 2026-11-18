@@ -3923,6 +3923,8 @@
 </ul>
 <p>假设 $V &#x3D; V_1 + V_2 + \dots + V_m$  是直和（direct sum）的，意味着每一个元素 $v \in V$ 都只有一个唯一的分解 $v &#x3D; v_1 + v_2 + \dots + v_m$ </p>
 <p>判断是否直和只需要判断 additive identity 是否只有唯一分解即可。</p>
+<p>span 是所有 linear combination 的集合。 linear combination 就是一组参数。</p>
+<p>linear regression 模型就是一组特定的 linear combination。而机器学习算法可以认为就是在一个 span 中找到使损失最小的那个？</p>
 ]]></content>
       <categories>
         <category>Notes</category>
