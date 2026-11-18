@@ -3921,4 +3921,14 @@
         <category>Inbox</category>
       </categories>
   </entry>
+  <entry>
+    <title>能否利用 Bootstrap 加速强化学习训练</title>
+    <url>/2026/11/18/note-1-inbox-5dc9229f61b9b41f/</url>
+    <content><![CDATA[<p>强化学习训练的难点在于得到一个稳定的梯度，动作梯度来自于不确定的 </p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+  </entry>
 </search>
