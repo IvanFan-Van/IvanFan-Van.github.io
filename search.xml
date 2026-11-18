@@ -3923,12 +3923,31 @@
   </entry>
   <entry>
     <title>能否利用 Bootstrap 加速强化学习训练</title>
-    <url>/2026/11/18/note-1-inbox-5dc9229f61b9b41f/</url>
-    <content><![CDATA[<p>强化学习训练的难点在于得到一个稳定的梯度，动作梯度来自于不确定的 </p>
+    <url>/2026/11/17/note-1-inbox-5dc9229f61b9b41f/</url>
+    <content><![CDATA[<p>强化学习训练的难点在于得到一个稳定的梯度，动作梯度来自于不确定的  Value 函数. 能否通过 bootstrap 方法来提高梯度的准确性, 从而加快 agent 的收敛?</p>
 ]]></content>
       <categories>
         <category>Notes</category>
         <category>Inbox</category>
       </categories>
+      <tags>
+        <tag>强化学习</tag>
+        <tag>统计学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>构建一个完全由函数构成的编程语言</title>
+    <url>/2026/11/18/note-1-inbox-46ba3715ff9d954d/</url>
+    <content><![CDATA[<p>既然常数也是函数，那么是否意味着我们可以创造一个只有函数作为一等公民的编程语言？ </p>
+<p>变量是常值函数<br>条件判断是分段函数<br>循环是周期函数</p>
+]]></content>
+      <categories>
+        <category>Notes</category>
+        <category>Inbox</category>
+      </categories>
+      <tags>
+        <tag>思考</tag>
+        <tag>编程语言</tag>
+      </tags>
   </entry>
 </search>
