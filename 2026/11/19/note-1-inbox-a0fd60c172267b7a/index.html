@@ -13,20 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://ivanfan-van.github.io/2026/11/16/note-1-inbox-1375b88a790a26ff/"/>
+    <link rel="canonical" href="https://ivanfan-van.github.io/2026/11/19/note-1-inbox-a0fd60c172267b7a/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849class LSTMCell(nn.Module):  def __init__(    self,     input_dim,     hidden_dim  ):    super().__init__()    s">
+        <meta name="description" content="12345678910111213141516171819class GRUCell(nn.Module):    def __init__(        self,        input_dim,        hidden_dim    ):        super().__init__()        self.fc1 &#x3D; nn.Linear(input_dim, 3 * hidd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LSTM">
-<meta property="og:url" content="https://ivanfan-van.github.io/2026/11/16/note-1-inbox-1375b88a790a26ff/index.html">
+<meta property="og:title" content="RNN">
+<meta property="og:url" content="https://ivanfan-van.github.io/2026/11/19/note-1-inbox-a0fd60c172267b7a/index.html">
 <meta property="og:site_name" content="Ivan&#39;s Scribbles">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849class LSTMCell(nn.Module):  def __init__(    self,     input_dim,     hidden_dim  ):    super().__init__()    s">
+<meta property="og:description" content="12345678910111213141516171819class GRUCell(nn.Module):    def __init__(        self,        input_dim,        hidden_dim    ):        super().__init__()        self.fc1 &#x3D; nn.Linear(input_dim, 3 * hidd">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-11-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T10:50:20.662Z">
+<meta property="article:published_time" content="2026-11-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-19T12:50:22.154Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="Hexo Theme Redefine">
 <meta name="twitter:card" content="summary">
@@ -41,7 +41,7 @@
     
     <title>
         
-            LSTM | Ivan&#39;s Scribbles
+            RNN | Ivan&#39;s Scribbles
         
     </title>
 
@@ -357,7 +357,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">LSTM</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">RNN</h1>
                 </div>
             
             </div>
@@ -378,15 +378,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2026-11-16</span>
-        <span class="mobile">2026-11-16</span>
+        <span class="desktop">2026-11-19</span>
+        <span class="mobile">2026-11-19</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-16 18:50:20</span>
-            <span class="mobile">2026-11-16 18:50:20</span>
+            <span class="desktop">2026-11-19 20:50:22</span>
+            <span class="mobile">2026-11-19 20:50:22</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -423,12 +423,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>260 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>369 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -447,27 +447,32 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LSTMCell</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">    self, </span></span><br><span class="line"><span class="params">    input_dim, </span></span><br><span class="line"><span class="params">    hidden_dim</span></span><br><span class="line"><span class="params">  </span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.fc1 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc2 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc3 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc4 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc5 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc6 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc7 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc8 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, lm, sm</span>):</span><br><span class="line">    <span class="comment"># phase 1: forget gate</span></span><br><span class="line">    lm = lm * F.sigmoid(<span class="variable language_">self</span>.fc1(x) + <span class="variable language_">self</span>.fc2(sm))</span><br><span class="line">    <span class="comment"># phase 2: input gate</span></span><br><span class="line">    new_lm = F.tanh(<span class="variable language_">self</span>.fc3(x) + <span class="variable language_">self</span>.fc4(sm))</span><br><span class="line">    new_lm = F.sigmoid(<span class="variable language_">self</span>.fc5(x) + <span class="variable language_">self</span>.fc6(sm)) * new_lm</span><br><span class="line">    lm = lm + new_lm</span><br><span class="line">    <span class="comment"># phase 3: output gate</span></span><br><span class="line">    sm = F.sigmoid(<span class="variable language_">self</span>.fc7(x) + <span class="variable language_">self</span>.fc8(sm)) * F.tanh(lm)</span><br><span class="line">    <span class="keyword">return</span> lm, sm</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LSTM</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">    self,</span></span><br><span class="line"><span class="params">    input_dim,</span></span><br><span class="line"><span class="params">    hidden_dim</span></span><br><span class="line"><span class="params">  </span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.hidden_dim = hidden_dim</span><br><span class="line">    <span class="variable language_">self</span>.cell = LSTMCell(input_dim, hidden_dim)</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">    <span class="comment"># x: B, T, C</span></span><br><span class="line">    B, T, C = x.shape</span><br><span class="line">    lm = torch.zeros((B, <span class="variable language_">self</span>.hidden_dim), device=x.device)</span><br><span class="line">    sm = torch.zeros((B, <span class="variable language_">self</span>.hidden_dim), device=x.device)</span><br><span class="line">    outputs = [] </span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">      lm, sm = <span class="variable language_">self</span>.cell(x[:, t, :], lm, sm)</span><br><span class="line">      outputs.append(sm)</span><br><span class="line">    <span class="keyword">return</span> torch.stack(outputs, dim=<span class="number">1</span>) <span class="comment"># (B, T, H)</span></span><br></pre></td></tr></table></figure></div>
+            <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">GRUCell</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        input_dim,</span></span><br><span class="line"><span class="params">        hidden_dim</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(input_dim, <span class="number">3</span> * hidden_dim)</span><br><span class="line">        <span class="variable language_">self</span>.fc2 = nn.Linear(hidden_dim, <span class="number">3</span> * hidden_dim)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, h</span>):</span><br><span class="line">        x1, x2, x3 = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">3</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        h1, h2, h3 = <span class="variable language_">self</span>.fc2(h).chunk(<span class="number">3</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        h_old = torch.sigmoid(x1 + h1) * h</span><br><span class="line">        z = torch.sigmoid(x2 + h2)</span><br><span class="line">        h_new = torch.tanh(x3 + h3)</span><br><span class="line">        <span class="keyword">return</span> z * h_old + (<span class="number">1</span>-z) * h_new</span><br><span class="line"></span><br><span class="line">       </span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LSTMCell</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">    self, </span></span><br><span class="line"><span class="params">    input_dim, </span></span><br><span class="line"><span class="params">    hidden_dim</span></span><br><span class="line"><span class="params">  </span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.fc1 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc2 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc3 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc4 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc5 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc6 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc7 = nn.Linear(input_dim, hidden_dim)</span><br><span class="line">    <span class="variable language_">self</span>.fc8 = nn.Linear(hidden_dim, hidden_dim)</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, lm, sm</span>):</span><br><span class="line">    <span class="comment"># phase 1: forget gate</span></span><br><span class="line">    lm = lm * F.sigmoid(<span class="variable language_">self</span>.fc1(x) + <span class="variable language_">self</span>.fc2(sm))</span><br><span class="line">    <span class="comment"># phase 2: input gate</span></span><br><span class="line">    new_lm = F.tanh(<span class="variable language_">self</span>.fc3(x) + <span class="variable language_">self</span>.fc4(sm))</span><br><span class="line">    new_lm = F.sigmoid(<span class="variable language_">self</span>.fc5(x) + <span class="variable language_">self</span>.fc6(sm)) * new_lm</span><br><span class="line">    lm = lm + new_lm</span><br><span class="line">    <span class="comment"># phase 3: output gate</span></span><br><span class="line">    sm = F.sigmoid(<span class="variable language_">self</span>.fc7(x) + <span class="variable language_">self</span>.fc8(sm)) * F.tanh(lm)</span><br><span class="line">    <span class="keyword">return</span> lm, sm</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LSTM</span>(nn.Module):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">    self,</span></span><br><span class="line"><span class="params">    input_dim,</span></span><br><span class="line"><span class="params">    hidden_dim</span></span><br><span class="line"><span class="params">  </span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__()</span><br><span class="line">    <span class="variable language_">self</span>.hidden_dim = hidden_dim</span><br><span class="line">    <span class="variable language_">self</span>.cell = LSTMCell(input_dim, hidden_dim)</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">    <span class="comment"># x: B, T, C</span></span><br><span class="line">    B, T, C = x.shape</span><br><span class="line">    lm = torch.zeros((B, <span class="variable language_">self</span>.hidden_dim), device=x.device)</span><br><span class="line">    sm = torch.zeros((B, <span class="variable language_">self</span>.hidden_dim), device=x.device)</span><br><span class="line">    outputs = [] </span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">      lm, sm = <span class="variable language_">self</span>.cell(x[:, t, :], lm, sm)</span><br><span class="line">      outputs.append(sm)</span><br><span class="line">    <span class="keyword">return</span> torch.stack(outputs, dim=<span class="number">1</span>) <span class="comment"># (B, T, H)</span></span><br></pre></td></tr></table></figure></div>
 
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># __init__</span></span><br><span class="line"><span class="variable language_">self</span>.fc1 = nn.Linear(input_dim, hidden_dim * <span class="number">4</span>)</span><br><span class="line"><span class="variable language_">self</span>.fc2 = nn.Linear(hidden_dim, hidden_dim * <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># forward</span></span><br><span class="line">x1, x2, x3 = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">4</span>, dim=-<span class="number">1</span>)</span><br><span class="line">sm1, sm2, sm3 = <span class="variable language_">self</span>.fc2(sm).chunk(<span class="number">4</span>, dim=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">lm = lm * torch.sigmoid(x1 + sm1)</span><br><span class="line"></span><br><span class="line">new_lm = torch.sigmoid(x2 + sm2) * torch.tanh(x3 + sm3)</span><br><span class="line">lm = lm + new_lm</span><br><span class="line"></span><br><span class="line">sm = torch.sigmoid(x4 + sm4) * torch.tanh(lm)</span><br></pre></td></tr></table></figure></div>
+
+
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> einops</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Attention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        d_model</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(d_model, <span class="number">3</span> * d_model)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># x: (B, T, C)</span></span><br><span class="line">        q, k, v = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">3</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        einops.</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
         </div>
 
         
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> LSTM</li>
+        <li><strong>Title:</strong> RNN</li>
         <li><strong>Author:</strong> Ivan</li>
         <li><strong>Created at
-                :</strong> 2026-11-16 00:00:00</li>
+                :</strong> 2026-11-19 00:00:00</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-16 18:50:20
+                    :</strong> 2026-11-19 20:50:22
             </li>
         
         <li>
-            <strong>Link:</strong> https://ivanfan-van.github.io/2026/11/16/note-1-inbox-1375b88a790a26ff/
+            <strong>Link:</strong> https://ivanfan-van.github.io/2026/11/19/note-1-inbox-a0fd60c172267b7a/
         </li>
         <li>
             <strong>
@@ -492,29 +497,14 @@
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2026/11/16/note-4-evergreen-c73dff7a6ee6e54c/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">购买 apple 礼品卡为美区 apple 充值教程</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2026/11/15/note-1-inbox-418a839ce557ac07/"
+                        href="/2026/11/18/note-1-inbox-46ba3715ff9d954d/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">python + javascript 强化学习</span>
+                                <span class="post-nav-title-item">构建一个完全由函数构成的编程语言</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -535,7 +525,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">LSTM</div>
+        <div class="page-title">RNN</div>
         
 
     </div>
@@ -573,7 +563,7 @@
                     </span>
                     
                         <span>
-                            62.7k words in total
+                            62.8k words in total
                         </span>
                     
                 </p>
