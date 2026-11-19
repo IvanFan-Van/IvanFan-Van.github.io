@@ -26,7 +26,7 @@
 <meta property="og:description" content="12345678910111213141516171819class GRUCell(nn.Module):    def __init__(        self,        input_dim,        hidden_dim    ):        super().__init__()        self.fc1 &#x3D; nn.Linear(input_dim, 3 * hidd">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-11-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-19T12:50:22.154Z">
+<meta property="article:modified_time" content="2026-11-19T13:50:21.621Z">
 <meta property="article:author" content="Ivan">
 <meta property="article:tag" content="Hexo Theme Redefine">
 <meta name="twitter:card" content="summary">
@@ -385,8 +385,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-11-19 20:50:22</span>
-            <span class="mobile">2026-11-19 20:50:22</span>
+            <span class="desktop">2026-11-19 21:50:21</span>
+            <span class="mobile">2026-11-19 21:50:21</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -423,7 +423,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>369 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>395 Words</span>
         </span>
     
     
@@ -454,7 +454,7 @@
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># __init__</span></span><br><span class="line"><span class="variable language_">self</span>.fc1 = nn.Linear(input_dim, hidden_dim * <span class="number">4</span>)</span><br><span class="line"><span class="variable language_">self</span>.fc2 = nn.Linear(hidden_dim, hidden_dim * <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># forward</span></span><br><span class="line">x1, x2, x3 = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">4</span>, dim=-<span class="number">1</span>)</span><br><span class="line">sm1, sm2, sm3 = <span class="variable language_">self</span>.fc2(sm).chunk(<span class="number">4</span>, dim=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">lm = lm * torch.sigmoid(x1 + sm1)</span><br><span class="line"></span><br><span class="line">new_lm = torch.sigmoid(x2 + sm2) * torch.tanh(x3 + sm3)</span><br><span class="line">lm = lm + new_lm</span><br><span class="line"></span><br><span class="line">sm = torch.sigmoid(x4 + sm4) * torch.tanh(lm)</span><br></pre></td></tr></table></figure></div>
 
 
-<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> einops</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Attention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        d_model</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(d_model, <span class="number">3</span> * d_model)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># x: (B, T, C)</span></span><br><span class="line">        q, k, v = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">3</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        einops.</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Attention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        d_model</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="variable language_">self</span>.d_model = d_model</span><br><span class="line">        <span class="variable language_">self</span>.fc1 = nn.Linear(d_model, <span class="number">3</span> * d_model)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># x: (B, T, C)</span></span><br><span class="line">        q, k, v = <span class="variable language_">self</span>.fc1(x).chunk(<span class="number">3</span>, dim=-<span class="number">1</span>)</span><br><span class="line">        attn_scores = q @ k.transpose(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>) / torch.sqrt(<span class="variable language_">self</span>.d_model) <span class="comment"># (B, T, T)</span></span><br><span class="line">        weights = attn_scores.softmax(dim=-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> weights @ v <span class="comment"># (B, T, d_model)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
         </div>
 
         
@@ -468,7 +468,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2026-11-19 20:50:22
+                    :</strong> 2026-11-19 21:50:21
             </li>
         
         <li>
@@ -563,7 +563,7 @@
                     </span>
                     
                         <span>
-                            62.8k words in total
+                            62.9k words in total
                         </span>
                     
                 </p>
